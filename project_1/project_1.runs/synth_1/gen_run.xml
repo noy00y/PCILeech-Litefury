@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tfgg484-2L" LaunchTime="1726874836" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/led_blink.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a100tfgg484-2L" LaunchTime="1726932705" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/led_blink.dcp">
   <File Type="PA-TCL" Name="led_blink.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="led_blink_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="led_blink_reports.tcl"/>
   <File Type="RDS-RDS" Name="led_blink.vds"/>
   <File Type="RDS-UTIL" Name="led_blink_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="led_blink_utilization_synth.pb"/>
   <File Type="RDS-DCP" Name="led_blink.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="led_blink_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="led_blink_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/led_blink.v">
@@ -30,6 +27,7 @@
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="ProcessingOrder" Val="EARLY"/>
       </FileInfo>
     </File>
     <Config>

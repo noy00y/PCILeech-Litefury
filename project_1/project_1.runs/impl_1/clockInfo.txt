@@ -1,6 +1,6 @@
 -------------------------------------
 | Tool Version : Vivado v.2024.1
-| Date         : Fri Sep 20 19:29:51 2024
+| Date         : Sat Sep 21 11:33:45 2024
 | Host         : OzairPC
 | Design       : design_1
 | Device       : xc7a100t-fgg484-2L-E-

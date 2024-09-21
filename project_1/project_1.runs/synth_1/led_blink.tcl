@@ -56,7 +56,6 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
-set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tfgg484-2L
 
@@ -83,6 +82,7 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 }
 read_xdc C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc
 set_property used_in_implementation false [get_files C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc]
+set_property processing_order EARLY [get_files C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc]
 
 set_param ips.enableIPCacheLiteLoad 1
 

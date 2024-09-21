@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sat Sep 21 11:33:18 2024
+# Process ID: 12340
+# Current directory: C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/impl_1
+# Command line: vivado.exe -log led_blink.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source led_blink.tcl -notrace
+# Log file: C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/impl_1/led_blink.vdi
+# Journal file: C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/impl_1\vivado.jou
+# Running On        :OzairPC
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :11th Gen Intel(R) Core(TM) i5-1135G7 @ 2.40GHz
+# CPU Frequency     :2419 MHz
+# CPU Physical cores:4
+# CPU Logical cores :8
+# Host memory       :16859 MB
+# Swap memory       :4647 MB
+# Total Virtual     :21506 MB
+# Available Virtual :4653 MB
+#-----------------------------------------------------------
+source led_blink.tcl -notrace
