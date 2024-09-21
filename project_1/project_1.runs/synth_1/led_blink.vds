@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Thu Sep 19 13:54:57 2024
-# Process ID: 14632
+# Start of session at: Fri Sep 20 19:27:18 2024
+# Process ID: 5812
 # Current directory: C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/synth_1
 # Command line: vivado.exe -log led_blink.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source led_blink.tcl
 # Log file: C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/synth_1/led_blink.vds
@@ -17,12 +17,12 @@
 # CPU Physical cores:4
 # CPU Logical cores :8
 # Host memory       :16859 MB
-# Swap memory       :1560 MB
-# Total Virtual     :18419 MB
-# Available Virtual :3762 MB
+# Swap memory       :5474 MB
+# Total Virtual     :22333 MB
+# Available Virtual :4571 MB
 #-----------------------------------------------------------
 source led_blink.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 513.883 ; gain = 198.305
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 515.047 ; gain = 201.266
 Command: read_checkpoint -auto_incremental -incremental C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/utils_1/imports/synth_1/led_blink.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/utils_1/imports/synth_1/led_blink.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -36,223 +36,64 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 15560
+INFO: [Synth 8-7075] Helper process launched with PID 10440
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:07 . Memory (MB): peak = 1385.277 ; gain = 449.895
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1385.480 ; gain = 449.625
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'led_blink' [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/sources_1/new/led_blink.v:23]
+INFO: [Synth 8-6157] synthesizing module 'IBUFDS' [C:/Xilinx/Vivado/2024.1/scripts/rt/data/unisim_comp.v:73658]
+INFO: [Synth 8-6155] done synthesizing module 'IBUFDS' (0#1) [C:/Xilinx/Vivado/2024.1/scripts/rt/data/unisim_comp.v:73658]
 INFO: [Synth 8-6155] done synthesizing module 'led_blink' (0#1) [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/sources_1/new/led_blink.v:23]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1494.512 ; gain = 559.129
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1494.105 ; gain = 558.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1494.512 ; gain = 559.129
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1494.105 ; gain = 558.250
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:09 . Memory (MB): peak = 1494.512 ; gain = 559.129
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1494.105 ; gain = 558.250
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1494.512 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1494.105 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc]
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[0]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:11]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:11]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[0]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:12]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:12]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[0]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:13]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:13]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[0]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:14]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:14]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[1]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:18]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:18]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[1]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:19]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:19]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[1]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:20]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:20]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[1]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:21]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:21]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[2]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:25]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:25]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[2]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:26]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:26]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[2]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:27]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:27]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[2]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:28]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:28]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxn[3]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:32]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:32]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_rxp[3]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:33]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:33]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txn[3]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:34]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:34]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_mgt_txp[3]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:35]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:35]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_clkin_clk_p[0]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:38]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:38]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_clkin_clk_n[0]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:39]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:39]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_clkreq_l'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:42]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:42]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pcie_clkreq_l'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:43]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:43]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pci_reset'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:44]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:44]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pci_reset'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:45]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc:45]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-Finished Parsing XDC File [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/led_blink_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/led_blink_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc]
-WARNING: [Vivado 12-584] No ports matched 'sys_clk_clk_p'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:8]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:8]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'sys_clk_clk_n'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:9]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:9]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:20]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:20]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:21]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:21]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:22]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:22]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:23]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:23]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A3'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:25]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:25]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A3'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:26]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:26]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A3'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:27]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:27]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A3'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:28]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:28]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A4'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:30]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:30]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A4'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:31]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:31]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A4'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:32]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:32]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_A4'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:33]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:33]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_M2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:38]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:38]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_M2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:39]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:39]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_M2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:40]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:40]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'LED_M2'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:41]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:41]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io0_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:47]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:47]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io1_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:48]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:48]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io2_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:49]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:49]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io3_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:50]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:50]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io0_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:52]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:52]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io1_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:53]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:53]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io2_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:54]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:54]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_io3_io'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:55]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:55]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'real_spi_ss'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:57]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:57]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'real_spi_ss'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:58]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:58]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_ss_t'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:60]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:60]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'SPI_0_ss_t'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:61]
-CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:61]
-Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
-WARNING: [Vivado 12-584] No ports matched 'pci_reset'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:75]
-CRITICAL WARNING: [Vivado 12-4739] set_false_path:No valid object(s) found for '-from [get_ports pci_reset]'. [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc:75]
-Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
 Finished Parsing XDC File [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/led_blink_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/led_blink_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1567.738 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1506.617 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1567.738 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1506.617 ; gain = 0.000
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Constraint Validation : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a100tfgg484-2L
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:11 ; elapsed = 00:00:15 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:16 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -277,25 +118,25 @@ Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:20 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:13 ; elapsed = 00:00:17 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:28 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:28 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Timing Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:28 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Technology Mapping : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -313,37 +154,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:23 ; elapsed = 00:00:33 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished IO Insertion : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:23 ; elapsed = 00:00:33 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:33 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:33 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:23 ; elapsed = 00:00:33 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:23 ; elapsed = 00:00:33 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -363,32 +204,31 @@ Report Cell Usage:
 |2     |CARRY4 |     7|
 |3     |LUT1   |     1|
 |4     |FDRE   |    27|
-|5     |IBUF   |     1|
+|5     |IBUFDS |     1|
 |6     |OBUF   |     1|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:33 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:24 ; elapsed = 00:00:28 . Memory (MB): peak = 1506.617 ; gain = 570.762
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:32 . Memory (MB): peak = 1567.738 ; gain = 559.129
-Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:34 . Memory (MB): peak = 1567.738 ; gain = 632.355
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:18 ; elapsed = 00:00:27 . Memory (MB): peak = 1506.617 ; gain = 558.250
+Synthesis Optimization Complete : Time (s): cpu = 00:00:24 ; elapsed = 00:00:29 . Memory (MB): peak = 1506.617 ; gain = 570.762
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1567.738 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 7 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1506.617 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 8 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1567.738 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1506.617 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: d4e46ffb
+Synth Design complete | Checksum: 2ba372a5
 INFO: [Common 17-83] Releasing license: Synthesis
-25 Infos, 54 Warnings, 53 Critical Warnings and 0 Errors encountered.
+28 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:28 ; elapsed = 00:00:40 . Memory (MB): peak = 1567.738 ; gain = 1049.277
-INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1567.738 ; gain = 0.000
+synth_design: Time (s): cpu = 00:00:27 ; elapsed = 00:00:35 . Memory (MB): peak = 1506.617 ; gain = 987.340
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1506.617 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/synth_1/led_blink.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file led_blink_utilization_synth.rpt -pb led_blink_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Thu Sep 19 13:55:48 2024...
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 20 19:28:02 2024...

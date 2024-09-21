@@ -21,13 +21,24 @@
 
 
 module led_blink(
-    input clk,
-    output reg LED_A1  // Change the signal name to match the constraint file
+    input sys_clk_clk_p,   // Differential clock (positive input)
+    input sys_clk_clk_n,   // Differential clock (negative input)
+    output reg LED_A1      // Output to LED
 );
-    reg [25:0] counter;
+    wire clk;  // Single-ended clock after conversion
     
+    // Convert differential clock to single-ended clock using IBUFDS
+    IBUFDS ibufds_inst (
+        .O(clk),              // Output single-ended clock
+        .I(sys_clk_clk_p),    // Input positive clock
+        .IB(sys_clk_clk_n)    // Input negative clock
+    );
+
+    reg [25:0] counter;
+
+    // LED blink logic
     always @(posedge clk) begin
         counter <= counter + 1;
-        LED_A1 <= counter[25];  // Toggle LED at slower rate
+        LED_A1 <= counter[25];  // Toggle LED at a slower rate
     end
 endmodule

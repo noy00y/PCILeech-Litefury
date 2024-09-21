@@ -3,8 +3,8 @@
 # SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
 # IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
 # SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
-# Start of session at: Thu Sep 19 12:56:12 2024
-# Process ID: 15632
+# Start of session at: Fri Sep 20 19:29:21 2024
+# Process ID: 14284
 # Current directory: C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/impl_1
 # Command line: vivado.exe -log led_blink.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source led_blink.tcl -notrace
 # Log file: C:/Users/ozair/Documents/Github/DMA/project_1/project_1.runs/impl_1/led_blink.vdi
@@ -17,8 +17,8 @@
 # CPU Physical cores:4
 # CPU Logical cores :8
 # Host memory       :16859 MB
-# Swap memory       :1073 MB
-# Total Virtual     :17933 MB
-# Available Virtual :4035 MB
+# Swap memory       :5349 MB
+# Total Virtual     :22209 MB
+# Available Virtual :4230 MB
 #-----------------------------------------------------------
 source led_blink.tcl -notrace

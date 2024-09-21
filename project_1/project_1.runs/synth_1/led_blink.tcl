@@ -57,7 +57,6 @@ if {$::dispatch::connected} {
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
 set_param chipscope.maxJobs 2
-set_msg_config -id {Common 17-41} -limit 10000000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a100tfgg484-2L
 
@@ -82,9 +81,6 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
-read_xdc C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc
-set_property used_in_implementation false [get_files C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/early.xdc]
-
 read_xdc C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc
 set_property used_in_implementation false [get_files C:/Users/ozair/Documents/Github/DMA/project_1/project_1.srcs/constrs_1/new/normal.xdc]
 

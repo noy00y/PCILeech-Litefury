@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a100tfgg484-2L" LaunchTime="1726768493" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/led_blink.dcp">
+<GenRun Id="synth_1" LaunchPart="xc7a100tfgg484-2L" LaunchTime="1726874836" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/led_blink.dcp">
   <File Type="PA-TCL" Name="led_blink.tcl"/>
   <File Type="RDS-PROPCONSTRS" Name="led_blink_drc_synth.rpt"/>
   <File Type="REPORTS-TCL" Name="led_blink_reports.tcl"/>
@@ -26,12 +26,6 @@
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1" RelGenDir="$PGENDIR/constrs_1">
     <Filter Type="Constrs"/>
-    <File Path="$PSRCDIR/constrs_1/new/early.xdc">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/constrs_1/new/normal.xdc">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -57,9 +51,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024">
-      <Desc>Vivado Synthesis Defaults</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2024"/>
     <Step Id="synth_design"/>
   </Strategy>
 </GenRun>

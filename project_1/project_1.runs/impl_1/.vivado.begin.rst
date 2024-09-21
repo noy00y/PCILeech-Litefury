@@ -1,50 +1,20 @@
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="15900" HostCore="8" HostMemory="016859557888">
+    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="17292" HostCore="8" HostMemory="016859557888">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="14288" HostCore="8" HostMemory="016859557888">
+    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="15996" HostCore="8" HostMemory="016859557888">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="2884" HostCore="8" HostMemory="016859557888">
+    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="17092" HostCore="8" HostMemory="016859557888">
     </Process>
 </ProcessHandle>
 <?xml version="1.0"?>
 <ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="13016" HostCore="8" HostMemory="016859557888">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="3580" HostCore="8" HostMemory="016859557888">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="2116" HostCore="8" HostMemory="016859557888">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="4960" HostCore="8" HostMemory="016859557888">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="13684" HostCore="8" HostMemory="016859557888">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="16740" HostCore="8" HostMemory="016859557888">
-    </Process>
-</ProcessHandle>
-<?xml version="1.0"?>
-<ProcessHandle Version="1" Minor="0">
-    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="4500" HostCore="8" HostMemory="016859557888">
+    <Process Command="vivado.bat" Owner="ozair" Host="OZAIRPC" Pid="9332" HostCore="8" HostMemory="016859557888">
     </Process>
 </ProcessHandle>
