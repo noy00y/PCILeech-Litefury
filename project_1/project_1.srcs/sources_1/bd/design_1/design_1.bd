@@ -1,0 +1,183 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7a100tfgg484-2L",
+      "gen_directory": "../../../../project_1.gen/sources_1/bd/design_1",
+      "name": "design_1",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2024.1.2"
+    },
+    "design_tree": {
+      "axi_pcie_0": "",
+      "axi_dma_0": ""
+    },
+    "components": {
+      "axi_pcie_0": {
+        "vlnv": "xilinx.com:ip:axi_pcie:2.9",
+        "ip_revision": "11",
+        "xci_name": "design_1_axi_pcie_0_0",
+        "xci_path": "ip\\design_1_axi_pcie_0_0\\design_1_axi_pcie_0_0.xci",
+        "inst_hier_path": "axi_pcie_0",
+        "parameters": {
+          "BAR0_SIZE": {
+            "value": "8"
+          },
+          "BAR1_ENABLED": {
+            "value": "true"
+          },
+          "BAR1_SCALE": {
+            "value": "Kilobytes"
+          },
+          "BAR1_SIZE": {
+            "value": "8"
+          },
+          "BAR1_TYPE": {
+            "value": "Memory"
+          },
+          "DEVICE_ID": {
+            "value": "0x7024"
+          },
+          "MAX_LINK_SPEED": {
+            "value": "5.0_GT/s"
+          },
+          "M_AXI_DATA_WIDTH": {
+            "value": "128"
+          },
+          "NO_OF_LANES": {
+            "value": "X4"
+          },
+          "S_AXI_DATA_WIDTH": {
+            "value": "128"
+          }
+        },
+        "interface_ports": {
+          "M_AXI": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "M_AXI",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
+            }
+          },
+          "S_AXI": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Slave",
+            "memory_map_ref": "S_AXI"
+          },
+          "S_AXI_CTL": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Slave",
+            "memory_map_ref": "S_AXI_CTL"
+          }
+        },
+        "addressing": {
+          "memory_maps": {
+            "S_AXI": {
+              "address_blocks": {
+                "BAR0": {
+                  "base_address": "0",
+                  "range": "4G",
+                  "width": "32",
+                  "usage": "memory",
+                  "offset_base_param": "AXIBAR_0",
+                  "offset_high_param": "AXIBAR_HIGHADDR_0"
+                }
+              }
+            },
+            "S_AXI_CTL": {
+              "address_blocks": {
+                "CTL0": {
+                  "base_address": "0",
+                  "range": "256M",
+                  "width": "28",
+                  "usage": "memory",
+                  "offset_base_param": "BASEADDR",
+                  "offset_high_param": "HIGHADDR"
+                }
+              }
+            }
+          },
+          "address_spaces": {
+            "M_AXI": {
+              "range": "4G",
+              "width": "32"
+            }
+          }
+        }
+      },
+      "axi_dma_0": {
+        "vlnv": "xilinx.com:ip:axi_dma:7.1",
+        "ip_revision": "33",
+        "xci_name": "design_1_axi_dma_0_0",
+        "xci_path": "ip\\design_1_axi_dma_0_0\\design_1_axi_dma_0_0.xci",
+        "inst_hier_path": "axi_dma_0",
+        "parameters": {
+          "c_m_axi_mm2s_data_width": {
+            "value": "128"
+          },
+          "c_m_axi_s2mm_data_width": {
+            "value": "128"
+          },
+          "c_m_axis_mm2s_tdata_width": {
+            "value": "128"
+          },
+          "c_s_axis_s2mm_tdata_width": {
+            "value": "128"
+          }
+        },
+        "interface_ports": {
+          "M_AXI_SG": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "Data_SG",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
+            }
+          },
+          "M_AXI_MM2S": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "Data_MM2S",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
+            }
+          },
+          "M_AXI_S2MM": {
+            "vlnv": "xilinx.com:interface:aximm_rtl:1.0",
+            "mode": "Master",
+            "address_space_ref": "Data_S2MM",
+            "base_address": {
+              "minimum": "0x00000000",
+              "maximum": "0xFFFFFFFF",
+              "width": "32"
+            }
+          }
+        },
+        "addressing": {
+          "address_spaces": {
+            "Data_MM2S": {
+              "range": "4G",
+              "width": "32"
+            },
+            "Data_S2MM": {
+              "range": "4G",
+              "width": "32"
+            },
+            "Data_SG": {
+              "range": "4G",
+              "width": "32"
+            }
+          }
+        }
+      }
+    }
+  }
+}
