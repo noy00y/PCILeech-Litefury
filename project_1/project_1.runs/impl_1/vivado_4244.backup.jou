@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2024.1 (64-bit)
+# SW Build 5076996 on Wed May 22 18:37:14 MDT 2024
+# IP Build 5075265 on Wed May 22 21:45:21 MDT 2024
+# SharedData Build 5076995 on Wed May 22 18:29:18 MDT 2024
+# Start of session at: Sat Sep 21 14:11:39 2024
+# Process ID: 4244
+# Current directory: C:/Users/ozair/Documents/Code_Drive/DMA/project_1/project_1.runs/impl_1
+# Command line: vivado.exe -log led_blink.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source led_blink.tcl -notrace
+# Log file: C:/Users/ozair/Documents/Code_Drive/DMA/project_1/project_1.runs/impl_1/led_blink.vdi
+# Journal file: C:/Users/ozair/Documents/Code_Drive/DMA/project_1/project_1.runs/impl_1\vivado.jou
+# Running On        :DESKTOP-H5HAFIG
+# Platform          :Windows Server 2016 or Windows 10
+# Operating System  :22631
+# Processor Detail  :AMD Ryzen 7 3700X 8-Core Processor             
+# CPU Frequency     :3593 MHz
+# CPU Physical cores:8
+# CPU Logical cores :16
+# Host memory       :17123 MB
+# Swap memory       :9126 MB
+# Total Virtual     :26250 MB
+# Available Virtual :17010 MB
+#-----------------------------------------------------------
+source led_blink.tcl -notrace

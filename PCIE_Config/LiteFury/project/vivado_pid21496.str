@@ -1,0 +1,1372 @@
+/*
+
+AMD Vivado v2024.1 (64-bit) [Major: 2024, Minor: 1]
+SW Build: 5076996 on Wed May 22 18:37:14 MDT 2024
+IP Build: 5075265 on Wed May 22 21:45:21 MDT 2024
+IP Build: 5075265 on Wed May 22 21:45:21 MDT 2024
+
+Process ID (PID): 21496
+License: Customer
+Mode: GUI Mode
+
+Current time: 	Tue Oct 01 18:55:24 EDT 2024
+Time zone: 	Eastern Standard Time (America/New_York)
+
+OS: Windows 11
+OS Version: 10.0
+OS Architecture: amd64
+Available processors (cores): 16
+
+Screen size: 1920x1080
+Local screen bounds: x = 0, y = 0, width = 1920, height = 1032
+Screen resolution (DPI): 100
+Available screens: 1
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+Scale size: 12
+OS font scaling: 100%
+Anti-Alias Enabled: false
+
+Java version: 	21.0.1 64-bit
+JavaFX version: 21.0.1
+Java home: 	C:/Xilinx/Vivado/2024.1/tps/win64/jre21.0.1_12
+Java executable: 	C:/Xilinx/Vivado/2024.1/tps/win64/jre21.0.1_12/bin/java.exe
+Java arguments: 	[-Dsun.java2d.pmoffscreen=false, -Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2, -Dsun.java2d.xrender=false, -Dsun.java2d.d3d=false, -Dsun.awt.nopixfmt=true, -Dsun.java2d.dpiaware=true, -Dsun.java2d.uiScale.enabled=false, -Dswing.aatext=true, -XX:-UsePerfData, -Djdk.map.althashing.threshold=512, -XX:StringTableSize=4072, -XX:+UseStringDeduplication, -XX:MaxGCPauseMillis=200, -XX:+ParallelRefProcEnabled, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.base/java.nio=ALL-UNNAMED, --add-opens=java.desktop/sun.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-opens=java.desktop/javax.swing=ALL-UNNAMED, --add-opens=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-opens=java.desktop/java.awt.event=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.base/java.nio=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.tree=ALL-UNNAMED, --add-exports=java.desktop/javax.swing.plaf.basic=ALL-UNNAMED, --add-exports=java.desktop/sun.swing=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.table=ALL-UNNAMED, --add-exports=java.desktop/sun.swing.plaf.synth=ALL-UNNAMED, --add-exports=java.desktop/sun.awt.shell=ALL-UNNAMED, --add-exports=java.base/sun.security.action=ALL-UNNAMED, --add-exports=java.desktop/sun.font=ALL-UNNAMED, -XX:NewSize=80m, -XX:MaxNewSize=80m, -Xms512m, -Xmx4072m, -Xss10m]
+Java initial memory (-Xms): 	512 MB
+Java maximum memory (-Xmx):	 3 GB
+
+User name: 	ozair
+User home directory: C:/Users/ozair
+User working directory: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project
+User country: 	US
+User language: 	en
+User locale: 	en_US
+
+RDI_BASEROOT: C:/Xilinx/Vivado
+HDI_APPROOT: C:/Xilinx/Vivado/2024.1
+RDI_DATADIR: C:/Xilinx/Vivado/2024.1/data
+RDI_BINDIR: C:/Xilinx/Vivado/2024.1/bin
+
+Vivado preferences file: C:/Users/ozair/AppData/Roaming/Xilinx/Vivado/2024.1/vivado.xml
+Vivado preferences directory: C:/Users/ozair/AppData/Roaming/Xilinx/Vivado/2024.1/
+Vivado layouts directory: C:/Users/ozair/AppData/Roaming/Xilinx/Vivado/2024.1/data/layouts
+PlanAhead jar file: 	C:/Xilinx/Vivado/2024.1/lib/classes/planAhead.jar
+Vivado log file: 	C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/vivado.log
+Vivado journal file: 	C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/vivado.jou
+Engine tmp dir: 	C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/.Xil/Vivado-21496-DESKTOP-H5HAFIG
+Non-Default Parameters:	[]
+
+Xilinx & AMD Environment Variables
+--------------------------------------------------------------------------------------------
+RDI_APPROOT: C:/Xilinx/Vivado/2024.1
+RDI_ARGS:  -gui_launcher_event rodinguilauncherevent11908 "C:\Users\ozair\Documents\Code_Drive\NiteFury-and-LiteFury\Sample-Projects\Project-0\FPGA\LiteFury\project\project.xpr"
+RDI_ARGS_FUNCTION: RDI_EXEC_DEFAULT
+RDI_BASEROOT: C:/Xilinx/Vivado
+RDI_BINDIR: C:/Xilinx/Vivado/2024.1/bin
+RDI_BINROOT: C:/Xilinx/Vivado/2024.1/bin
+RDI_BUILD: yes
+RDI_CHECK_PROG: True
+RDI_DATADIR: C:/Xilinx/Vivado/2024.1/data
+RDI_INSTALLROOT: C:/Xilinx
+RDI_INSTALLVER: 2024.1
+RDI_INSTALLVERSION: 2024.1
+RDI_ISE_PLATFORM: nt64
+RDI_JAVACEFROOT: C:/Xilinx/Vivado/2024.1/tps/win64/java-cef-95.0.4638.69
+RDI_JAVAFXROOT: C:/Xilinx/Vivado/2024.1/tps/win64/javafx-sdk-21.0.1
+RDI_JAVAROOT: C:/Xilinx/Vivado/2024.1/tps/win64/jre21.0.1_12
+RDI_JAVA_VERSION: 21.0.1_12
+RDI_LIBDIR: C:/Xilinx/Vivado/2024.1/lib/win64.o
+RDI_MINGW_LIB: C:/Xilinx/Vivado/2024.1\tps\mingw\6.2.0\win64.o\nt\bin;C:/Xilinx/Vivado/2024.1\tps\mingw\6.2.0\win64.o\nt\libexec\gcc\x86_64-w64-mingw32\6.2.0
+RDI_OPT_EXT: .o
+RDI_PLATFORM: win64
+RDI_PREPEND_PATH: C:/Xilinx/Vivado/2024.1/ids_lite/ISE/bin/nt64;C:/Xilinx/Vivado/2024.1/ids_lite/ISE/lib/nt64
+RDI_PROG: C:/Xilinx/Vivado/2024.1/bin/unwrapped/win64.o/vivado.exe
+RDI_PROGNAME: vivado.exe
+RDI_PYTHON3: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3
+RDI_PYTHON3_VERSION: 3.8.3
+RDI_PYTHONHOME: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3
+RDI_PYTHONPATH: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3;C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\bin;C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\lib;C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\lib\site-packages
+RDI_PYTHON_LD_LIBPATH: C:/Xilinx/Vivado/2024.1\tps\win64\python-3.8.3\lib
+RDI_SESSION_INFO: C:\Users\ozair\Documents\Code_Drive\NiteFury-and-LiteFury\Sample-Projects\Project-0\FPGA\LiteFury\project:DESKTOP-H5HAFIG-Tue10-01-2024_18-55-04.04
+RDI_SHARED_DATA: C:/Xilinx/SharedData/2024.1/data
+RDI_TPS_ROOT: C:/Xilinx/Vivado/2024.1/tps/win64
+RDI_USE_JDK21: True
+RDI_VERBOSE: False
+XILINX: C:/Xilinx/Vivado/2024.1/ids_lite/ISE
+XILINX_DSP: C:/Xilinx/Vivado/2024.1/ids_lite/ISE
+XILINX_HLS: C:/Xilinx/Vitis_HLS/2024.1
+XILINX_PLANAHEAD: C:/Xilinx/Vivado/2024.1
+XILINX_VIVADO: C:/Xilinx/Vivado/2024.1
+XILINX_VIVADO_HLS: C:/Xilinx/Vivado/2024.1
+_RDI_BINROOT: C:\Xilinx\Vivado\2024.1\bin
+_RDI_CWD: C:\Users\ozair\Documents\Code_Drive\NiteFury-and-LiteFury\Sample-Projects\Project-0\FPGA\LiteFury\project
+
+
+GUI allocated memory:	512 MB
+GUI max memory:		4,072 MB
+Engine allocated memory: 796 MB
+
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// TclEventType: PROJECT_OPEN_DIALOG
+// HMemoryUtils.trashcanNow. Engine heap size: 823 MB. GUI used memory: 68 MB. Current time: 10/1/24, 6:55:25 PM EDT
+// WARNING: HEventQueue.dispatchEvent() is taking  1002 ms.
+selectButton(RDIResource.BaseDialog_OK, "OK", "Older Project Version"); // a (RDIResource.BaseDialog_OK)
+// Opening Vivado Project: C:\Users\ozair\Documents\Code_Drive\NiteFury-and-LiteFury\Sample-Projects\Project-0\FPGA\LiteFury\project\project.xpr. Version: Vivado v2022.1 
+dismissDialog("Older Project Version"); // at (dialog0)
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// TclEventType: FLOW_ADDED
+// TclEventType: MSGMGR_MOVEMSG
+// Tcl Message: open_project C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.xpr 
+// Tcl Message: INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. Current project path is 'C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project' 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,018 MB. GUI used memory: 66 MB. Current time: 10/1/24, 6:55:40 PM EDT
+// TclEventType: LOAD_FEATURE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,491 MB. GUI used memory: 66 MB. Current time: 10/1/24, 6:55:55 PM EDT
+// TclEventType: PROJECT_NEW
+// [GUI Memory]: 94 MB (+95665kb) [00:00:50]
+// [Engine Memory]: 1,534 MB (+1457306kb) [00:00:50]
+// [GUI Memory]: 141 MB (+44360kb) [00:00:51]
+// WARNING: HEventQueue.dispatchEvent() is taking  1882 ms.
+// Tcl Message: open_project C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'. 
+// Tcl Message: INFO: [Project 1-230] Project 'project.xpr' upgraded for this version of Vivado. INFO: [Device 21-403] Loading part xc7a100tfgg484-2L INFO: [Device 21-9227] Part: xc7a100tfgg484-2L does not have CEAM library. 
+// Project name: project; location: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project; part: xc7a100tfgg484-2L
+// Tcl Message: open_project: Time (s): cpu = 00:00:12 ; elapsed = 00:00:25 . Memory (MB): peak = 1918.121 ; gain = 627.762 
+// Elapsed time: 25 seconds
+dismissDialog("Open Project"); // bj (Open Project Progress)
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PACKAGER_UNLOAD_CORE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// [Engine Memory]: 1,612 MB (+672kb) [00:00:55]
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 148 MB (+401kb) [00:00:59]
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd), Top_CodeBlinker_0_3 (Module Reference Wrapper)]", 2, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: open_bd_design {C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/Top.bd} 
+// Tcl Message: Reading block design file <C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/Top.bd>... 
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: PACKAGER_OBJECT_ADD
+// TclEventType: PACKAGER_MESSAGE_RESET
+// TclEventType: PACKAGER_MESSAGE_UPDATE
+// TclEventType: BDCELL_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// Tcl Message: INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). 
+// Tcl Message: INFO: [IP_Flow 19-3420] Updated Top_dna_reader_0_0 to use current project options 
+// Tcl Message: Adding component instance block -- xilinx.com:module_ref:user_efuse:1.0 - user_efuse_0 
+// Tcl Message: INFO: [IP_Flow 19-3420] Updated Top_user_efuse_0_0 to use current project options 
+// Tcl Message: INFO: [IP_Flow 19-1976] HDL Parser: Replacing 'S_NOK' by 0 for port or parameter 'state' 
+// Tcl Message: INFO: [IP_Flow 19-5107] Inferred bus interface 'clk' of definition 'xilinx.com:signal:clock:1.0' (from Xilinx Repository). 
+// Tcl Message: INFO: [IP_Flow 19-3420] Updated Top_CodeBlinker_0_3 to use current project options 
+// Tcl Message: Adding component instance block -- xilinx.com:ip:xlslice:1.0 - xlslice_D0 Adding component instance block -- xilinx.com:ip:xlslice:1.0 - xlslice_D4_D2 Successfully read diagram <Top> from block design file <C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/Top.bd> 
+// TclEventType: RSB_OPEN_DIAGRAM
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // u (PAResourceOtoP.PAViews_PROJECT_SUMMARY, PlanAheadTabProject Summary)
+dismissDialog("Open Block Design"); // bj (Open Block Design Progress)
+// WARNING: HTimer (Open addressing views timer) is taking 337ms to process. Increasing delay to 1300 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,657 MB. GUI used memory: 81 MB. Current time: 10/1/24, 6:56:15 PM EDT
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: update_compile_order -fileset sources_1 
+// [GUI Memory]: 156 MB (+610kb) [00:01:08]
+// Elapsed Time for: 'L.f': 22s
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// Elapsed time: 10 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /xdma_0_pcie_mgt]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// Elapsed Time for: 'L.f': 24s
+// Elapsed Time for: 'L.f': 26s
+selectButton(PAResourceQtoS.ReportIPStatusInfoDialog_IGNORE, "Ignore", "Project Upgraded"); // a (PAResourceQtoS.ReportIPStatusInfoDialog_IGNORE, RDIResource.BaseDialog_CANCEL)
+dismissDialog("Project Upgraded"); // U (dialog1)
+// Elapsed time: 252 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 253, 165); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "dir", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'dir'
+// Tcl Message: dir 
+// Elapsed time: 17 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Elapsed time: 12 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl (Dont Echo) Command: 'rdi::info_commands bd::match_path'
+// Tcl (Dont Echo) Command: 'bd::match_path {source} {../../common/Scripts/} {rebuild.tcl}'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source ../../common/Scripts/rebuild.tcl", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'source ../../common/Scripts/rebuild.tcl'
+// Tcl Message: source ../../common/Scripts/rebuild.tcl 
+// Tcl Message: # make_wrapper -files [get_files ./project.srcs/sources_1/bd/Top/Top.bd] -top 
+// Tcl Message: ERROR: [BD 41-1665] Unable to generate top-level wrapper HDL for the block design 'Top.bd' is locked. Locked reason(s): * Block design contains locked IPs. Please run report_ip_status for more details and recommendations on how to fix this issue.  List of locked IPs:  Top_axi_interconnect_1_0 Top_axi_gpio_0_0 Top_Model_0 Top_Version_0 Top_xlslice_0_0 Top_axi_gpio_1_0 Top_xlslice_0_4 Top_xbar_4 Top_axi_gpio_2_0 Top_xdma_0_0 Top_c_counter_binary_0_0 Top_xlconstant_1_0 Top_xlconstant_2_0 Top_xbar_3 Top_xlslice_0_3 Top_xadc_wiz_1_0 Top_util_ds_buf_0 Top_axi_interconnect_0_0 Top_xlslice_1_0 Top_auto_cc_0 Top_axi_interconnect_1_1 Top_axi_quad_spi_0_0 Top_util_vector_logic_0_2 Top_const_true_1  
+// Tcl Message: ERROR: [Common 17-39] 'make_wrapper' failed due to earlier errors.      while executing "make_wrapper -files [get_files ./project.srcs/sources_1/bd/Top/Top.bd] -top"     (file "../../common/Scripts/rebuild.tcl" line 4) 
+dismissDialog("Tcl Command"); // bj (Tcl Command Progress)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Elapsed time: 11 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 1, 80); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,679 MB. GUI used memory: 83 MB. Current time: 10/1/24, 7:02:11 PM EDT
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// Elapsed time: 46 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "report_ip_status", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'report_ip_status'
+// Tcl Message: report_ip_status 
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 0, 99); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// Elapsed time: 69 seconds
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // ah (PAResourceItoN.MainMenuMgr_WINDOW, Window)
+selectMenuItem(PAResourceCommand.PACommandNames_CORE_GEN, "IP Catalog"); // ap (PAResourceCommand.PACommandNames_CORE_GEN, core_gen_menu)
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // ah (PAResourceItoN.MainMenuMgr_WINDOW, Window)
+// Run Command: PAResourceCommand.PACommandNames_CORE_GEN
+// [Engine Memory]: 1,696 MB (+3943kb) [00:09:18]
+dismissDialog("Open IP Catalog"); // bj (Open IP Catalog Progress)
+selectMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // ah (PAResourceItoN.MainMenuMgr_WINDOW, Window)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,702 MB. GUI used memory: 94 MB. Current time: 10/1/24, 7:04:31 PM EDT
+dismissMenu(PAResourceItoN.MainMenuMgr_WINDOW, "Window"); // ah (PAResourceItoN.MainMenuMgr_WINDOW, Window)
+// Elapsed time: 11 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, IP Catalog]", 4, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_CORE_GEN
+// [GUI Memory]: 165 MB (+997kb) [00:09:37]
+setText("PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD", (String) null); // OverlayTextField (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD)
+// Elapsed time: 10 seconds
+setText("PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD", (String) null); // OverlayTextField (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD)
+setText("PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD", (String) null); // OverlayTextField (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD)
+// Elapsed time: 58 seconds
+selectButton((HResource) null, "IP Catalog_settings"); // v (IP Catalog_settings): TRUE
+// Elapsed time: 13 seconds
+selectButton(RDIResourceCommand.RDICommands_SETTINGS, "settings"); // B (RDIResourceCommand.RDICommands_SETTINGS, settings)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// Tcl (Dont Echo) Command: 'rdi::info_commands {device::*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {debug::*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {*}'
+// WARNING: HEventQueue.dispatchEvent() is taking  1140 ms.
+setText("RDIResource.SearchCommandComponent_QUICK_ACCESS", (String) null); // OverlayTextField (RDIResource.SearchCommandComponent_QUICK_ACCESS)
+dismissDialog("Settings"); // d (dialog2)
+// HMemoryUtils.trashcanNow. Engine heap size: 1,750 MB. GUI used memory: 94 MB. Current time: 10/1/24, 7:06:21 PM EDT
+selectButton(PAResourceQtoS.SystemTab_BLOCKS, "21 blocks"); // g (PAResourceQtoS.SystemTab_BLOCKS)
+selectButton(PAResourceQtoS.SystemTab_BLOCKS, "21 blocks"); // g (PAResourceQtoS.SystemTab_BLOCKS)
+selectButton(PAResourceQtoS.SystemTab_UPGRADE_LATER, "Upgrade Later"); // g (PAResourceQtoS.SystemTab_UPGRADE_LATER)
+selectButton("OptionPane.button", "OK", "Upgrade Later"); // JButton (OptionPane.button)
+selectTree(PAResourceQtoS.SystemTreeView_SYSTEM_TREE, "[Top, GPIO_regs, c_counter_binary_0]", 30, true); // a (PAResourceQtoS.SystemTreeView_SYSTEM_TREE) - Node
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aa
+selectTab((HResource) null, (HResource) null, "Design", 1); // aa
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, IP Catalog]", 4, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_CORE_GEN
+// [GUI Memory]: 178 MB (+4667kb) [00:11:31]
+selectTab(RDIResource.PropertiesView_TABBED_PANE, (HResource) null, "IP", 2); // g (RDIResource.PropertiesView_TABBED_PANE)
+selectTab(RDIResource.PropertiesView_TABBED_PANE, "RDIResource.PropertiesView_TABBED_PANE", (HResource) null, "IP", 2, false, true); // g (RDIResource.PropertiesView_TABBED_PANE) - Double Click
+selectTab(RDIResource.PropertiesView_TABBED_PANE, (HResource) null, "IP", 2); // g (RDIResource.PropertiesView_TABBED_PANE)
+selectTab(RDIResource.PropertiesView_TABBED_PANE, (HResource) null, "General", 0); // g (RDIResource.PropertiesView_TABBED_PANE)
+selectTab((HResource) null, (HResource) null, "Signals", 2); // aa
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aa
+closeView(PAResourceOtoP.PAViews_SYSTEM, "System"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "Address Editor", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+closeView(PAResourceOtoP.PAViews_ADDRESS_EDITOR, "Address Editor"); // c (PAResourceOtoP.PAViews_ADDRESS_EDITOR, PlanAheadTabAddress Editor)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "IP Catalog", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "IP Catalog (2)", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "IP Catalog (3)", 3); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "IP Catalog (2)", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+closeView(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // H (PAResourceOtoP.PAViews_IP_CATALOG, PlanAheadTabIP Catalog)
+selectButton(PAResourceAtoD.CoreBrowserView_VIEW_PRODUCT_GUIDE_CHANGE_LOG_PRODUCT, "IP Catalog_IP Info"); // f.c (PAResourceAtoD.CoreBrowserView_VIEW_PRODUCT_GUIDE_CHANGE_LOG_PRODUCT, IP Catalog_IP Info)
+selectMenuItem(PAResourceCommand.PACommandNames_SHOW_PRODUCT_GUIDE, "Product Guide"); // ap (PAResourceCommand.PACommandNames_SHOW_PRODUCT_GUIDE, show_product_guide_menu)
+// Run Command: PAResourceCommand.PACommandNames_SHOW_PRODUCT_GUIDE
+selectButton(PAResourceAtoD.CoreBrowserView_VIEW_PRODUCT_GUIDE_CHANGE_LOG_PRODUCT, "IP Catalog_IP Info"); // f.c (PAResourceAtoD.CoreBrowserView_VIEW_PRODUCT_GUIDE_CHANGE_LOG_PRODUCT, IP Catalog_IP Info)
+// Elapsed time: 11 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 394, 154); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+selectTab((HResource) null, (HResource) null, "Log", 2); // aa
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aa
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aa
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, IP Catalog]", 4, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_CORE_GEN
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, IP Catalog]", 4, false, false, false, false, false, true); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree) - Double Click
+selectButton(RDIResourceCommand.RDICommands_SETTINGS, "settings"); // B (RDIResourceCommand.RDICommands_SETTINGS, settings)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+// HMemoryUtils.trashcanNow. Engine heap size: 1,776 MB. GUI used memory: 101 MB. Current time: 10/1/24, 7:07:36 PM EDT
+dismissDialog("Settings"); // d (dialog2)
+// Elapsed time: 49 seconds
+closeView(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // H (PAResourceOtoP.PAViews_IP_CATALOG, PlanAheadTabIP Catalog)
+selectButton(PAResourceAtoD.CoreBrowserView_GROUP_CORES_BY_TAXONOMY_OR_REPOSITORY, "IP Catalog_groupView"); // B (PAResourceAtoD.CoreBrowserView_GROUP_CORES_BY_TAXONOMY_OR_REPOSITORY, IP Catalog_groupView)
+selectButton(PAResourceAtoD.CoreBrowserView_GROUP_CORES_BY_TAXONOMY_OR_REPOSITORY, "IP Catalog_groupView"); // B (PAResourceAtoD.CoreBrowserView_GROUP_CORES_BY_TAXONOMY_OR_REPOSITORY, IP Catalog_groupView)
+selectButton((HResource) null, "IP Catalog_compatibleFilter"); // v (IP Catalog_compatibleFilter): FALSE
+selectButton((HResource) null, "IP Catalog_compatibleFilter"); // v (IP Catalog_compatibleFilter): TRUE
+// [GUI Memory]: 187 MB (+481kb) [00:13:22]
+selectButton((HResource) null, "IP Catalog_compatibleFilter"); // v (IP Catalog_compatibleFilter): FALSE
+// [GUI Memory]: 198 MB (+1433kb) [00:13:23]
+selectButton((HResource) null, "IP Catalog_compatibleFilter"); // v (IP Catalog_compatibleFilter): TRUE
+selectButton((HResource) null, "IP Catalog_compatibleFilter"); // v (IP Catalog_compatibleFilter): FALSE
+floatFrame(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // R (PAResourceOtoP.PAViews_IP_CATALOG, IP Catalog)
+// PAResourceOtoP.PAViews_IP_CATALOG: IP Catalog: float view
+maximizeFrame(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // R (PAResourceOtoP.PAViews_IP_CATALOG, IP Catalog)
+selectButton(PAResourceAtoD.CoreBrowserView_COLLAPSE_ALL, "IP Catalog_collapse_all"); // B (PAResourceAtoD.CoreBrowserView_COLLAPSE_ALL, IP Catalog_collapse_all)
+selectButton(PAResourceAtoD.CoreBrowserView_COLLAPSE_ALL, "IP Catalog_collapse_all"); // B (PAResourceAtoD.CoreBrowserView_COLLAPSE_ALL, IP Catalog_collapse_all)
+selectTab(PAResourceItoN.IPCoreView_TABBED_PANE, PAResourceItoN.IPCoreView_INTERFACES, "Interfaces", 1); // g (PAResourceItoN.IPCoreView_TABBED_PANE, IPCoresView)
+selectTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "User ;  ;  ;  ; ", 5, "User", 0, true); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE) - Node
+expandTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "User ;  ;  ;  ; ", 5); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE)
+selectTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "User ;  ;  ;  ; ", 5, "User", 0, false, false, false, false, false, true); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE) - Double Click
+// [Engine Memory]: 1,783 MB (+1768kb) [00:13:36]
+selectTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "Signal ;  ;  ;  ; ", 4, "Signal", 0, false); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE)
+expandTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "Signal ;  ;  ;  ; ", 4); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE)
+selectTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "Signal ;  ;  ;  ; ", 4, "Signal", 0, false, false, false, false, false, true); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE) - Double Click
+selectTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "IO Interfaces ;  ;  ;  ; ", 3, "IO Interfaces", 0, false); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE)
+expandTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "IO Interfaces ;  ;  ;  ; ", 3); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE)
+selectTreeTable(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "IO Interfaces ;  ;  ;  ; ", 3, "IO Interfaces", 0, false, false, false, false, false, true); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE) - Double Click
+selectTreeTableHeader(PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE, "Vendor", 2); // u (PAResourceItoN.InterfacesTreeTablePanel_INTERFACE_TREE_TABLE)
+selectButton(PAResourceItoN.InterfacesView_GROUP_INTERFACES_BY_CATEGORY_OR_REPOSITORY, "Interface Catalog_groupInterfacesView"); // B (PAResourceItoN.InterfacesView_GROUP_INTERFACES_BY_CATEGORY_OR_REPOSITORY, Interface Catalog_groupInterfacesView)
+selectButton(PAResourceItoN.InterfacesView_GROUP_INTERFACES_BY_CATEGORY_OR_REPOSITORY, "Interface Catalog_groupInterfacesView"); // B (PAResourceItoN.InterfacesView_GROUP_INTERFACES_BY_CATEGORY_OR_REPOSITORY, Interface Catalog_groupInterfacesView)
+selectButton(RDIResource.AbstractSearchablePanel_SHOW_SEARCH, "Interface Catalog_search"); // v (RDIResource.AbstractSearchablePanel_SHOW_SEARCH, Interface Catalog_search): TRUE
+selectTab(PAResourceItoN.IPCoreView_TABBED_PANE, PAResourceItoN.IPCoreView_CORES, "Cores", 0); // g (PAResourceItoN.IPCoreView_TABBED_PANE, IPCoresView)
+// PAPropertyPanels.initPanels (C:/Xilinx/Vivado/2024.1/data) elapsed time: 0.2s
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "User Repository ;  ;  ;  ; ", 0, "User Repository", 0, true, false, false, false, false, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Double Click - Node
+selectButton((HResource) null, "IP Catalog_settings"); // v (IP Catalog_settings): TRUE
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXIS Infrastructure ;  ;  ;  ; ", 7, "AXIS Infrastructure", 0, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Node
+expandTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXIS Infrastructure ;  ;  ;  ; ", 7); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE)
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXIS Infrastructure ;  ;  ;  ; ", 7, "AXIS Infrastructure", 0, true, false, false, false, false, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Double Click - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Infrastructure  ;  ;  ;  ; ", 6, "AXI Infrastructure ", 0, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Node
+expandTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Infrastructure  ;  ;  ;  ; ", 6); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE)
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Infrastructure  ;  ;  ;  ; ", 6, "AXI Infrastructure ", 0, true, false, false, false, false, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Double Click - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "Embedded Processing ;  ;  ;  ; ", 7, "Embedded Processing", 0, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Node
+expandTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "Embedded Processing ;  ;  ;  ; ", 7); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE)
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "Embedded Processing ;  ;  ;  ; ", 7, "Embedded Processing", 0, true, false, false, false, false, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Double Click - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Infrastructure ;  ;  ;  ; ", 8, "AXI Infrastructure", 0, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Node
+expandTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Infrastructure ;  ;  ;  ; ", 8); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE)
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Infrastructure ;  ;  ;  ; ", 8, "AXI Infrastructure", 0, true, false, false, false, false, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Double Click - Node
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Endpoint Protection Unit ; AXI4 ;  ; Included ; xilinx.com:ip:axi_epu:1.0", 9, "AXI Endpoint Protection Unit", 0, false); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE)
+expandTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Endpoint Protection Unit ; AXI4 ;  ; Included ; xilinx.com:ip:axi_epu:1.0", 9); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE)
+selectTreeTable(PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE, "AXI Endpoint Protection Unit ; AXI4 ;  ; Included ; xilinx.com:ip:axi_epu:1.0", 9, "AXI Endpoint Protection Unit", 0, false, false, false, false, false, true); // z (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE) - Double Click
+// HOptionPane Error: 'Cannot run Customize IP on the selected IP. AXI Endpoint Protection Unit is disabled because it does not support the current part. (Customize IP)'
+selectButton("OptionPane.button", "OK", "Customize IP"); // JButton (OptionPane.button)
+selectTab(PAResourceItoN.IPCoreView_TABBED_PANE, PAResourceItoN.IPCoreView_INTERFACES, "Interfaces", 1); // g (PAResourceItoN.IPCoreView_TABBED_PANE, IPCoresView)
+// PAResourceOtoP.PAViews_IP_CATALOG: IP Catalog: close view
+closeFrame(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // R (PAResourceOtoP.PAViews_IP_CATALOG, IP Catalog)
+dockFrame(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // R (PAResourceOtoP.PAViews_IP_CATALOG, IP Catalog)
+maximizeFrame(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // R (PAResourceOtoP.PAViews_IP_CATALOG, IP Catalog)
+closeView(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // H (PAResourceOtoP.PAViews_IP_CATALOG, PlanAheadTabIP Catalog)
+// PAResourceOtoP.PAViews_ADDRESS_MAP: Address Map: close view
+closeView(PAResourceOtoP.PAViews_ADDRESS_MAP, "Address Map"); // k (PAResourceOtoP.PAViews_ADDRESS_MAP, PlanAheadTabAddress Map)
+selectTab((HResource) null, (HResource) null, "Signals", 2); // aa
+selectTab((HResource) null, (HResource) null, "Design", 1); // aa
+closeFrame(PAResourceOtoP.PAViews_SYSTEM_HIERARCHY, "Design"); // R (PAResourceOtoP.PAViews_SYSTEM_HIERARCHY, System Hierarchy)
+closeFrame(PAResourceOtoP.PAViews_SIGNALS, "Signals"); // R (PAResourceOtoP.PAViews_SIGNALS, Signals)
+// PAResourceOtoP.PAViews_SOURCES: Sources: close view
+// RDIResource.RDIViews_PROPERTIES: IP Properties: close view
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, IP Catalog]", 4, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_CORE_GEN
+selectButton(PAResourceAtoD.CoreDetailsView_COMPATIBLE_FAMILIES, "Compatible Families"); // g (PAResourceAtoD.CoreDetailsView_COMPATIBLE_FAMILIES)
+// WARNING: HEventQueue.dispatchEvent() is taking  6200 ms.
+// HMemoryUtils.trashcanNow. Engine heap size: 1,799 MB. GUI used memory: 108 MB. Current time: 10/1/24, 7:09:27 PM EDT
+selectButton(PAResourceAtoD.CompatibleFamiliesDialog_CLOSE, "Close", "Compatible Families"); // a (PAResourceAtoD.CompatibleFamiliesDialog_CLOSE)
+dismissDialog("Compatible Families"); // b (dialog3)
+// Elapsed time: 16 seconds
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Project Manager, Settings]", 1, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: RDIResourceCommand.RDICommands_SETTINGS
+selectTree(PAResourceQtoS.SettingsDialog_PROJECT_TREE, "[projectRoot, IP]", 6, true); // s (PAResourceQtoS.SettingsDialog_PROJECT_TREE, Project Tree) - Node
+// Elapsed time: 14 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK", "Settings"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Settings"); // d (dialog2)
+selectButton(PAResourceAtoD.CoreBrowserView_VIEW_PRODUCT_GUIDE_CHANGE_LOG_PRODUCT, "IP Catalog_IP Info"); // f.c (PAResourceAtoD.CoreBrowserView_VIEW_PRODUCT_GUIDE_CHANGE_LOG_PRODUCT, IP Catalog_IP Info)
+selectButton(PAResourceCommand.PACommandNames_SHOW_COMPATIBLE_FAMILIES, "IP Catalog_show_compatible_families"); // B (PAResourceCommand.PACommandNames_SHOW_COMPATIBLE_FAMILIES, IP Catalog_show_compatible_families)
+// Run Command: PAResourceCommand.PACommandNames_SHOW_COMPATIBLE_FAMILIES
+selectButton(PAResourceAtoD.CompatibleFamiliesDialog_EXPAND_ALL, "Compatible families_expand_all", "Compatible Families"); // B (PAResourceAtoD.CompatibleFamiliesDialog_EXPAND_ALL, Compatible families_expand_all)
+selectButton(RDIResource.AbstractSearchablePanel_SHOW_SEARCH, "Compatible families_search", "Compatible Families"); // v (RDIResource.AbstractSearchablePanel_SHOW_SEARCH, Compatible families_search): TRUE
+selectButton(PAResourceAtoD.CompatibleFamiliesDialog_CLOSE, "Close", "Compatible Families"); // a (PAResourceAtoD.CompatibleFamiliesDialog_CLOSE)
+dismissDialog("Compatible Families"); // b (dialog4)
+selectTab((HResource) null, "PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "IP Catalog", 0, true, false); // o (PlanAheadTabBaseWorkspace_JideTabbedPane) - Popup Trigger
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "IP Catalog", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab((HResource) null, "PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "IP Catalog", 0, true, false); // o (PlanAheadTabBaseWorkspace_JideTabbedPane) - Popup Trigger
+selectButton(RDIResource.AbstractSearchablePanel_SHOW_SEARCH, "IP Catalog_search"); // v (RDIResource.AbstractSearchablePanel_SHOW_SEARCH, IP Catalog_search): FALSE
+selectButton((HResource) null, "IP Catalog_settings"); // v (IP Catalog_settings): TRUE
+selectButton(RDIResource.OptionsView_EXPAND_ALL, "LayerView_expand_all"); // B (RDIResource.OptionsView_EXPAND_ALL, LayerView_expand_all)
+selectButton(RDIResource.OptionsView_COLLAPSE_ALL, "LayerView_collapse_all"); // B (RDIResource.OptionsView_COLLAPSE_ALL, LayerView_collapse_all)
+selectButton(RDIResource.OptionsView_COLLAPSE_ALL, "LayerView_collapse_all"); // B (RDIResource.OptionsView_COLLAPSE_ALL, LayerView_collapse_all)
+selectButton(RDIResource.OptionsView_COLLAPSE_ALL, "LayerView_collapse_all"); // B (RDIResource.OptionsView_COLLAPSE_ALL, LayerView_collapse_all)
+selectButton(RDIResource.OptionsView_COLLAPSE_ALL, "LayerView_collapse_all"); // B (RDIResource.OptionsView_COLLAPSE_ALL, LayerView_collapse_all)
+selectButton(RDIResource.OptionsView_CLOSE, (String) null); // B (RDIResource.OptionsView_CLOSE)
+setText("PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD", (String) null); // OverlayTextField (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD)
+// Elapsed time: 15 seconds
+setText("PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD", (String) null); // OverlayTextField (PAResourceAtoD.CoreTreeTablePanel_CORE_TREE_TABLE_SEARCH_FIELD)
+// Elapsed time: 16 seconds
+selectMenuItem(RDIResourceCommand.RDICommands_PASTE, "Paste"); // ap (RDIResourceCommand.RDICommands_PASTE, edit_paste_menu)
+// Tcl (Dont Echo) Command: 'rdi::info_commands {upgrade_ip*}'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "upgrade_ip", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'upgrade_ip'
+// Tcl Message: upgrade_ip 
+// Tcl Message: ERROR: [Common 17-163] Missing value for option 'objects', please type 'upgrade_ip -help' for usage info. 
+// PAResourceOtoP.PAViews_IP_CATALOG: IP Catalog: close view
+// Elapsed time: 119 seconds
+closeView(PAResourceOtoP.PAViews_IP_CATALOG, "IP Catalog"); // H (PAResourceOtoP.PAViews_IP_CATALOG, PlanAheadTabIP Catalog)
+selectButton(PAResourceTtoZ.TaskBanner_CLOSE, (String) null); // j (PAResourceTtoZ.TaskBanner_CLOSE)
+closeTask("IP Integrator", "Block Design", "DesignTask.IP_INTEGRATOR");
+selectButton(RDIResource.BaseDialog_OK, "OK", "Confirm Close"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Confirm Close"); // t (dialog5)
+// TclEventType: RSB_CLOSE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_ADDRNETWORK
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: close_bd_design [get_bd_designs Top] 
+dismissDialog("Close Block Designs"); // bj (Close Block Designs Progress)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true, false, false, false, true, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // am (PAResourceCommand.PACommandNames_OPEN_FILE_WITH, Open With)
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // am (PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, Hierarchy Update)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // am (PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, Hierarchy Update)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenuItem(PAResourceCommand.PACommandNames_SHOW_ALL_IP_HIER, "Show All IP Hierarchy"); // ap (PAResourceCommand.PACommandNames_SHOW_ALL_IP_HIER, Show All IP Hierarchy)
+// TclEventType: DG_GRAPH_STALE
+// Elapsed Time for: 'L.f': 17m:22s
+// Elapsed Time for: 'L.f': 17m:24s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true, false, false, false, true, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Popup Trigger - Node
+selectMenu(PAResourceCommand.PACommandNames_OPEN_FILE_WITH, "Open With"); // am (PAResourceCommand.PACommandNames_OPEN_FILE_WITH, Open With)
+selectMenu(PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, "Hierarchy Update"); // am (PAResourceCommand.PACommandNames_AUTO_UPDATE_HIER, Hierarchy Update)
+selectMenu(PAResourceQtoS.SrcMenu_IP_HIERARCHY, "IP Hierarchy"); // am (PAResourceQtoS.SrcMenu_IP_HIERARCHY, IP Hierarchy)
+selectMenuItem(PAResourceCommand.PACommandNames_REPORT_IP_STATUS, "Report IP Status"); // ap (PAResourceCommand.PACommandNames_REPORT_IP_STATUS, report_ip_status_menu)
+// Run Command: PAResourceCommand.PACommandNames_REPORT_IP_STATUS
+// Tcl Command: 'report_ip_status -name ip_status '
+// TclEventType: IP_SUMMARY_RESULTS
+// Tcl Message: report_ip_status -name ip_status  
+selectButton(PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED, "Upgrade Selected"); // a (PAResourceItoN.IPStatusSectionPanel_UPGRADE_SELECTED)
+// Run Command: PAResourceCommand.PACommandNames_UPGRADE_IP
+selectButton(RDIResource.BaseDialog_OK, "OK", "Upgrade IP"); // a (RDIResource.BaseDialog_OK)
+// 'P' command handler elapsed time: 3 seconds
+dismissDialog("Upgrade IP"); // P.b (dialog6)
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// Tcl Message: upgrade_ip [get_ips  {Top_Version_0 Top_xdma_0_0 Top_util_vector_logic_0_2 Top_xlconstant_1_0 Top_axi_interconnect_1_0 Top_axi_interconnect_0_0 Top_c_counter_binary_0_0 Top_axi_gpio_0_0 Top_xlslice_1_0 Top_axi_interconnect_1_1 Top_xlconstant_2_0 Top_axi_gpio_2_0 Top_xlslice_0_0 Top_axi_gpio_1_0 Top_axi_quad_spi_0_0 Top_const_true_1 Top_xlslice_0_3 Top_util_ds_buf_0 Top_xadc_wiz_1_0 Top_Model_0 Top_xlslice_0_4}] -log ip_upgrade.log 
+// TclEventType: RSB_OPEN_DIAGRAM
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // u (PAResourceOtoP.PAViews_PROJECT_SUMMARY, PlanAheadTabProject Summary)
+// Tcl Message: Upgrading 'C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/Top.bd' 
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RUN_DELETE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RUN_DELETE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_DELETE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded Top_Model_0 (Constant 1.1) from revision 7 to revision 9 INFO: [IP_Flow 19-3422] Upgraded Top_Version_0 (Constant 1.1) from revision 7 to revision 9 INFO: [IP_Flow 19-3422] Upgraded Top_axi_gpio_0_0 (AXI GPIO 2.0) from revision 28 to revision 33 INFO: [IP_Flow 19-3422] Upgraded Top_axi_gpio_1_0 (AXI GPIO 2.0) from revision 28 to revision 33 INFO: [IP_Flow 19-3422] Upgraded Top_axi_gpio_2_0 (AXI GPIO 2.0) from revision 28 to revision 33 INFO: [IP_Flow 19-3422] Upgraded Top_axi_interconnect_0_0 (AXI Interconnect 2.1) from revision 27 to revision 32 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// HMemoryUtils.trashcanNow. Engine heap size: 1,833 MB. GUI used memory: 112 MB. Current time: 10/1/24, 7:13:46 PM EDT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded Top_axi_interconnect_1_0 (AXI Interconnect 2.1) from revision 27 to revision 32 
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded Top_axi_interconnect_1_1 (AXI Interconnect 2.1) from revision 27 to revision 32 
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded Top_axi_quad_spi_0_0 (AXI Quad SPI 3.2) from revision 25 to revision 30 INFO: [IP_Flow 19-3422] Upgraded Top_c_counter_binary_0_0 (Binary Counter 12.0) from revision 15 to revision 19 INFO: [IP_Flow 19-3422] Upgraded Top_const_true_1 (Constant 1.1) from revision 7 to revision 9 INFO: [IP_Flow 19-3422] Upgraded Top_util_ds_buf_0 (Utility Buffer 2.2) from revision 27 to revision 32 INFO: [IP_Flow 19-3422] Upgraded Top_util_vector_logic_0_2 (Utility Vector Logic 2.0) from revision 2 to revision 4 INFO: [IP_Flow 19-3422] Upgraded Top_xadc_wiz_1_0 (XADC Wizard 3.3) from revision 8 to revision 10 
+// [Engine Memory]: 1,900 MB (+29550kb) [00:18:42]
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_REMOVE_OBJECT
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded Top_xdma_0_0 (DMA/Bridge Subsystem for PCI Express 4.1) from revision 17 to revision 29 
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: COMPOSITE_FILE_CHANGE
+// Tcl Message: INFO: [IP_Flow 19-3422] Upgraded Top_xlconstant_1_0 (Constant 1.1) from revision 7 to revision 9 INFO: [IP_Flow 19-3422] Upgraded Top_xlconstant_2_0 (Constant 1.1) from revision 7 to revision 9 INFO: [IP_Flow 19-3422] Upgraded Top_xlslice_0_0 (Slice 1.0) from revision 2 to revision 4 INFO: [IP_Flow 19-3422] Upgraded Top_xlslice_0_3 (Slice 1.0) from revision 2 to revision 4 INFO: [IP_Flow 19-3422] Upgraded Top_xlslice_0_4 (Slice 1.0) from revision 2 to revision 4 INFO: [IP_Flow 19-3422] Upgraded Top_xlslice_1_0 (Slice 1.0) from revision 2 to revision 4 
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: FILESET_UPDATE_IP
+// TclEventType: IP_UPGRADE_COMPLETE
+// Tcl Message: Wrote  : <C:\Users\ozair\Documents\Code_Drive\NiteFury-and-LiteFury\Sample-Projects\Project-0\FPGA\LiteFury\project\project.srcs\sources_1\bd\Top\Top.bd>  
+// Tcl Message: INFO: [Coretcl 2-1525] Wrote upgrade log to 'C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/ip_upgrade.log'. 
+// Tcl Message: upgrade_ip: Time (s): cpu = 00:00:08 ; elapsed = 00:00:13 . Memory (MB): peak = 2256.039 ; gain = 167.316 
+// Tcl Message: export_ip_user_files -of_objects [get_ips {Top_Version_0 Top_xdma_0_0 Top_util_vector_logic_0_2 Top_xlconstant_1_0 Top_axi_interconnect_1_0 Top_axi_interconnect_0_0 Top_c_counter_binary_0_0 Top_axi_gpio_0_0 Top_xlslice_1_0 Top_axi_interconnect_1_1 Top_xlconstant_2_0 Top_axi_gpio_2_0 Top_xlslice_0_0 Top_axi_gpio_1_0 Top_axi_quad_spi_0_0 Top_const_true_1 Top_xlslice_0_3 Top_util_ds_buf_0 Top_xadc_wiz_1_0 Top_Model_0 Top_xlslice_0_4}] -no_script -sync -force -quiet 
+// Elapsed time: 13 seconds
+selectButton("OptionPane.button", "OK", "Upgrade IP"); // JButton (OptionPane.button)
+// Elapsed Time for: 'L.f': 17m:56s
+// Elapsed Time for: 'L.f': 17m:58s
+// Elapsed time: 13 seconds
+dismissDialog("Generate Output Products"); // W (dialog7)
+selectButton(PAResourceAtoD.CmdMsgDialog_OK, "OK", "Critical Messages"); // f (PAResourceAtoD.CmdMsgDialog_OK)
+dismissDialog("Critical Messages"); // a (dialog8)
+// Elapsed time: 1738 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "clear", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'clear'
+// Tcl Message: clear 
+// Tcl Message: invalid command name "clear" 
+// Tcl (Dont Echo) Command: 'rdi::info_commands {cls*}'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "cls", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'cls'
+// Tcl Message: cls 
+// Tcl Message:  
+// Tcl (Dont Echo) Command: 'rdi::info_commands {e*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {ex*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {exe*}'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "exec clear", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'exec clear'
+// Tcl Message: exec clear 
+// Tcl Message: couldn't execute "clear": no such file or directory 
+// Tcl (Dont Echo) Command: 'rdi::info_commands {c*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {e*}'
+// Tcl (Dont Echo) Command: 'rdi::info_commands {exe*}'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "exec cls", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'exec cls'
+// Tcl Message: exec cls 
+// Tcl Message: couldn't execute "cls": no such file or directory 
+// Tcl (Dont Echo) Command: 'rdi::info_commands bd::match_path'
+// Tcl (Dont Echo) Command: 'bd::match_path {source} {../../common/Scripts/} {rebuild.tcl }'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source ../../common/Scripts/rebuild.tcl", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'source ../../common/Scripts/rebuild.tcl'
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: source ../../common/Scripts/rebuild.tcl 
+// Tcl Message: # make_wrapper -files [get_files ./project.srcs/sources_1/bd/Top/Top.bd] -top 
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: REPORT_IP_STATUS_STALE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_REMOVE_OBJECT
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: PROJECT_CLOSE
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 1,994 MB. GUI used memory: 106 MB. Current time: 10/1/24, 7:43:31 PM EDT
+// Tcl Message: make_wrapper: Time (s): cpu = 00:00:08 ; elapsed = 00:00:10 . Memory (MB): peak = 2300.152 ; gain = 44.113 
+// Tcl Message: # close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// Tcl Message: # open_project project.xpr 
+// Tcl Message: INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. Current project path is 'C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project' 
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 2,005 MB (+10680kb) [00:48:26]
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'. 
+// Tcl Message: # update_compile_order -fileset sources_1 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: # update_compile_order -fileset sources_1 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: # source ../../common/Scripts/build.tcl ## reset_run synth_1 ## launch_runs synth_1 -jobs 6 
+// Tcl Message: [Tue Oct  1 19:43:40 2024] Launched synth_1... Run output will be captured here: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.runs/synth_1/runme.log 
+// Tcl Message: ## wait_on_run synth_1 
+// Tcl Message: [Tue Oct  1 19:43:40 2024] Waiting for synth_1 to finish... 
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Oct  1 19:43:45 2024] Waiting for synth_1 to finish... 
+// Tcl Message: [Tue Oct  1 19:43:50 2024] Waiting for synth_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,005 MB. GUI used memory: 111 MB. Current time: 10/1/24, 7:43:51 PM EDT
+// Tcl Message: [Tue Oct  1 19:43:55 2024] Waiting for synth_1 to finish... 
+// Tcl Message: [Tue Oct  1 19:44:05 2024] Waiting for synth_1 to finish... 
+// Tcl Message: [Tue Oct  1 19:44:15 2024] Waiting for synth_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,005 MB. GUI used memory: 111 MB. Current time: 10/1/24, 7:44:21 PM EDT
+// Tcl Message: [Tue Oct  1 19:44:25 2024] Waiting for synth_1 to finish... 
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Oct  1 19:44:30 2024] synth_1 finished 
+// Tcl Message: wait_on_runs: Time (s): cpu = 00:00:01 ; elapsed = 00:00:50 . Memory (MB): peak = 2324.559 ; gain = 0.586 
+// Tcl Message: ## launch_runs impl_1 -jobs 6 -to_step write_bitstream 
+// Tcl Message: [Tue Oct  1 19:44:30 2024] Launched impl_1... Run output will be captured here: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.runs/impl_1/runme.log 
+// Tcl Message: ## wait_on_run impl_1 
+// Tcl Message: [Tue Oct  1 19:44:30 2024] Waiting for impl_1 to finish... 
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Oct  1 19:44:36 2024] Waiting for impl_1 to finish... 
+// Tcl Message: [Tue Oct  1 19:44:41 2024] Waiting for impl_1 to finish... 
+// Tcl Message: [Tue Oct  1 19:44:46 2024] Waiting for impl_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 112 MB. Current time: 10/1/24, 7:44:51 PM EDT
+// TclEventType: RUN_STEP_COMPLETED
+// Tcl Message: [Tue Oct  1 19:44:56 2024] Waiting for impl_1 to finish... 
+// TclEventType: RUN_STEP_COMPLETED
+// Tcl Message: [Tue Oct  1 19:45:06 2024] Waiting for impl_1 to finish... 
+// TclEventType: RUN_STEP_COMPLETED
+// Tcl Message: [Tue Oct  1 19:45:16 2024] Waiting for impl_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 113 MB. Current time: 10/1/24, 7:45:21 PM EDT
+// Tcl Message: [Tue Oct  1 19:45:26 2024] Waiting for impl_1 to finish... 
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Oct  1 19:45:46 2024] Waiting for impl_1 to finish... 
+// Tcl Message: [Tue Oct  1 19:45:46 2024] impl_1 finished 
+// Tcl Message: ERROR: [Vivado 12-13638] Failed runs(s) : 'impl_1' 
+// Tcl Message: wait_on_runs: Time (s): cpu = 00:00:01 ; elapsed = 00:01:15 . Memory (MB): peak = 2325.934 ; gain = 1.375 
+// Tcl Message: ERROR: [Common 17-39] 'wait_on_runs' failed due to earlier errors.      while executing "wait_on_run impl_1 "     (file "../../common/Scripts/build.tcl" line 6)      while executing "source ../../common/Scripts/build.tcl"     (file "../../common/Scripts/rebuild.tcl" line 13) 
+// Elapsed Time for: 'c.c': 02m:25s
+// Elapsed time: 145 seconds
+dismissDialog("Tcl Command"); // bj (Tcl Command Progress)
+// Elapsed Time for: 'L.f': 02m:12s
+// Tcl Message: update_compile_order -fileset sources_1 
+// Elapsed Time for: 'L.f': 02m:20s
+// Elapsed Time for: 'L.f': 02m:22s
+// Elapsed time: 273 seconds
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Elapsed time: 20 seconds
+selectTab(PAResourceEtoH.FileSetView_TABBED_PANE, (HResource) null, "IP Sources", 1); // g (PAResourceEtoH.FileSetView_TABBED_PANE, SourcesView)
+selectButton(PAResourceQtoS.RunGadget_SHOW_ERROR, "3 errors"); // g (PAResourceQtoS.RunGadget_SHOW_ERROR)
+// Run Command: PAResourceCommand.PACommandNames_MESSAGE_WINDOW
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aa
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 301, 183); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// Elapsed time: 19 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 168, 38, false, false, false, true, false); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR) - Popup Trigger
+selectMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // ah (PAResourceItoN.MainMenuMgr_VIEW, View)
+dismissMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // ah (PAResourceItoN.MainMenuMgr_VIEW, View)
+selectMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // ah (PAResourceItoN.MainMenuMgr_VIEW, View)
+dismissMenu(PAResourceItoN.MainMenuMgr_VIEW, "View"); // ah (PAResourceItoN.MainMenuMgr_VIEW, View)
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 310, 118); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 353, 73, false, false, false, true, false); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR) - Popup Trigger
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 1096, 58); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// Elapsed time: 25 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 0, 79); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// Elapsed time: 19 seconds
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// Elapsed time: 69 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 640, 112); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+selectTab(PAResourceEtoH.FileSetView_TABBED_PANE, (HResource) null, "IP Sources", 1); // g (PAResourceEtoH.FileSetView_TABBED_PANE, SourcesView)
+selectTab(PAResourceEtoH.FileSetView_TABBED_PANE, "SourcesView", (HResource) null, "IP Sources", 1, false, true); // g (PAResourceEtoH.FileSetView_TABBED_PANE, SourcesView) - Double Click
+selectTab(PAResourceEtoH.FileSetView_TABBED_PANE, "SourcesView", (HResource) null, "IP Sources", 1, true, false); // g (PAResourceEtoH.FileSetView_TABBED_PANE, SourcesView) - Popup Trigger
+selectTab(PAResourceEtoH.FileSetView_TABBED_PANE, (HResource) null, "IP Sources", 1); // g (PAResourceEtoH.FileSetView_TABBED_PANE, SourcesView)
+selectTab(PAResourceEtoH.FileSetView_TABBED_PANE, "SourcesView", (HResource) null, "IP Sources", 1, false, true); // g (PAResourceEtoH.FileSetView_TABBED_PANE, SourcesView) - Double Click
+selectLabel((HResource) null, "Dashboard"); // b (Dashboard)
+// PAResourceOtoP.PAViews_PROJECT_SUMMARY: Project Summary: close view
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // u (PAResourceOtoP.PAViews_PROJECT_SUMMARY, PlanAheadTabProject Summary)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Block Designs, Top]", 1, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Block Designs, Top]", 1, true, false, false, false, true, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Popup Trigger - Node
+// Elapsed time: 38 seconds
+selectTab((HResource) null, (HResource) null, "Log", 2); // aa
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aa
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aa
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Elapsed time: 15 seconds
+selectTab((HResource) null, (HResource) null, "Log", 2); // aa
+selectTab((HResource) null, (HResource) null, "Reports", 3); // aa
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aa
+// Elapsed time: 56 seconds
+selectTab(PAResourceEtoH.FileSetView_TABBED_PANE, (HResource) null, "Hierarchy", 0); // g (PAResourceEtoH.FileSetView_TABBED_PANE, SourcesView)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 6, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 6, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 7, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 7, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, early.xdc]", 8, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, early.xdc]", 8, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, normal.xdc]", 9, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, normal.xdc]", 9, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "early.xdc", 0); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands, General Messages, [Vivado 12-13638] Failed runs(s) : 'impl_1'. ]", 2, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands, General Messages, [Vivado 12-13638] Failed runs(s) : 'impl_1'. ]", 2, false, false, false, false, false, true); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Double Click
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands, General Messages, [Vivado 12-13638] Failed runs(s) : 'impl_1'. ]", 2, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Vivado Commands, General Messages, [Vivado 12-13638] Failed runs(s) : 'impl_1'. ]", 2, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, (String) null, 7, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+// Elapsed time: 137 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, (String) null, 7, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Write Bitstream, DRC, Pin Planning, [DRC UCIO-1] Unconstrained Logical Port: 6 out of 6 logical ports have no user assigned specific location constraint (LOC). This may cause I/O contention or incompatibility with the board power or connectivity affecting performance, signal integrity or in extreme cases cause damage to the device or the components to which it is connected. To correct this violation, specify all pin locations. This design will fail to generate a bitstream unless all logical ports have a user specified site LOC constraint defined.  To allow bitstream creation with unspecified pin locations (not recommended), use this command: set_property SEVERITY {Warning} [get_drc_checks UCIO-1].  NOTE: When using the Vivado Runs infrastructure (e.g. launch_runs Tcl command), add this command to a .tcl file and add that file as a pre-hook for write_bitstream step for the implementation run.  Problem ports: code[2:0], clk, led, and ok.. ]", 8, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+selectCodeEditor("early.xdc", 113, 33); // ac (early.xdc)
+typeControlKey((HResource) null, "early.xdc", 'c'); // ac (early.xdc)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "normal.xdc", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectCodeEditor("normal.xdc", 161, 163); // ac (normal.xdc)
+typeControlKey((HResource) null, "normal.xdc", 'c'); // ac (normal.xdc)
+// Elapsed time: 23 seconds
+selectCodeEditor("normal.xdc", 249, 218); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 324, 198); // ac (normal.xdc)
+// Elapsed time: 151 seconds
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// Tcl Message: open_bd_design {C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/Top.bd} 
+// TclEventType: RSB_OPEN_DIAGRAM
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+dismissDialog("Open Block Design"); // bj (Open Block Design Progress)
+// WARNING: HTimer (Open addressing views timer) is taking 63ms to process. Increasing delay to 1300 ms.
+// Elapsed time: 49 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_intf_nets /diff_clock_rtl_1_1]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 104 MB. Current time: 10/1/24, 8:15:24 PM EDT
+// Elapsed time: 1067 seconds
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "early.xdc", 1); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+selectTab("PlanAheadTabBaseWorkspace_JideTabbedPane", (HResource) null, "normal.xdc", 2); // o (PlanAheadTabBaseWorkspace_JideTabbedPane)
+// Elapsed time: 66 seconds
+selectCodeEditor("normal.xdc", 494, 369); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 431, 384); // ac (normal.xdc)
+typeControlKey((HResource) null, "normal.xdc", 'v'); // ac (normal.xdc)
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 18 seconds
+selectCodeEditor("normal.xdc", 494, 253, false, true, false, false, false); // ac (normal.xdc) - Control Key
+selectCodeEditor("normal.xdc", 513, 271); // ac (normal.xdc)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, (String) null); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source ../../common/Scripts/rebuild.tcl"); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Elapsed time: 23 seconds
+applyEnter(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source ../../common/Scripts/rebuild.tcl"); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'source ../../common/Scripts/rebuild.tcl'
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RSB_SAVE_DIAGRAM
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: PROJECT_CLOSE
+// TclEventType: FILE_SET_CHANGE
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 96 MB. Current time: 10/1/24, 8:22:11 PM EDT
+// Tcl Message: source ../../common/Scripts/rebuild.tcl 
+// Tcl Message: # make_wrapper -files [get_files ./project.srcs/sources_1/bd/Top/Top.bd] -top 
+// Tcl Message: INFO: [BD 41-1662] The design 'Top.bd' is already validated. Therefore parameter propagation will not be re-run. 
+// Tcl Message: Wrote  : <C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/ui/bd_ad598355.ui>  Verilog Output written to : c:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.gen/sources_1/bd/Top/synth/Top.v Verilog Output written to : c:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.gen/sources_1/bd/Top/sim/Top.v Verilog Output written to : c:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.gen/sources_1/bd/Top/hdl/Top_wrapper.v 
+// Tcl Message: # close_project 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_DASHBOARD_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: PROJECT_DASHBOARD_GADGET_NEW
+// TclEventType: PROJECT_DASHBOARD_GADGET_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// Tcl Message: # open_project project.xpr 
+// Tcl Message: INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. Current project path is 'C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project' 
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: COMPOSITE_FILE_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: PROJECT_NEW
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2024.1/data/ip'. 
+// Tcl Message: # update_compile_order -fileset sources_1 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: IP_LOCK_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: FILE_SET_CHANGE
+// Tcl Message: # update_compile_order -fileset sources_1 
+// TclEventType: FILE_SET_CHANGE
+// TclEventType: DG_GRAPH_STALE
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: # source ../../common/Scripts/build.tcl ## reset_run synth_1 
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_MODIFY
+// Tcl Message: ## launch_runs synth_1 -jobs 6 
+// Tcl Message: [Tue Oct  1 20:22:20 2024] Launched synth_1... Run output will be captured here: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.runs/synth_1/runme.log 
+// Tcl Message: ## wait_on_run synth_1 
+// Tcl Message: [Tue Oct  1 20:22:20 2024] Waiting for synth_1 to finish... 
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Oct  1 20:22:25 2024] Waiting for synth_1 to finish... 
+// Tcl Message: [Tue Oct  1 20:22:30 2024] Waiting for synth_1 to finish... 
+// Tcl Message: [Tue Oct  1 20:22:35 2024] Waiting for synth_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 102 MB. Current time: 10/1/24, 8:22:41 PM EDT
+// Tcl Message: [Tue Oct  1 20:22:45 2024] Waiting for synth_1 to finish... 
+// Tcl Message: [Tue Oct  1 20:22:55 2024] Waiting for synth_1 to finish... 
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Oct  1 20:23:05 2024] Waiting for synth_1 to finish... 
+// Tcl Message: [Tue Oct  1 20:23:05 2024] synth_1 finished 
+// Tcl Message: wait_on_runs: Time (s): cpu = 00:00:00 ; elapsed = 00:00:45 . Memory (MB): peak = 2345.766 ; gain = 1.203 
+// Tcl Message: ## launch_runs impl_1 -jobs 6 -to_step write_bitstream 
+// Tcl Message: [Tue Oct  1 20:23:05 2024] Launched impl_1... Run output will be captured here: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.runs/impl_1/runme.log 
+// Tcl Message: ## wait_on_run impl_1 
+// Tcl Message: [Tue Oct  1 20:23:05 2024] Waiting for impl_1 to finish... 
+// TclEventType: RUN_STATUS_CHANGE
+// Tcl Message: [Tue Oct  1 20:23:10 2024] Waiting for impl_1 to finish... 
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 103 MB. Current time: 10/1/24, 8:23:11 PM EDT
+// Tcl Message: [Tue Oct  1 20:23:15 2024] Waiting for impl_1 to finish... 
+// Tcl Message: [Tue Oct  1 20:23:20 2024] Waiting for impl_1 to finish... 
+// TclEventType: RUN_STEP_COMPLETED
+// Tcl Message: [Tue Oct  1 20:23:30 2024] Waiting for impl_1 to finish... 
+// TclEventType: RUN_STEP_COMPLETED
+// TclEventType: RUN_FAILED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Tcl Message: [Tue Oct  1 20:23:40 2024] Waiting for impl_1 to finish... 
+// Tcl Message: [Tue Oct  1 20:23:45 2024] impl_1 finished 
+// Tcl Message: ERROR: [Vivado 12-13638] Failed runs(s) : 'impl_1' 
+// Tcl Message: wait_on_runs: Time (s): cpu = 00:00:01 ; elapsed = 00:00:40 . Memory (MB): peak = 2345.902 ; gain = 0.137 
+// Tcl Message: ERROR: [Common 17-39] 'wait_on_runs' failed due to earlier errors.      while executing "wait_on_run impl_1 "     (file "../../common/Scripts/build.tcl" line 6)      while executing "source ../../common/Scripts/build.tcl"     (file "../../common/Scripts/rebuild.tcl" line 13) 
+// Elapsed Time for: 'c.c': 01m:35s
+// Elapsed time: 95 seconds
+dismissDialog("Tcl Command"); // bj (Tcl Command Progress)
+// Elapsed Time for: 'L.f': 01m:30s
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 6, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints]", 6, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 7, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1]", 7, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, normal.xdc]", 9, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+// Elapsed Time for: 'L.f': 01m:36s
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Simulation Sources]", 10, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, normal.xdc]", 9, false); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE)
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Constraints, constrs_1, normal.xdc]", 9, false, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click
+// Elapsed time: 11 seconds
+selectTab((HResource) null, (HResource) null, "Messages", 1); // aa
+selectCheckBox(PAResourceItoN.MsgView_CRITICAL_WARNINGS, (String) null, false); // f (PAResourceItoN.MsgView_CRITICAL_WARNINGS): FALSE
+selectCheckBox(PAResourceItoN.MsgView_WARNING_MESSAGES, (String) null, false); // f (PAResourceItoN.MsgView_WARNING_MESSAGES): FALSE
+selectCheckBox(PAResourceItoN.MsgView_INFORMATION_MESSAGES, (String) null, false); // f (PAResourceItoN.MsgView_INFORMATION_MESSAGES): FALSE
+// Elapsed time: 333 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Place Design, [Place 30-574] Poor placement for routing between an IO pin and BUFG. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.. 	< set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_IBUF] >. . 	Clock Rule: rule_gclkio_bufg. 	Status: FAILED. 	Rule Description: An IOB driving a BUFG must use a CCIO in the same half side (top/bottom) of chip as the BUFG. . 	clk_IBUF_inst (IBUF.O) is locked to IOB_X1Y98. 	clk_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y14. ]", 5, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Place Design, [Place 30-574] Poor placement for routing between an IO pin and BUFG. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.. 	< set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_IBUF] >. . 	Clock Rule: rule_gclkio_bufg. 	Status: FAILED. 	Rule Description: An IOB driving a BUFG must use a CCIO in the same half side (top/bottom) of chip as the BUFG. . 	clk_IBUF_inst (IBUF.O) is locked to IOB_X1Y98. 	clk_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y14. ]", 5, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE)
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Place Design, [Place 30-574] Poor placement for routing between an IO pin and BUFG. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.. 	< set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_IBUF] >. . 	Clock Rule: rule_gclkio_bufg. 	Status: FAILED. 	Rule Description: An IOB driving a BUFG must use a CCIO in the same half side (top/bottom) of chip as the BUFG. . 	clk_IBUF_inst (IBUF.O) is locked to IOB_X1Y98. 	clk_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y14. ]", 5, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+// Elapsed time: 15 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Place Design, [Place 30-574] Poor placement for routing between an IO pin and BUFG. If this sub optimal condition is acceptable for this design, you may use the CLOCK_DEDICATED_ROUTE constraint in the .xdc file to demote this message to a WARNING. However, the use of this override is highly discouraged. These examples can be used directly in the .xdc file to override this clock rule.. 	< set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets clk_IBUF] >. . 	Clock Rule: rule_gclkio_bufg. 	Status: FAILED. 	Rule Description: An IOB driving a BUFG must use a CCIO in the same half side (top/bottom) of chip as the BUFG. . 	clk_IBUF_inst (IBUF.O) is locked to IOB_X1Y98. 	clk_IBUF_BUFG_inst (BUFG.I) is provisionally placed by clockplacer on BUFGCTRL_X0Y14. ]", 5, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+// Elapsed time: 10 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Place Design, [Place 30-99] Placer failed with error: 'IO Clock Placer failed'. Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.. ]", 6, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+// Elapsed time: 22 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Place Design, [Place 30-99] Placer failed with error: 'IO Clock Placer failed'. Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.. ]", 6, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+// Elapsed time: 17 seconds
+selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Implementation, Place Design, [Common 17-69] Command failed: Placer could not place all instances. ]", 7, false, false, false, false, true, false); // u.d (PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE) - Popup Trigger
+// Elapsed time: 14 seconds
+selectCodeEditor("normal.xdc", 183, 76); // ac (normal.xdc)
+typeControlKey((HResource) null, "normal.xdc", 'c'); // ac (normal.xdc)
+// Elapsed time: 101 seconds
+selectCodeEditor("normal.xdc", 355, 189); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 174, 167); // ac (normal.xdc)
+// Elapsed time: 12 seconds
+selectCodeEditor("normal.xdc", 190, 167); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 179, 163); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 179, 163, false, false, false, false, true); // ac (normal.xdc) - Double Click
+typeControlKey((HResource) null, "normal.xdc", 'v'); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 340, 217); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 196, 163); // ac (normal.xdc)
+// TclEventType: FILE_SET_CHANGE
+// Elapsed time: 16 seconds
+selectCodeEditor("normal.xdc", 404, 202); // ac (normal.xdc)
+selectCodeEditor("normal.xdc", 425, 205); // ac (normal.xdc)
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 106 MB. Current time: 10/1/24, 8:53:15 PM EDT
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 105 MB. Current time: 10/1/24, 9:23:16 PM EDT
+// Elapsed time: 3962 seconds
+selectCodeEditor("normal.xdc", 441, 198); // ac (normal.xdc)
+selectTree(PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, "[, Synthesis, Run Synthesis]", 15, false); // g (PAResourceEtoH.FlowNavigatorTreePanel_FLOW_NAVIGATOR_TREE, Flow Navigator Tree)
+// Run Command: PAResourceCommand.PACommandNames_RUN_SYNTHESIS
+// TclEventType: RUN_MODIFY
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_RESET
+// TclEventType: RUN_MODIFY
+// Tcl Message: reset_run synth_1 
+selectButton(RDIResource.BaseDialog_OK, "OK", "Launch Runs"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Launch Runs"); // f (dialog9)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs synth_1 -jobs 8 
+// Tcl Message: [Tue Oct  1 21:39:30 2024] Launched synth_1... Run output will be captured here: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.runs/synth_1/runme.log 
+dismissDialog("Starting Design Runs"); // bj (Starting Design Runs Progress)
+// TclEventType: RUN_STATUS_CHANGE
+selectTab((HResource) null, (HResource) null, "Reports", 3); // aa
+selectTab((HResource) null, (HResource) null, "Design Runs", 4); // aa
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 88 seconds
+selectButton(RDIResource.BaseDialog_OK, "OK", "Synthesis Completed"); // a (RDIResource.BaseDialog_OK)
+// Run Command: PAResourceCommand.PACommandNames_RUN_IMPLEMENTATION
+selectButton(RDIResource.BaseDialog_OK, "OK", "Launch Runs"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Launch Runs"); // f (dialog11)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -jobs 8 
+// Tcl Message: [Tue Oct  1 21:41:03 2024] Launched impl_1... Run output will be captured here: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.runs/impl_1/runme.log 
+dismissDialog("Starting Design Runs"); // bj (Starting Design Runs Progress)
+// TclEventType: RUN_STATUS_CHANGE
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, Top (Top.bd)]", 1, true, false, false, false, false, true); // E (PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE) - Double Click - Node
+// TclEventType: RSB_SCRIPT_TASK
+// Tcl Message: open_bd_design {C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/Top.bd} 
+// Tcl Message: Reading block design file <C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.srcs/sources_1/bd/Top/Top.bd>... 
+// TclEventType: RSB_CHANGE_CURRENT_DIAGRAM
+// TclEventType: RSB_PROPERTY_CHANGE
+// TclEventType: RSB_LOCK_CHANGE
+// TclEventType: RSB_SCRIPT_TASK
+// TclEventType: RSB_OPEN_DIAGRAM
+// TclEventType: RSB_INSERT_ADDRNETWORK
+// TclEventType: RSB_OPEN_DIAGRAM
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+closeView(PAResourceOtoP.PAViews_PROJECT_SUMMARY, "Project Summary"); // u (PAResourceOtoP.PAViews_PROJECT_SUMMARY, PlanAheadTabProject Summary)
+dismissDialog("Open Block Design"); // bj (Open Block Design Progress)
+// WARNING: HTimer (Open addressing views timer) is taking 84ms to process. Increasing delay to 1300 ms.
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 15 seconds
+selectTab((HResource) null, (HResource) null, "Design Runs", 4); // aa
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 48 seconds
+selectRadioButton(PAResourceCommand.PACommandNames_RUN_BITGEN, "Generate Bitstream"); // a (PAResourceCommand.PACommandNames_RUN_BITGEN)
+selectButton(RDIResource.BaseDialog_OK, "OK", "Implementation Completed"); // a (RDIResource.BaseDialog_OK)
+// Run Command: PAResourceCommand.PACommandNames_RUN_BITGEN
+selectButton(RDIResource.BaseDialog_OK, "OK", "Launch Runs"); // a (RDIResource.BaseDialog_OK)
+dismissDialog("Launch Runs"); // cL (dialog13)
+// TclEventType: RUN_LAUNCH
+// TclEventType: RUN_MODIFY
+// Tcl Message: launch_runs impl_1 -to_step write_bitstream -jobs 8 
+// Tcl Message: [Tue Oct  1 21:42:18 2024] Launched impl_1... Run output will be captured here: C:/Users/ozair/Documents/Code_Drive/NiteFury-and-LiteFury/Sample-Projects/Project-0/FPGA/LiteFury/project/project.runs/impl_1/runme.log 
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_STATUS_CHANGE
+// TclEventType: RUN_STEP_COMPLETED
+// Elapsed time: 67 seconds
+selectButton(RDIResource.BaseDialog_CANCEL, "Cancel", "Bitstream Generation Completed"); // a (RDIResource.BaseDialog_CANCEL)
+dismissDialog("Bitstream Generation Completed"); // Q.a (dialog14)
+// Elapsed time: 323 seconds
+selectTab((HResource) null, (HResource) null, "Sources", 0); // aa
+// Elapsed time: 72 seconds
+selectTab((HResource) null, (HResource) null, "Tcl Console", 0); // aa
+// Tcl (Dont Echo) Command: 'rdi::info_commands bd::match_path'
+// Tcl (Dont Echo) Command: 'bd::match_path {source} {../../common/Scripts/} {add-flash-s25fl256s-0.tcl }'
+setText(RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE, "source ../../common/Scripts/add-flash-s25fl256s-0.tcl", true); // h.b (RDIResource.CommandsInput_TYPE_TCL_COMMAND_HERE)
+// Tcl Command: 'source ../../common/Scripts/add-flash-s25fl256s-0.tcl'
+// TclEventType: LOAD_FEATURE
+// Tcl Message: source ../../common/Scripts/add-flash-s25fl256s-0.tcl 
+// Tcl Message: # create_hw_cfgmem -hw_device [lindex [get_hw_devices xc7a*] 0] [lindex [get_cfgmem_parts {s25fl256sxxxxxx0-spi-x1_x2_x4}] 0] 
+// Tcl Message: ERROR: [Labtoolstcl 44-239] The -hw_device option was set but the hw_object is invalid. Check your hw_device argument. 
+dismissDialog("Tcl Command"); // bj (Tcl Command Progress)
+// Elapsed time: 22 seconds
+selectCodeEditor(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, 1, 115); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// Elapsed time: 68 seconds
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+typeControlKey(RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR, "RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR", 'c'); // cC (RDIResource.TclConsoleView_TCL_CONSOLE_CODE_EDITOR)
+// HMemoryUtils.trashcanNow. Engine heap size: 2,012 MB. GUI used memory: 110 MB. Current time: 10/1/24, 9:53:18 PM EDT
+// Elapsed time: 371 seconds
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "select_objects [get_bd_cells /axi_interconnect_1]"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+runTclCommand (PAResourceOtoP.PAViews_SYSTEM, "unselect_objects"); // fU (PAResourceOtoP.PAViews_SYSTEM, PlanAheadTabSystem)
+// TclEventType: FILE_SET_CHANGE
