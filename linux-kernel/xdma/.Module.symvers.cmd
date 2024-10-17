@@ -1,0 +1,1 @@
+savedcmd_/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/Module.symvers :=  scripts/mod/modpost -M -m       -o /mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/Module.symvers -T /mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/modules.order -i Module.symvers -e 

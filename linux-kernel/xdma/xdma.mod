@@ -1,0 +1,9 @@
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/libxdma.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma_cdev.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/cdev_ctrl.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/cdev_events.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/cdev_sgdma.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/cdev_xvc.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/cdev_bypass.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma_mod.o
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma_thread.o

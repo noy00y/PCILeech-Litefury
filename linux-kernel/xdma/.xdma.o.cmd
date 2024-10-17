@@ -1,0 +1,3 @@
+savedcmd_/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma.o := ld -m elf_x86_64 -z noexecstack   -r -o /mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma.o @/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma.mod  ; ./tools/objtool/objtool --hacks=jump_label --hacks=noinstr --hacks=skylake --ibt --retpoline --rethunk --stackval --static-call --uaccess --prefix=16  --link  --module /mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma.o
+
+/mnt/c/Users/ozair/Documents/Github/dma_ip_drivers/xdma/linux-kernel/xdma/xdma.o: $(wildcard ./tools/objtool/objtool)

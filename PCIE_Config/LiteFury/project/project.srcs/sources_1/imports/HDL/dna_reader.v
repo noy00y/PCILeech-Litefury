@@ -67,7 +67,7 @@ module dna_reader(
     reg [31:0] count = 0;
     
     // Note- do this logic on the opposite edge that DNA port is active (ie. perform read process when clock is on falling edge)
-    always @(negedge clk)
+    always @(negedge clk)                                              // this is done due to timing conflicts
     if (0 == ready_w) // when 0 -> DNA read process begins. Counter increments on each clk cycle
     begin
         count <= count+1;   
@@ -92,3 +92,5 @@ module dna_reader(
             end 
     end
 endmodule
+
+// Notes:
