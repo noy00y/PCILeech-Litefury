@@ -53,41 +53,50 @@ module pcileech_tbx4_100t_top #(
     reg  rst_sw = 0;
     
     // FIFO CTL <--> COM CTL
-    wire [63:0]     com_dout;
-    wire            com_dout_valid;
-    wire [255:0]    com_din;
-    wire            com_din_wr_en;
-    wire            com_din_ready;
+    // Communication b/w FIFO control and communciation control modules
+    wire [63:0]     com_dout; // 64 bitg wide signal from com ctl to fifo ctl
+    wire            com_dout_valid; // indicates that data on com_dout is valid and ready to be consumed
+    wire [255:0]    com_din; // fifo to ctl
+    wire            com_din_wr_en; // write enable signal for ctl to process signal from fifo
+    wire            com_din_ready; // ready signal for fifo to supply data to ctl
     
-    // FIFO CTL <--> COM CTL
-    IfComToFifo     dcom_fifo();
+    // FIFO CTL <--> COM CTL 
+    IfComToFifo     dcom_fifo(); // interface for grouping comm signals
 	
     // FIFO CTL <--> PCIe
-    IfPCIeFifoCfg   dcfg();
-    IfPCIeFifoTlp   dtlp();
-    IfPCIeFifoCore  dpcie();
-    IfShadow2Fifo   dshadow2fifo();
+    // Additional Interface Declarations
+    IfPCIeFifoCfg   dcfg(); // config for fifo ctl and pcie 
+    IfPCIeFifoTlp   dtlp(); // tlp data signal between fifo and pcie
+    IfPCIeFifoCore  dpcie(); // pcie data and control signals w/ fifo
+    IfShadow2Fifo   dshadow2fifo(); // 
     
     // PCIe
+    // present -> indicates if pcie interface has a valid connection
+    // perst_n -> pcie remains in reset condition until connection is present and rst signal is low
     wire pcie_present = pcie_present1 && pcie_present2;
     wire pcie_perst_n = pcie_perst1_n && pcie_perst2_n && ~rst_sw;
     
     // ----------------------------------------------------
-    // CLK: INPUT (clkin): 50MHz
+    // CLK: INPUT CLK (clkin): 50MHz
+    //      Output CLKS:
+    //      -----------
     //      COMTX (clk_comtx): 200MHz
     //      SYS (clk):         125MHz
 	//      COMRX (clk_comrx): 150MHz
     // ----------------------------------------------------
 
+    // Xilinx clocking wizard for generating drived clocks
     wire clk_locked, clk_out1, clk_out2, clk_out3;
     clk_wiz_0 i_clk_wiz_0(
         .clk_in1    ( clk_in        ),  // <- 50MHz
         .clk_out1   ( clk_out1      ),  // -> 200MHz
         .clk_out2   ( clk_out2      ),  // -> 125MHz
         .clk_out3   ( clk_out3      ),  // -> 150MHz
-        .locked     ( clk_locked    )
+        .locked     ( clk_locked    ) // prevents use of derived clocks until they have stablized
     );
     
+    // Clocking Distribution
+    // Each BUFG takes input clk .I and provides global clk output .O
     BUFG i_BUFG_1 ( .I( clk_locked ? clk_out1 : clk_in ), .O( clk_comtx ) );
     BUFG i_BUFG_2 ( .I( clk_locked ? clk_out2 : clk_in ), .O( clk ) );
     BUFG i_BUFG_3 ( .I( clk_locked ? clk_out3 : clk_in ), .O( clk_comrx ) );
