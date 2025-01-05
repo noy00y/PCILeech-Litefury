@@ -60,7 +60,6 @@ module pcileech_tbx4_100t_top #(
     wire            com_din_wr_en; // write enable signal for ctl to process signal from fifo
     wire            com_din_ready; // ready signal for fifo to supply data to ctl
     
-    // FIFO CTL <--> COM CTL 
     IfComToFifo     dcom_fifo(); // interface for grouping comm signals
 	
     // FIFO CTL <--> PCIe
@@ -97,21 +96,25 @@ module pcileech_tbx4_100t_top #(
     
     // Clocking Distribution
     // Each BUFG takes input clk .I and provides global clk output .O
+    // if clk_locked -> generated clks are stable and can be used for .O
+        // else -> use the clk_in
     BUFG i_BUFG_1 ( .I( clk_locked ? clk_out1 : clk_in ), .O( clk_comtx ) );
     BUFG i_BUFG_2 ( .I( clk_locked ? clk_out2 : clk_in ), .O( clk ) );
     BUFG i_BUFG_3 ( .I( clk_locked ? clk_out3 : clk_in ), .O( clk_comrx ) );
     
     // ----------------------------------------------------
     // TickCount64 CLK
+    
     // ----------------------------------------------------
 
     time tickcount64 = 0;
     always @ ( posedge clk )
-        tickcount64 <= tickcount64 + 1;
-    assign rst = (tickcount64 < 64) ? 1'b1 : 1'b0;
+        tickcount64 <= tickcount64 + 1; // - on every clk edge, increment tickcount
+    assign rst = (tickcount64 < 64) ? 1'b1 : 1'b0; // while tick < 64 -> rst = 1, else rst = 0
     
+    // Drives pcie_led output w/ OBUF (output buffer)
     wire            led_pcie;
-    OBUF led_ld1_obuf(.O(pcie_led), .I(led_pcie));
+    OBUF led_ld1_obuf(.O(pcie_led), .I(led_pcie)); 
 	
     // ----------------------------------------------------
     // POWER SWITCH MODE (DISABLE PCIE WHEN THUNDERBOLT NOT CONNECTED)
@@ -128,25 +131,31 @@ module pcileech_tbx4_100t_top #(
 	
     // ----------------------------------------------------
     // BUFFERED COMMUNICATION DEVICE (FPGA IO BRIDGE)
+    // - faciliates exchange of data b/w fpga and bus (dout and din)
     // ----------------------------------------------------
-    
+    // module (pcileech_com) -> manages communication between the 3 sub modules (fpga data bus, fifo buffer and communication controller), 
     pcileech_com i_pcileech_com (
-        // SYS
-        .clk                ( clk                   ),
-        .clk_comtx          ( clk_comtx             ),
-        .clk_comrx          ( clk_comrx             ),
-        .rst                ( rst                   ),
+        // SYS signals
+        .clk                ( clk                   ), // provides timing for main module logic
+        
+        // communication specific logic 
+        .clk_comtx          ( clk_comtx             ), // transmit 200 mhz send
+        .clk_comrx          ( clk_comrx             ), // recieve 150 mhz receive
+        .rst                ( rst                   ), // global system reset signal
+        
         // TO/FROM FPGA IO BRIDGE
-        .BUS_DO             ( BUS_DO                ),
-        .BUS_DO_CLK         ( BUS_DO_CLK            ),
-        .BUS_DI             ( BUS_DI                ),
-        .BUS_DI_PROG_FULL   ( BUS_DI_PROG_FULL      ),
+        .BUS_DO             ( BUS_DO                ), // 41 bit data output bus (send data from fpga to attack pc)
+        .BUS_DO_CLK         ( BUS_DO_CLK            ), // bus data out clk
+        .BUS_DI             ( BUS_DI                ), // 41 bit bus data in
+        .BUS_DI_PROG_FULL   ( BUS_DI_PROG_FULL      ), // flow control signal (indicates bus data input fifo is full). Tells externel device to stop sending data
+        
         // FIFO CTL <--> COM CTL
-        .com_dout           ( dcom_fifo.com_dout        ),
-        .com_dout_valid     ( dcom_fifo.com_dout_valid  ),
-        .com_din_ready      ( dcom_fifo.com_din_ready   ),
-        .com_din            ( dcom_fifo.com_din         ),
-        .com_din_wr_en      ( dcom_fifo.com_din_wr_en   )
+        // Signals connecting the main module to the fifo module through the IfComToFifo interface defined (dcmon_fifo)
+        .com_dout           ( dcom_fifo.com_dout        ), // 64 bit data bus carrying output data from main module to fifo 
+        .com_dout_valid     ( dcom_fifo.com_dout_valid  ), // signal indicating data on the bus is valid
+        .com_din_ready      ( dcom_fifo.com_din_ready   ), // 256 bit bus carrying input data from fifo to main module
+        .com_din            ( dcom_fifo.com_din         ), // write enable single (fifo write data into main)
+        .com_din_wr_en      ( dcom_fifo.com_din_wr_en   ) // signal indicating main ready to recieve data on com_din
     );
     
     // ----------------------------------------------------
