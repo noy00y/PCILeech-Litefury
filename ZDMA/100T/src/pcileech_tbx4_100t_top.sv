@@ -168,22 +168,22 @@ module pcileech_tbx4_100t_top #(
         .PARAM_VERSION_NUMBER_MINOR ( PARAM_VERSION_NUMBER_MINOR    ),
         .PARAM_CUSTOM_VALUE         ( PARAM_CUSTOM_VALUE            )
     ) i_pcileech_fifo (
-        .clk                ( clk                   ),
+        .clk                ( clk                   ), // 125 mhz
         .rst                ( rst                   ),
         .rst_cfg_reload     ( 1'b0                  ),
         .pcie_present       ( pcie_present          ),
         .pcie_perst_n       ( pcie_perst_n          ),
-        // FIFO CTL <--> COM CTL
-        .dcom               ( dcom_fifo.mp_fifo     ),
+        // FIFO CTL <--> COM CTL 
+        .dcom               ( dcom_fifo.mp_fifo     ), // link enables buffered communication b/w fifo and comm ctl
         // FIFO CTL <--> PCIe
-        .dcfg               ( dcfg.mp_fifo          ),
-        .dtlp               ( dtlp.mp_fifo          ),
-        .dpcie              ( dpcie.mp_fifo         ),
-        .dshadow2fifo       ( dshadow2fifo.fifo     )
+        .dcfg               ( dcfg.mp_fifo          ), // pcie config related data and signals
+        .dtlp               ( dtlp.mp_fifo          ), // dtlp manages tlp exchanged b/w pcie and fifo
+        .dpcie              ( dpcie.mp_fifo         ), // dpcie interfaces with pcie fabric for low lvl communication
+        .dshadow2fifo       ( dshadow2fifo.fifo     ) // ???
     );
     
     // ----------------------------------------------------
-    // PCIe
+    // PCIe - interface logic for artix 7 x4 lanes
     // ----------------------------------------------------
     
     pcileech_pcie_a7x4 i_pcileech_pcie_a7x4(
