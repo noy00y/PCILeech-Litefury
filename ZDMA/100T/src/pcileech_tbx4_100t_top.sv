@@ -187,10 +187,10 @@ module pcileech_tbx4_100t_top #(
     // ----------------------------------------------------
     
     pcileech_pcie_a7x4 i_pcileech_pcie_a7x4(
-        .clk_sys            ( clk                   ),
+        .clk_sys            ( clk                   ), // 125 mhz signal
         .rst                ( rst                   ),
         // PCIe fabric
-        .pcie_tx_p          ( pcie_tx_p             ),
+        .pcie_tx_p          ( pcie_tx_p             ), // positive and negative pairs for differential signaling
         .pcie_tx_n          ( pcie_tx_n             ),
         .pcie_rx_p          ( pcie_rx_p             ),
         .pcie_rx_n          ( pcie_rx_n             ),
@@ -200,8 +200,8 @@ module pcileech_tbx4_100t_top #(
         // State and Activity LEDs
         .led_state          ( led_pcie              ),
         // FIFO CTL <--> PCIe
-        .dfifo_cfg          ( dcfg.mp_pcie          ),
-        .dfifo_tlp          ( dtlp.mp_pcie          ),
+        .dfifo_cfg          ( dcfg.mp_pcie          ), // links pcie module to fifo signals
+        .dfifo_tlp          ( dtlp.mp_pcie          ), // fifo link w/ 
         .dfifo_pcie         ( dpcie.mp_pcie         ),
         .dshadow2fifo       ( dshadow2fifo.shadow   )
     );
