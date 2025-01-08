@@ -10,6 +10,7 @@
 `ifndef _pcileech_header_svh_
 `define _pcileech_header_svh_
 
+// Bite swaps for 16 and 32 bits -> used for compatability for endianness b/w pcie and cpu
 `define _bs16(v)   {{v}[7:0], {v}[15:8]}
 `define _bs32(v)   {{v}[7:0], {v}[15:8], {v}[23:16], {v}[31:24]}
 
@@ -17,9 +18,9 @@
 // Interface connecting COM to FIFO module.
 // ------------------------------------------------------------------------
 interface IfComToFifo;
-    wire [63:0]     com_dout;
+    wire [63:0]     com_dout; // com --> fifo
     wire            com_dout_valid;
-    wire [255:0]    com_din;
+    wire [255:0]    com_din; // com <-- fifo
     wire            com_din_wr_en;
     wire            com_din_ready;
 
