@@ -16,6 +16,7 @@
 
 // ------------------------------------------------------------------------
 // Interface connecting COM to FIFO module.
+// Handles communication between thunderbolt to the fifo buffer
 // ------------------------------------------------------------------------
 interface IfComToFifo;
     wire [63:0]     com_dout; // com --> fifo
@@ -160,14 +161,14 @@ interface IfPCIeSignals;
 endinterface
 
 // ------------------------------------------------------------------------
-// Interface PCIe 128-bit RX stream
+// Interface PCIe 128-bit RX stream. Transfers raw pcie packets into fpga for processing
 // ------------------------------------------------------------------------
 
 interface IfAXIS128;
-    wire [127:0]    tdata;
-    wire [3:0]      tkeepdw;
-    wire            tvalid;
-    wire            tlast;
+    wire [127:0]    tdata; // data exchanged b/w module and the axi stream
+    wire [3:0]      tkeepdw; // indicates which byte in the last transfer is valid
+    wire            tvalid; // 
+    wire            tlast; // end of data packet
     wire [8:0]      tuser;      // [0] = first
                                 // [1] = last
                                 // [8:2] = BAR, 2=BAR0, 3=BAR1, .. 7=BAR5, 8=EXPROM
@@ -175,11 +176,13 @@ interface IfAXIS128;
     wire            tready;
     wire            has_data;
     
+    // modules sending data to axi stream
     modport source(
         input  tready,
         output tdata, tkeepdw, tvalid, tlast, tuser, has_data
     );
     
+    // recieving data from the axi stream
     modport sink(
         output tready,
         input  tdata, tkeepdw, tvalid, tlast, tuser, has_data
@@ -196,6 +199,7 @@ endinterface
 
 // ------------------------------------------------------------------------
 // Interface connecting PCIe CFG to FIFO
+// Handles exchanges of the pcie configuration space data
 // ------------------------------------------------------------------------
 interface IfPCIeFifoCfg;
     wire    [63:0]      tx_data;
@@ -222,6 +226,8 @@ interface IfPCIeFifoTlp;
     wire    [31:0]      tx_data;
     wire                tx_last;
     wire                tx_valid;   
+
+    // Receiving of 32 bit x 4 channels of TLP data
     wire    [31:0]      rx_data[4];
     wire                rx_first[4];
     wire                rx_last[4];
@@ -256,7 +262,7 @@ interface IfPCIeFifoCore;
     
     modport mp_fifo (
         input drp_rdy, drp_do,
-        output pcie_rst_core, pcie_rst_subsys, drp_en, drp_we, drp_addr, drp_di
+        output pcie_rst_core, pcie_rst_subsys, drp_en, drp_we, drp_addr, drp_di // DRP (dynamic reconfiguration port)
     );
 
     modport mp_pcie (
@@ -264,6 +270,7 @@ interface IfPCIeFifoCore;
         output drp_rdy, drp_do
     );
 endinterface
+
 
 interface IfShadow2Fifo;
     // SHADOW CONFIGURATION SPACE TO FIFO
