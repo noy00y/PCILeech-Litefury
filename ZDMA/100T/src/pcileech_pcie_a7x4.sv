@@ -7,6 +7,8 @@
 // Author: Ulf Frisk, pcileech@frizk.net
 //
 
+// Refer to header.svh for specific interface signals
+
 `timescale 1ns / 1ps
 `include "pcileech_header.svh"
 
@@ -38,11 +40,17 @@ module pcileech_pcie_a7x4(
     // PCIe DEFINES AND WIRES
     // ----------------------------------------------------------------------------
     
-    IfPCIeSignals           ctx();
-    IfAXIS128               tlp_tx();
-    IfPCIeTlpRx128          tlp_rx();
-    IfAXIS128               tlps_tx();
-    IfAXIS128               tlps_rx();
+    // Signal Declarations2
+    IfPCIeSignals           ctx(); // this interface contains pcie ctrl, config and status signals
+
+    // RX and TX Signals:
+    //  physical layer -> TLP_TX -> TLPS_TX -> FPGA
+    //  physical layer <- TLP_RX <- TLPS_RX <- FPGA
+
+    IfAXIS128               tlp_tx();  // final outgoing pcie tlp stream over the physical layer
+    IfPCIeTlpRx128          tlp_rx(); // raw incoming tlp packets from the physical layer
+    IfAXIS128               tlps_tx(); // forwards processed and formatted data packets 
+    IfAXIS128               tlps_rx(); // formatted tlp packets
     
     IfAXIS128               tlps_static();       // static tlp transmit from cfg->tlp
     wire [15:0]             pcie_id;
