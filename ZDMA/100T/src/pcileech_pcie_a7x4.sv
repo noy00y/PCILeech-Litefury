@@ -27,10 +27,11 @@ module pcileech_pcie_a7x4(
     output                  led_state,
     
     // PCIe <--> FIFOs
-    IfPCIeFifoCfg.mp_pcie   dfifo_cfg,
-    IfPCIeFifoTlp.mp_pcie   dfifo_tlp,
-    IfPCIeFifoCore.mp_pcie  dfifo_pcie,
-    IfShadow2Fifo.shadow    dshadow2fifo
+    // Defining an instance of modports within each interface
+    IfPCIeFifoCfg.mp_pcie   dfifo_cfg, // pcie cfg to fifo
+    IfPCIeFifoTlp.mp_pcie   dfifo_tlp, // pcie tlp to fifo
+    IfPCIeFifoCore.mp_pcie  dfifo_pcie, // pcie core to fifo
+    IfShadow2Fifo.shadow    dshadow2fifo // shadow config space to fifo
     );
        
     // ----------------------------------------------------------------------------
