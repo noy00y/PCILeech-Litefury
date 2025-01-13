@@ -79,20 +79,22 @@ module pcileech_pcie_a7x4(
     
     // ----------------------------------------------------------------------------
     // PCIe CFG RX/TX <--> FIFO below
+    // Module used for handling pcie config space comm b/w pcie interface and fifo module
     // ----------------------------------------------------------------------------
     
     pcileech_pcie_cfg_a7 i_pcileech_pcie_cfg_a7(
         .rst                        ( rst_subsys                ),
-        .clk_sys                    ( clk_sys                   ),
-        .clk_pcie                   ( clk_pcie                  ),
-        .dfifo                      ( dfifo_cfg                 ),        
-        .ctx                        ( ctx                       ),
-        .tlps_static                ( tlps_static.source        ),
+        .clk_sys                    ( clk_sys                   ), // sys clk
+        .clk_pcie                   ( clk_pcie                  ), // pcie clk (synced with pcie fabric)
+        .dfifo                      ( dfifo_cfg                 ), // fifo interface pcie cfg -> fifo
+        .ctx                        ( ctx                       ), // config signal provides access to pcie config registers
+        .tlps_static                ( tlps_static.source        ), // static tlp
         .pcie_id                    ( pcie_id                   )   // -> [15:0]
     );
     
     // ----------------------------------------------------------------------------
     // PCIe TLP RX/TX <--> FIFO below
+    // TLP transfers b/w pcie fabric and fifo w/ AXI Stream Interfaces
     // ----------------------------------------------------------------------------
     
     pcileech_tlps128_src128 i_pcileech_tlps128_src128(
