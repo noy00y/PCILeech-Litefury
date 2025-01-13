@@ -64,9 +64,10 @@ module pcileech_pcie_a7x4(
     wire rst_subsys = rst || rst_pcie_user || dfifo_pcie.pcie_rst_subsys; // composite rst signal -> triggered by global rst, user rst or pcie subsystem triggered rst
     wire rst_pcie = rst || ~pcie_perst_n || dfifo_pcie.pcie_rst_core; // composite core rst signal -> triggered by global rst, dessereted rst signal or core lvl reset by pcie subsystem
        
-    // Buffer for differential system clock
+    // Buffer for differential system clock 
+    // CEB - clock enable active low. Set to 0 to always enable the buffer
     IBUFDS_GTE2 refclk_ibuf (.O(pcie_clk_c), .ODIV2(), .I(pcie_clk_p), .CEB(1'b0), .IB(pcie_clk_n));
-    
+
     // ----------------------------------------------------
     // TickCount64 PCIe REFCLK and LED OUTPUT
     // ----------------------------------------------------
