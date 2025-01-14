@@ -97,22 +97,28 @@ module pcileech_pcie_a7x4(
     // TLP transfers b/w pcie fabric and fifo w/ AXI Stream Interfaces
     // ----------------------------------------------------------------------------
     
+    // PCIE Core 128 bit axi stream (tlp rx) --> axi stream for the fifo (tlps_rx)
     pcileech_tlps128_src128 i_pcileech_tlps128_src128(
         .rst                        ( rst_subsys                ),
-        .clk_pcie                   ( clk_pcie                  ),
-        .tlp_rx                     ( tlp_rx.sink               ),
-        .tlps_out                   ( tlps_rx.source_lite       )
+        .clk_pcie                   ( clk_pcie                  ), // pcie core clk
+
+        // Sink (tlp_rx) -> Source (tlps_rx)
+        .tlp_rx                     ( tlp_rx.sink               ), 
+        .tlps_out                   ( tlps_rx.source_lite       ) // signals formatted for fifo axi stream
+                                                                  // This axi stream contains tdata, tuser, tvalid and tready
     );
     
+    // Central TLP Handler --> connects fifo and shadow config to pcie tlp interface
+    // Bidirectional TLP data flow
     pcileech_pcie_tlp_a7 i_pcileech_pcie_tlp_a7(
-        .rst                        ( rst_subsys                ),
-        .clk_pcie                   ( clk_pcie                  ),
-        .clk_sys                    ( clk_sys                   ),
-        .dfifo                      ( dfifo_tlp                 ),
-        .tlps_tx                    ( tlps_tx.source            ),
-        .tlps_rx                    ( tlps_rx.sink_lite         ),
-        .tlps_static                ( tlps_static.sink          ),
-        .dshadow2fifo               ( dshadow2fifo              ),
+        .rst                        ( rst_subsys                ), // rst signal for subsystem
+        .clk_pcie                   ( clk_pcie                  ), // pcie clk
+        .clk_sys                    ( clk_sys                   ), // system clk 
+        .dfifo                      ( dfifo_tlp                 ), // fifo for tlp data transfer
+        .tlps_tx                    ( tlps_tx.source            ), // axi stream going to fifo (source)
+        .tlps_rx                    ( tlps_rx.sink_lite         ), // axi stream from fifo (sink)
+        .tlps_static                ( tlps_static.sink          ), 
+        .dshadow2fifo               ( dshadow2fifo              ), // interface for shadow config data
         .pcie_id                    ( pcie_id                   )   // <- [15:0]
     );
     
