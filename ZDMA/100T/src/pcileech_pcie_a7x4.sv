@@ -122,39 +122,52 @@ module pcileech_pcie_a7x4(
         .pcie_id                    ( pcie_id                   )   // <- [15:0]
     );
     
+    // Converts AXI Stream TLP from the fifo buffer back into a PCIe core 128 bit axi format
+    // Buffers data and ensures valid handshaking b/w fifo and pcie core
     pcileech_tlps128_dst128 i_pcileech_tlps128_dst128(
         .rst                        ( rst_subsys                ),
         .clk_pcie                   ( clk_pcie                  ),
-        .tlps_in                    ( tlps_tx.sink              ),
-        .tlps_out                   ( tlp_tx.source             )
+        .tlps_in                    ( tlps_tx.sink              ), // axi stream from fifo
+        .tlps_out                   ( tlp_tx.source             ) // axi stream to pcie core
     );
     
+    // Signal Assignment
+    // -----------------
+    // - maps 4 bit tkeepdw signals (one per dword) to the 16 bit tlp_tx_tkeep signal
+    // - if tkeepdw[i] == 1 -> corresponding 4 bits in that segment of the tlp_tx_tkeep wire are set to valid (4'hf) else 4'h0
     wire [15:0] tlp_tx_tkeep;
-    assign tlp_tx_tkeep[3:0]   = tlp_tx.tkeepdw[0] ? 4'hf : 4'h0;
-    assign tlp_tx_tkeep[7:4]   = tlp_tx.tkeepdw[1] ? 4'hf : 4'h0;
-    assign tlp_tx_tkeep[11:8]  = tlp_tx.tkeepdw[2] ? 4'hf : 4'h0;
-    assign tlp_tx_tkeep[15:12] = tlp_tx.tkeepdw[3] ? 4'hf : 4'h0;
+    assign tlp_tx_tkeep[3:0]   = tlp_tx.tkeepdw[0] ? 4'hf : 4'h0; // dw 1
+    assign tlp_tx_tkeep[7:4]   = tlp_tx.tkeepdw[1] ? 4'hf : 4'h0; // dw 2
+    assign tlp_tx_tkeep[11:8]  = tlp_tx.tkeepdw[2] ? 4'hf : 4'h0; // dw 3
+    assign tlp_tx_tkeep[15:12] = tlp_tx.tkeepdw[3] ? 4'hf : 4'h0; // dw 4
     
     // ----------------------------------------------------------------------------
     // PCIe CORE BELOW
+    // xilinx pcie core acts as interface b/w the fpga logic and the pcie fabric
     // ----------------------------------------------------------------------------
       
     pcie_7x_0 i_pcie_7x_0 (
         // pcie_7x_mgt
+
+        // differential output pairs for transmit and receive
         .pci_exp_txp                ( pcie_tx_p                 ),  // ->
         .pci_exp_txn                ( pcie_tx_n                 ),  // ->
         .pci_exp_rxp                ( pcie_rx_p                 ),  // <-
         .pci_exp_rxn                ( pcie_rx_n                 ),  // <-
-        .sys_clk                    ( pcie_clk_c                ),  // <-
+
+        // differential clk signal and active low rst signal from the pcie fabric
+        .sys_clk                    ( pcie_clk_c                ),  // <- 
         .sys_rst_n                  ( ~rst_pcie                 ),  // <-
 
+
+        /* AXI Stream Data Interfaces */ 
         // s_axis_tx (transmit data) - 128-bit AXIS
-        .s_axis_tx_tdata            ( tlp_tx.tdata              ),  // <- [127:0]
-        .s_axis_tx_tkeep            ( tlp_tx_tkeep              ),  // <- [15:0]
-        .s_axis_tx_tlast            ( tlp_tx.tlast              ),  // <-
-        .s_axis_tx_tready           ( tlp_tx.tready             ),  // ->
+        .s_axis_tx_tdata            ( tlp_tx.tdata              ),  // <- [127:0] 128 data bit
+        .s_axis_tx_tkeep            ( tlp_tx_tkeep              ),  // <- [15:0] indicatess valid bytes in the data bus
+        .s_axis_tx_tlast            ( tlp_tx.tlast              ),  // <- end of packet
+        .s_axis_tx_tready           ( tlp_tx.tready             ),  // -> handshake signal from the core indicating it is ready to accept data
         .s_axis_tx_tuser            ( 4'b0000                   ),  // <- [3:0]
-        .s_axis_tx_tvalid           ( tlp_tx.tvalid             ),  // <-
+        .s_axis_tx_tvalid           ( tlp_tx.tvalid             ),  // <- indicates valid data is present on the bus
         // s_axis_rx (receive data) - 128-bit AXIS
         .m_axis_rx_tdata            ( tlp_rx.data               ),  // -> [127:0]
         .m_axis_rx_tkeep            (                           ),  // -> [15:0]
