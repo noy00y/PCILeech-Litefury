@@ -169,23 +169,23 @@ module pcileech_pcie_a7x4(
         .s_axis_tx_tuser            ( 4'b0000                   ),  // <- [3:0]
         .s_axis_tx_tvalid           ( tlp_tx.tvalid             ),  // <- indicates valid data is present on the bus
         // s_axis_rx (receive data) - 128-bit AXIS
-        .m_axis_rx_tdata            ( tlp_rx.data               ),  // -> [127:0]
+        .m_axis_rx_tdata            ( tlp_rx.data               ),  // -> [127:0] 
         .m_axis_rx_tkeep            (                           ),  // -> [15:0]
         .m_axis_rx_tlast            (                           ),  // -> 
         .m_axis_rx_tready           ( tlp_rx.ready              ),  // <-
         .m_axis_rx_tuser            ( tlp_rx.user               ),  // -> [21:0]
-        .m_axis_rx_tvalid           ( tlp_rx.valid              ),  // ->
+        .m_axis_rx_tvalid           ( tlp_rx.valid              ),  // -> 
     
-        // pcie_cfg_mgmt
-        .cfg_mgmt_dwaddr            ( ctx.cfg_mgmt_dwaddr       ),  // <- [9:0]
-        .cfg_mgmt_byte_en           ( ctx.cfg_mgmt_byte_en      ),  // <- [3:0]
-        .cfg_mgmt_do                ( ctx.cfg_mgmt_do           ),  // -> [31:0]
-        .cfg_mgmt_rd_en             ( ctx.cfg_mgmt_rd_en        ),  // <-
-        .cfg_mgmt_rd_wr_done        ( ctx.cfg_mgmt_rd_wr_done   ),  // ->
-        .cfg_mgmt_wr_readonly       ( ctx.cfg_mgmt_wr_readonly  ),  // <-
-        .cfg_mgmt_wr_rw1c_as_rw     ( ctx.cfg_mgmt_wr_rw1c_as_rw ), // <-
-        .cfg_mgmt_di                ( ctx.cfg_mgmt_di           ),  // <- [31:0]
-        .cfg_mgmt_wr_en             ( ctx.cfg_mgmt_wr_en        ),  // <-
+        // pcie_cfg_mgmt - for pcie config space 
+        .cfg_mgmt_dwaddr            ( ctx.cfg_mgmt_dwaddr       ),  // <- [9:0] config address for read and write
+        .cfg_mgmt_byte_en           ( ctx.cfg_mgmt_byte_en      ),  // <- [3:0] byte enable signal
+        .cfg_mgmt_do                ( ctx.cfg_mgmt_do           ),  // -> [31:0] data output for config reading
+        .cfg_mgmt_rd_en             ( ctx.cfg_mgmt_rd_en        ),  // <- read enable
+        .cfg_mgmt_rd_wr_done        ( ctx.cfg_mgmt_rd_wr_done   ),  // -> indicates completion of read/write transaction
+        .cfg_mgmt_wr_readonly       ( ctx.cfg_mgmt_wr_readonly  ),  // <- indicates if the write is to read only fields
+        .cfg_mgmt_wr_rw1c_as_rw     ( ctx.cfg_mgmt_wr_rw1c_as_rw ), // <- treats rw1c field as regular rw field
+        .cfg_mgmt_di                ( ctx.cfg_mgmt_di           ),  // <- [31:0] data input for config writes
+        .cfg_mgmt_wr_en             ( ctx.cfg_mgmt_wr_en        ),  // <- write enable
     
         // special core config
         //.pcie_cfg_vend_id           ( dfifo_pcie.pcie_cfg_vend_id       ),  // <- [15:0]
@@ -194,7 +194,7 @@ module pcileech_pcie_a7x4(
         //.pcie_cfg_subsys_vend_id    ( dfifo_pcie.pcie_cfg_subsys_vend_id ), // <- [15:0]
         //.pcie_cfg_subsys_id         ( dfifo_pcie.pcie_cfg_subsys_id     ),  // <- [15:0]
     
-        // pcie2_cfg_interrupt
+        // pcie2_cfg_interrupt - handles pcie interrupts such as MSI (message signaled interrupts)
         .cfg_interrupt_assert       ( ctx.cfg_interrupt_assert          ),  // <-
         .cfg_interrupt              ( ctx.cfg_interrupt                 ),  // <-
         .cfg_interrupt_mmenable     ( ctx.cfg_interrupt_mmenable        ),  // -> [2:0]
@@ -207,13 +207,17 @@ module pcileech_pcie_a7x4(
         .cfg_interrupt_stat         ( ctx.cfg_interrupt_stat            ),  // <-
         .cfg_interrupt_di           ( ctx.cfg_interrupt_di              ),  // <- [7:0]
         
-        // pcie2_cfg_control
-        .cfg_ds_bus_number          ( ctx.cfg_bus_number                ),  // <- [7:0]
+        // pcie2_cfg_control - link status and power management
+
+            // identifiers for pcie device
+        .cfg_ds_bus_number          ( ctx.cfg_bus_number                ),  // <- [7:0] 
         .cfg_ds_device_number       ( ctx.cfg_device_number             ),  // <- [4:0]
         .cfg_ds_function_number     ( ctx.cfg_function_number           ),  // <- [2:0]
-        .cfg_dsn                    ( ctx.cfg_dsn                       ),  // <- [63:0]
-        .cfg_pm_force_state         ( ctx.cfg_pm_force_state            ),  // <- [1:0]
-        .cfg_pm_force_state_en      ( ctx.cfg_pm_force_state_en         ),  // <-
+            // 
+
+        .cfg_dsn                    ( ctx.cfg_dsn                       ),  // <- [63:0] power management controls (eg. halting active power mngmt)
+        .cfg_pm_force_state         ( ctx.cfg_pm_force_state            ),  // <- [1:0] 
+        .cfg_pm_force_state_en      ( ctx.cfg_pm_force_state_en         ),  // <- 
         .cfg_pm_halt_aspm_l0s       ( ctx.cfg_pm_halt_aspm_l0s          ),  // <-
         .cfg_pm_halt_aspm_l1        ( ctx.cfg_pm_halt_aspm_l1           ),  // <-
         .cfg_pm_send_pme_to         ( ctx.cfg_pm_send_pme_to            ),  // <-
