@@ -195,7 +195,7 @@ module pcileech_pcie_a7x4(
         //.pcie_cfg_subsys_id         ( dfifo_pcie.pcie_cfg_subsys_id     ),  // <- [15:0]
     
         // pcie2_cfg_interrupt - handles pcie interrupts such as MSI (message signaled interrupts)
-        .cfg_interrupt_assert       ( ctx.cfg_interrupt_assert          ),  // <-
+        .cfg_interrupt_assert       ( ctx.cfg_interrupt_assert          ),  // <- 
         .cfg_interrupt              ( ctx.cfg_interrupt                 ),  // <-
         .cfg_interrupt_mmenable     ( ctx.cfg_interrupt_mmenable        ),  // -> [2:0]
         .cfg_interrupt_msienable    ( ctx.cfg_interrupt_msienable       ),  // ->
@@ -213,9 +213,9 @@ module pcileech_pcie_a7x4(
         .cfg_ds_bus_number          ( ctx.cfg_bus_number                ),  // <- [7:0] 
         .cfg_ds_device_number       ( ctx.cfg_device_number             ),  // <- [4:0]
         .cfg_ds_function_number     ( ctx.cfg_function_number           ),  // <- [2:0]
-            // 
-
-        .cfg_dsn                    ( ctx.cfg_dsn                       ),  // <- [63:0] power management controls (eg. halting active power mngmt)
+            
+            // power management controls (eg. halting active state power mngmt)
+        .cfg_dsn                    ( ctx.cfg_dsn                       ),  // <- [63:0] 
         .cfg_pm_force_state         ( ctx.cfg_pm_force_state            ),  // <- [1:0] 
         .cfg_pm_force_state_en      ( ctx.cfg_pm_force_state_en         ),  // <- 
         .cfg_pm_halt_aspm_l0s       ( ctx.cfg_pm_halt_aspm_l0s          ),  // <-
@@ -264,14 +264,14 @@ module pcileech_pcie_a7x4(
         
         // PCIe core PHY
         .pl_initial_link_width      ( ctx.pl_initial_link_width         ),  // -> [2:0]
-        .pl_phy_lnk_up              ( ctx.pl_phy_lnk_up                 ),  // ->
+        .pl_phy_lnk_up              ( ctx.pl_phy_lnk_up                 ),  // -> indicates if physical pcie link is active
         .pl_lane_reversal_mode      ( ctx.pl_lane_reversal_mode         ),  // -> [1:0]
-        .pl_link_gen2_cap           ( ctx.pl_link_gen2_cap              ),  // ->
+        .pl_link_gen2_cap           ( ctx.pl_link_gen2_cap              ),  // -> 
         .pl_link_partner_gen2_supported ( ctx.pl_link_partner_gen2_supported ),  // ->
         .pl_link_upcfg_cap          ( ctx.pl_link_upcfg_cap             ),  // ->
         .pl_sel_lnk_rate            ( ctx.pl_sel_lnk_rate               ),  // ->
         .pl_sel_lnk_width           ( ctx.pl_sel_lnk_width              ),  // -> [1:0]
-        .pl_ltssm_state             ( ctx.pl_ltssm_state                ),  // -> [5:0]
+        .pl_ltssm_state             ( ctx.pl_ltssm_state                ),  // -> [5:0] tracks pcie link's state machine
         .pl_rx_pm_state             ( ctx.pl_rx_pm_state                ),  // -> [1:0]
         .pl_tx_pm_state             ( ctx.pl_tx_pm_state                ),  // -> [2:0]
         .pl_directed_change_done    ( ctx.pl_directed_change_done       ),  // ->
@@ -285,9 +285,10 @@ module pcileech_pcie_a7x4(
         .pl_downstream_deemph_source( ctx.pl_downstream_deemph_source   ),  // <-
         
         // DRP - clock domain clk - write should only happen when core is in reset state ...
+        // Dynamic Reconfiguration Port
         .pcie_drp_clk               ( clk_sys                           ),  // <-
         .pcie_drp_en                ( dfifo_pcie.drp_en                 ),  // <-
-        .pcie_drp_we                ( dfifo_pcie.drp_we                 ),  // <-
+        .pcie_drp_we                ( dfifo_pcie.drp_we                 ),  // <- 
         .pcie_drp_addr              ( dfifo_pcie.drp_addr               ),  // <- [8:0]
         .pcie_drp_di                ( dfifo_pcie.drp_di                 ),  // <- [15:0]
         .pcie_drp_rdy               ( dfifo_pcie.drp_rdy                ),  // ->
@@ -343,6 +344,7 @@ endmodule
 // ------------------------------------------------------------------------
 // TLP STREAM SOURCE:
 // Convert a 128-bit PCIe core AXIS to a 128-bit TLP-AXI-STREAM 
+// Buffering stage that converts 128 bit axi stream (tlps_in) --> into tlps_out which is compatible with the PCIe Core
 // ------------------------------------------------------------------------
 module pcileech_tlps128_src128(
     input                   rst,
