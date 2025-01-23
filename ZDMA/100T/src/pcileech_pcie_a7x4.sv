@@ -365,7 +365,7 @@ module pcileech_tlps128_src128(
     assign          tlp_rx.ready = rxf_ready; // 
     
     // Internal registers used to track state of the recieved frame 
-    bit             rxd_sof; // start of frame (start of tlp)
+    bit             rxd_sof; // start of frame (start of tlp) --> only asserted when when the frame is found
     bit             rxd_eof; // end of frame
     bit             rxd_eof_dw; // eof data frame
     bit [6:0]       rxd_bar_hit; // bars
@@ -376,15 +376,17 @@ module pcileech_tlps128_src128(
     wire [63:0]     rxf_data_qw0    = rxf_data[63:0]; 
     wire [63:0]     rxf_data_qw1    = rxf_data[127:64]; 
 
-    // 
-    wire            rxf_sof         = rxf_user[14];
-    wire            rxf_sof_qw      = rxf_user[13];
+    // Extracting frames from user sideband signal
+    wire            rxf_sof         = rxf_user[14]; // start of frame signal and quarter word boundary (data integrity)
+    wire            rxf_sof_qw      = rxf_user[13]; 
     wire            rxf_eof         = rxf_user[21];
-    wire [1:0]      rxf_eof_dw      = rxf_user[20:19];
-    wire [6:0]      rxf_bar_hit     = rxf_user[8:2];
-    
+    wire [1:0]      rxf_eof_dw      = rxf_user[20:19]; // number of data words remaining after the end of frame
+    wire [6:0]      rxf_bar_hit     = rxf_user[8:2]; // indiciates which base address was hit
     wire [3:0]      rx_keep_dw; 
     
+    // module will accept new data if 
+        // inverse of (data is valid, end of frame is valid and end of frame quarter is >= 2)
+        // inverse of (incoming data frame is valid)
     assign rxf_ready = !(rxd_valid && rxf_eof && (rxf_eof_dw >= 2)) || !rxf_valid;
     
     assign tlps_out.tdata       = rxd_valid ? {rxf_data_qw0, rxd_data_qw} : {rxf_data_qw1, rxf_data_qw0};
