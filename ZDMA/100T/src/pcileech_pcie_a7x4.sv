@@ -345,17 +345,21 @@ endmodule
 // TLP STREAM SOURCE:
 // Convert a 128-bit PCIe core AXIS to a 128-bit TLP-AXI-STREAM 
 // Buffering stage that converts 128 bit axi stream (tlps_in) --> into tlps_out which is compatible with the PCIe Core
+// Holds data for 1 cycle if downstream isn't ready to accept new data
 // ------------------------------------------------------------------------
 module pcileech_tlps128_src128(
     input                   rst,
     input                   clk_pcie,
-    IfPCIeTlpRx128.sink     tlp_rx,
-    IfAXIS128.source_lite   tlps_out
+    IfPCIeTlpRx128.sink     tlp_rx, // TLP packet from the physical layer 
+    IfAXIS128.source_lite   tlps_out // TLP packet fowarded out to the PCIe Core
 );
     
-    bit             rxd_ready;
-    wire [127:0]    rxf_data    = tlp_rx.data;
-    wire [21:0]     rxf_user    = tlp_rx.user;
+    // bit - used for non-continuous connections
+    // wire - used for continuous connections (input from another module)
+
+    bit             rxd_ready;  // internal status indicator ???
+    wire [127:0]    rxf_data    = tlp_rx.data; // wire connected to the data field in the tlp_rx interface
+    wire [21:0]     rxf_user    = tlp_rx.user; // 
     wire            rxf_valid   = tlp_rx.valid && rxd_ready;
     wire            rxf_ready;
     assign          tlp_rx.ready = rxf_ready;
@@ -367,8 +371,8 @@ module pcileech_tlps128_src128(
     bit [63:0]      rxd_data_qw;
     bit             rxd_valid;
     
-    wire [63:0]     rxf_data_qw0    = rxf_data[63:0];
-    wire [63:0]     rxf_data_qw1    = rxf_data[127:64];
+    wire [63:0]     rxf_data_qw0    = rxf_data[63:0]; // start of frame (start of tlp)
+    wire [63:0]     rxf_data_qw1    = rxf_data[127:64]; // 
     wire            rxf_sof         = rxf_user[14];
     wire            rxf_sof_qw      = rxf_user[13];
     wire            rxf_eof         = rxf_user[21];
