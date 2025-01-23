@@ -357,22 +357,26 @@ module pcileech_tlps128_src128(
     // bit - used for non-continuous connections
     // wire - used for continuous connections (input from another module)
 
-    bit             rxd_ready;  // internal status indicator ???
-    wire [127:0]    rxf_data    = tlp_rx.data; // wire connected to the data field in the tlp_rx interface
-    wire [21:0]     rxf_user    = tlp_rx.user; // 
-    wire            rxf_valid   = tlp_rx.valid && rxd_ready;
-    wire            rxf_ready;
-    assign          tlp_rx.ready = rxf_ready;
+    bit             rxd_ready;  // indicates if module is ready to process next data word (controls flow of incoming data)
+    wire [127:0]    rxf_data    = tlp_rx.data; // data receieved from the tlp_rx interface (128 bit data word from pcie core)
+    wire [21:0]     rxf_user    = tlp_rx.user; // user defined side band signals. contains sof and eof metadata
+    wire            rxf_valid   = tlp_rx.valid && rxd_ready; // valid if incoming data is valid and module ready to accept
+    wire            rxf_ready; // indicates if module is ready to process next data word
+    assign          tlp_rx.ready = rxf_ready; // 
     
-    bit             rxd_sof;
-    bit             rxd_eof;
-    bit             rxd_eof_dw;
-    bit [6:0]       rxd_bar_hit;
-    bit [63:0]      rxd_data_qw;
+    // Internal registers used to track state of the recieved frame 
+    bit             rxd_sof; // start of frame (start of tlp)
+    bit             rxd_eof; // end of frame
+    bit             rxd_eof_dw; // eof data frame
+    bit [6:0]       rxd_bar_hit; // bars
+    bit [63:0]      rxd_data_qw; // data
     bit             rxd_valid;
     
-    wire [63:0]     rxf_data_qw0    = rxf_data[63:0]; // start of frame (start of tlp)
-    wire [63:0]     rxf_data_qw1    = rxf_data[127:64]; // 
+    // spliting the 128 bit rxf_data into 2 x 64 bit words for processing
+    wire [63:0]     rxf_data_qw0    = rxf_data[63:0]; 
+    wire [63:0]     rxf_data_qw1    = rxf_data[127:64]; 
+
+    // 
     wire            rxf_sof         = rxf_user[14];
     wire            rxf_sof_qw      = rxf_user[13];
     wire            rxf_eof         = rxf_user[21];
@@ -405,7 +409,7 @@ module pcileech_tlps128_src128(
         rxd_ready   <= rxf_ready;
         rxd_bar_hit <= rxf_bar_hit;
         rxd_data_qw <= rxf_data_qw1;
-        rxd_sof     <= rxf_sof && rxf_sof_qw;
+        rxd_sof     <= rxf_sof && rxf_sof_qw; // 
         rxd_eof     <= rxf_eof && (rxf_eof_dw >= 2);
         rxd_eof_dw  <= (rxf_eof_dw == 3);
         rxd_valid   <= rxf_rxd_valid_next;
