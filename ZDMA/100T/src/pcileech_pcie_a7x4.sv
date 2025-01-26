@@ -365,12 +365,12 @@ module pcileech_tlps128_src128(
     assign          tlp_rx.ready = rxf_ready; // 
     
     // Internal registers used to track state of the recieved frame 
-    bit             rxd_sof; // start of frame (start of tlp) --> only asserted when when the frame is found
-    bit             rxd_eof; // end of frame
+    bit             rxd_sof; // start of frame (start of tlp) --> only asserted when when the sof frame is found and aligned
+    bit             rxd_eof; // end of frame --> asserted when eof foiund and is aligned
     bit             rxd_eof_dw; // eof data frame
     bit [6:0]       rxd_bar_hit; // bars
     bit [63:0]      rxd_data_qw; // data
-    bit             rxd_valid;
+    bit             rxd_valid; // indicates if the module is currently processing a data word
     
     // spliting the 128 bit rxf_data into 2 x 64 bit words for processing
     wire [63:0]     rxf_data_qw0    = rxf_data[63:0]; 
@@ -385,10 +385,14 @@ module pcileech_tlps128_src128(
     wire [3:0]      rx_keep_dw; 
     
     // module will accept new data if 
-        // inverse of (data is valid, end of frame is valid and end of frame quarter is >= 2)
-        // inverse of (incoming data frame is valid)
+        // !rxd_valid -> not currently processing a data word
+        // !rxf_eof -> not at the last data word (eof)
+        // # of data words after eof must be < 2
+        // or
+        // !rxf_valid -> incoming data is not valid and module is not ready to process it
     assign rxf_ready = !(rxd_valid && rxf_eof && (rxf_eof_dw >= 2)) || !rxf_valid;
     
+    // Data Path and Control Signal Assignment:
     assign tlps_out.tdata       = rxd_valid ? {rxf_data_qw0, rxd_data_qw} : {rxf_data_qw1, rxf_data_qw0};
     assign tlps_out.tuser[0]    = rxd_valid ? rxd_sof : (rxf_sof && !rxf_sof_qw);                       // tfirst
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
