@@ -402,7 +402,11 @@ module pcileech_tlps128_src128(
     // else not rxd_valid -> module will use the fresh 128 bit word qw1 and qw0
     assign tlps_out.tdata       = rxd_valid ? {rxf_data_qw0, rxd_data_qw} : {rxf_data_qw1, rxf_data_qw0};
     
+    // Set start of frame flag in the output stream
+    // if rxd_valid -> we use the already latched rxd_sof frame
+    // else not rxd_valid -> use the rxf_sof frame from the current clk cycle
     assign tlps_out.tuser[0]    = rxd_valid ? rxd_sof : (rxf_sof && !rxf_sof_qw);                       // tfirst
+    
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
     assign tlps_out.tuser[8:2]  = rxd_valid ? rxd_bar_hit : rxf_bar_hit;
     assign tlps_out.tlast       = tlps_out.tuser[1];
