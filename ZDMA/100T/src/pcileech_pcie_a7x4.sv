@@ -404,7 +404,8 @@ module pcileech_tlps128_src128(
     
     // Set start of frame flag in the output stream
     // if rxd_valid -> we use the already latched rxd_sof frame
-    // else not rxd_valid -> use the rxf_sof frame from the current clk cycle
+    // else not rxd_valid -> use the rxf_sof frame from the current clk cycle.
+    //                    -> ensure not a quarter word boundary
     assign tlps_out.tuser[0]    = rxd_valid ? rxd_sof : (rxf_sof && !rxf_sof_qw);                       // tfirst
     
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
