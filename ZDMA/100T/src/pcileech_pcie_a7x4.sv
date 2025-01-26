@@ -405,10 +405,16 @@ module pcileech_tlps128_src128(
     // Set start of frame flag in the output stream
     // if rxd_valid -> we use the already latched rxd_sof frame
     // else not rxd_valid -> use the rxf_sof frame from the current clk cycle.
-    //                    -> ensure not a quarter word boundary
+    //                    -> ensure not a quarter word boundary 
     assign tlps_out.tuser[0]    = rxd_valid ? rxd_sof : (rxf_sof && !rxf_sof_qw);                       // tfirst
     
+    // Sending eof frame downstream
+    // if rxd_valid
+    //      - tlp may end if we have already latched the rxd_eof frame or if current cycle also signals rxf_eof
+    //      - and there is at most 1 double word left
+    // else not valid -> just use the current cycle rxf_eof
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
+    
     assign tlps_out.tuser[8:2]  = rxd_valid ? rxd_bar_hit : rxf_bar_hit;
     assign tlps_out.tlast       = tlps_out.tuser[1];
     assign tlps_out.tvalid      = rxd_valid || (rxf_valid && rxf_eof) || (rxf_valid && !(rxf_sof && rxf_sof_qw)); 
