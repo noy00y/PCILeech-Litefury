@@ -355,7 +355,7 @@ module pcileech_tlps128_src128(
 );
     
     // bit - used for non-continuous connections
-    // wire - used for continuous connections (input from another module)
+    // wire - used for continuous combinational connections 
 
     bit             rxd_ready;  // indicates if module is ready to process next data word (controls flow of incoming data)
     wire [127:0]    rxf_data    = tlp_rx.data; // data receieved from the tlp_rx interface (128 bit data word from pcie core)
@@ -364,7 +364,8 @@ module pcileech_tlps128_src128(
     wire            rxf_ready; // indicates if module is ready to process next data word
     assign          tlp_rx.ready = rxf_ready; // internal rxf_ready signal connected to incoming pcie axi stream ready signal 
     
-    // Internal registers used to track state of the recieved frame 
+    /* Internal registers used to track state of the recieved frame 
+       Recieved from a previous clk cycle */
     bit             rxd_sof; // start of frame (start of tlp) --> only asserted when when the sof frame is found and aligned
     bit             rxd_eof; // end of frame --> asserted when eof foiund and is aligned
     bit             rxd_eof_dw; // eof data frame
@@ -372,10 +373,10 @@ module pcileech_tlps128_src128(
     bit [63:0]      rxd_data_qw; // data
     bit             rxd_valid; // indicates if the module is currently processing a data word
     
+    /* Signals from the current clock cycle (wire) */
     // spliting the 128 bit rxf_data into 2 x 64 bit words for processing
     wire [63:0]     rxf_data_qw0    = rxf_data[63:0]; 
     wire [63:0]     rxf_data_qw1    = rxf_data[127:64]; 
-
     // Extracting frames from user sideband signal
     wire            rxf_sof         = rxf_user[14]; // start of frame signal and quarter word boundary (data integrity)
     wire            rxf_sof_qw      = rxf_user[13]; 
@@ -384,7 +385,8 @@ module pcileech_tlps128_src128(
     wire [6:0]      rxf_bar_hit     = rxf_user[8:2]; // indiciates which base address was hit
     wire [3:0]      rx_keep_dw; 
     
-    // module will accept new data if 
+
+    // Module will accept new data if 
         // !rxd_valid -> not currently processing a data word
         // !rxf_eof -> not at the last data word (eof)
         // # of data words after eof must be < 2
@@ -392,30 +394,34 @@ module pcileech_tlps128_src128(
         // !rxf_valid -> incoming data is not valid and module is not ready to process it
     assign rxf_ready = !(rxd_valid && rxf_eof && (rxf_eof_dw >= 2)) || !rxf_valid;
     
+
     /* Data Path and Control Signal Assignment: */
 
-    // Determining which 128 bit value to output to tdata
-    // data_qw0 - lower 64 bit of incoming 128 bit word from the pcie core
-    // data_qw1 - upper 64 bit
-    // data_wq - stored 64 bit word from a previous cycle (latched in a register)
-    // if rxd_valid -> module will use internal register by combining data_qw0 and data_qw
-    // else not rxd_valid -> module will use the fresh 128 bit word qw1 and qw0
+    // 1. Determining which 128 bit value to output to tdata
+    //    data_qw0 - lower 64 bit of incoming 128 bit word from the pcie core
+    //    data_qw1 - upper 64 bit
+    //    data_wq - stored 64 bit word from a previous cycle (latched in a register)
+    //    if rxd_valid -> module will use internal register by combining data_qw0 and data_qw
+    //    else not rxd_valid -> module will use the fresh 128 bit word qw1 and qw0
     assign tlps_out.tdata       = rxd_valid ? {rxf_data_qw0, rxd_data_qw} : {rxf_data_qw1, rxf_data_qw0};
     
-    // Set start of frame flag in the output stream
-    // if rxd_valid -> we use the already latched rxd_sof frame
-    // else not rxd_valid -> use the rxf_sof frame from the current clk cycle.
-    //                    -> ensure not a quarter word boundary 
+    // 2. Sending the SOF Frame Downstream tuser[0] for module tlp start
+    //    if rxd_valid -> we use the already latched rxd_sof frame
+    //    else not rxd_valid -> use the rxf_sof frame from the current clk cycle.
+    //                       -> ensure not a quarter word boundary 
     assign tlps_out.tuser[0]    = rxd_valid ? rxd_sof : (rxf_sof && !rxf_sof_qw);                       // tfirst
     
-    // Sending eof frame downstream
-    // if rxd_valid
-    //      - tlp may end if we have already latched the rxd_eof frame or if current cycle also signals rxf_eof
-    //      - and there is at most 1 double word left
-    // else not valid -> just use the current cycle rxf_eof
+    // 3. Sending the EOF Frame Downstream tuser[1] for module tlp close 
+    //    if rxd_valid
+    //       - tlp may end if we have already latched the rxd_eof frame or if current cycle also signals rxf_eof
+    //       - and there is at most 1 double word left
+    //    else not valid -> just use the current cycle rxf_eof
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
     
+    // 4. Determines which bar hit field to output
     assign tlps_out.tuser[8:2]  = rxd_valid ? rxd_bar_hit : rxf_bar_hit;
+
+
     assign tlps_out.tlast       = tlps_out.tuser[1];
     assign tlps_out.tvalid      = rxd_valid || (rxf_valid && rxf_eof) || (rxf_valid && !(rxf_sof && rxf_sof_qw)); 
     
