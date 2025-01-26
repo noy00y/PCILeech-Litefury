@@ -362,7 +362,7 @@ module pcileech_tlps128_src128(
     wire [21:0]     rxf_user    = tlp_rx.user; // user defined side band signals. contains sof and eof metadata
     wire            rxf_valid   = tlp_rx.valid && rxd_ready; // valid if incoming data is valid and module ready to accept
     wire            rxf_ready; // indicates if module is ready to process next data word
-    assign          tlp_rx.ready = rxf_ready; // 
+    assign          tlp_rx.ready = rxf_ready; // internal rxf_ready signal connected to incoming pcie axi stream ready signal 
     
     // Internal registers used to track state of the recieved frame 
     bit             rxd_sof; // start of frame (start of tlp) --> only asserted when when the sof frame is found and aligned
@@ -392,8 +392,16 @@ module pcileech_tlps128_src128(
         // !rxf_valid -> incoming data is not valid and module is not ready to process it
     assign rxf_ready = !(rxd_valid && rxf_eof && (rxf_eof_dw >= 2)) || !rxf_valid;
     
-    // Data Path and Control Signal Assignment:
+    /* Data Path and Control Signal Assignment: */
+
+    // Determining which 128 bit value to output to tdata
+    // data_qw0 - lower 64 bit of incoming 128 bit word from the pcie core
+    // data_qw1 - upper 64 bit
+    // data_wq - stored 64 bit word from a previous cycle (latched in a register)
+    // if rxd_valid -> module will use internal register by combining data_qw0 and data_qw
+    // else not rxd_valid -> module will use the fresh 128 bit word qw1 and qw0
     assign tlps_out.tdata       = rxd_valid ? {rxf_data_qw0, rxd_data_qw} : {rxf_data_qw1, rxf_data_qw0};
+    
     assign tlps_out.tuser[0]    = rxd_valid ? rxd_sof : (rxf_sof && !rxf_sof_qw);                       // tfirst
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
     assign tlps_out.tuser[8:2]  = rxd_valid ? rxd_bar_hit : rxf_bar_hit;
