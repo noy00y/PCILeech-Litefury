@@ -425,8 +425,10 @@ module pcileech_tlps128_src128(
     //    else not rxd_valid -> use from clk cycle
     assign tlps_out.tuser[8:2]  = rxd_valid ? rxd_bar_hit : rxf_bar_hit;
 
-
+    // 5. Sending eof (tuser[1]) on a dedicated signal for axi stream readability
     assign tlps_out.tlast       = tlps_out.tuser[1];
+
+    // 6. Determines when the output data is valid (tvalid)
     assign tlps_out.tvalid      = rxd_valid || (rxf_valid && rxf_eof) || (rxf_valid && !(rxf_sof && rxf_sof_qw)); 
     
     assign tlps_out.tkeepdw[0]  = rxd_valid || rxf_valid;
