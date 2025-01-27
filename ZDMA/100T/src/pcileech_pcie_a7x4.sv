@@ -418,7 +418,11 @@ module pcileech_tlps128_src128(
     //    else not valid -> just use the current cycle rxf_eof
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
     
-    // 4. Determines which bar hit field to output
+    // 4. Determines which bar hit field to output (ie. which BAR should tlp read/write to)
+    //    rxd_bar_hit - latched BAR 
+    //    rxf_bar_hit - BAR from current clk cycle
+    //    if rxd_valid -> use latched
+    //    else not rxd_valid -> use from clk cycle
     assign tlps_out.tuser[8:2]  = rxd_valid ? rxd_bar_hit : rxf_bar_hit;
 
 
