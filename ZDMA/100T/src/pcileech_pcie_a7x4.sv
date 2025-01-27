@@ -413,8 +413,8 @@ module pcileech_tlps128_src128(
     
     // 3. Sending the EOF Frame Downstream tuser[1] for module tlp close 
     //    if rxd_valid
-    //       - tlp may end if we have already latched the rxd_eof frame or if current cycle also signals rxf_eof
-    //       - and there is at most 1 double word left
+    //      - tlp may end if we have already latched the rxd_eof frame or if current cycle also signals rxf_eof
+    //      - and there is at most 1 double word left
     //    else not valid -> just use the current cycle rxf_eof
     assign tlps_out.tuser[1]    = rxd_valid ? (rxd_eof || (rxf_eof && (rxf_eof_dw <= 1))) : rxf_eof;    // tlast
     
@@ -429,13 +429,32 @@ module pcileech_tlps128_src128(
     assign tlps_out.tlast       = tlps_out.tuser[1];
 
     // 6. Determines when the output data is valid (tvalid)
+    //    rxd_valid - latched valid status
+    //    rxf_valid - valid status from the current clk
+    //    Valid if...
+    //      - latched valid data (rxd_valid)
+    //      - latched and current data is eof
+    //      - current data is valid and there isn't a SOF declared on the quarter word boundary
     assign tlps_out.tvalid      = rxd_valid || (rxf_valid && rxf_eof) || (rxf_valid && !(rxf_sof && rxf_sof_qw)); 
     
+    // 7. tkeepdw indicates which part of the 128 bit word is meaningful, rest can be
+    //    ignored by the downstream modules.
+    //    - tkeepdw has 4 bits with each bit corresponding to a 64/32 bit portion
+
+    // Bit 0 - if latched data is valid or from clk signal, the lowest chunk is valid
     assign tlps_out.tkeepdw[0]  = rxd_valid || rxf_valid;
+    
+    // Bit 1 valid if...
+    // if rxd_valid -> then check if there isn't an eof or if there is a EOF but some data left
+    // if not rxd_valid -> check if there isn't a eof from the clk or if there is at least 1 dw left
     assign tlps_out.tkeepdw[1]  = rxd_valid ? (!rxd_eof || rxd_eof_dw) :
                                               (!rxf_eof || (rxf_eof_dw >= 1));
+    
+    // Bit 2 - 
     assign tlps_out.tkeepdw[2]  = rxd_valid ? (!rxd_eof && rxf_valid) :
                                               (!rxf_eof || (rxf_eof_dw >= 2));
+    
+    // Bit 3 - 
     assign tlps_out.tkeepdw[3]  = rxd_valid ? (!rxd_eof && rxf_valid && (!rxf_eof || (rxf_eof_dw >= 1))) :
                                               (!rxf_eof || (rxf_eof_dw >= 3));
                                               
