@@ -457,7 +457,12 @@ module pcileech_tlps128_src128(
     assign tlps_out.tkeepdw[2]  = rxd_valid ? (!rxd_eof && rxf_valid) :
                                               (!rxf_eof || (rxf_eof_dw >= 2));
     
-    // Bit 3 
+    // Bit 3 valid if ...
+    //      if rxd_valid -> check for following
+    //          - must not be eof
+    //          - must have new valid rxf_valid frame
+    //          - must not be a eof or have at least 1 more dw left
+    //      if not rxd_valid -> check if there isn't a eof or if at least 3 dw's are remaining
     assign tlps_out.tkeepdw[3]  = rxd_valid ? (!rxd_eof && rxf_valid && (!rxf_eof || (rxf_eof_dw >= 1))) :
                                               (!rxf_eof || (rxf_eof_dw >= 3));
                                               
