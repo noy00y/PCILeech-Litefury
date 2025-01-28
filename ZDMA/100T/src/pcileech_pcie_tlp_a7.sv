@@ -14,7 +14,7 @@ module pcileech_pcie_tlp_a7(
     input                   rst,
     input                   clk_pcie,
     input                   clk_sys,
-    IfPCIeFifoTlp.mp_pcie   dfifo,
+    IfPCIeFifoTlp.mp_pcie   dfifo, // 
     
     // PCIe core receive/transmit data
     IfAXIS128.source        tlps_tx,
