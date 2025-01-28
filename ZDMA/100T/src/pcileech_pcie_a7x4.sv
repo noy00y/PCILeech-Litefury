@@ -479,6 +479,7 @@ module pcileech_tlps128_src128(
     wire rxf_rxd_valid_next = !rst && rxf_valid && (rxd_valid ? ((!rxf_sof && !rxf_eof) || (rxf_sof && rxf_sof_qw) || (rxf_eof && (rxf_eof_dw >= 2))) :
                                                                 (rxf_sof && rxf_sof_qw));
     
+    // Updating internal state registers on each rising edge of the clk
     always @ ( posedge clk_pcie ) begin
         rxd_ready   <= rxf_ready;
         rxd_bar_hit <= rxf_bar_hit;
