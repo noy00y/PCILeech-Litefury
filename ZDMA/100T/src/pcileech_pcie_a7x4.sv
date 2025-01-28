@@ -444,17 +444,20 @@ module pcileech_tlps128_src128(
     // Bit 0 - if latched data is valid or from clk signal, the lowest chunk is valid
     assign tlps_out.tkeepdw[0]  = rxd_valid || rxf_valid;
     
-    // Bit 1 valid if...
-    // if rxd_valid -> then check if there isn't an eof or if there is a EOF but some data left
-    // if not rxd_valid -> check if there isn't a eof from the clk or if there is at least 1 dw left
+    // Bit 1 valid if ...
+    //      if rxd_valid -> then check if there isn't an eof or if there is a EOF but some data left
+    //      if not rxd_valid -> check if there isn't a eof from the clk or if there is at least 1 dw left
+    // If either conditions check out then the bit is valid
     assign tlps_out.tkeepdw[1]  = rxd_valid ? (!rxd_eof || rxd_eof_dw) :
                                               (!rxf_eof || (rxf_eof_dw >= 1));
     
-    // Bit 2 - 
+    // Bit 2 valid if ...
+    //      if rxd_valid -> check if haven't reached eof and the rxf_valid on the current clk is valid
+    //      if not rxd_valid -> check if there isn't a eof or if ther are at least 2 dw's remaining
     assign tlps_out.tkeepdw[2]  = rxd_valid ? (!rxd_eof && rxf_valid) :
                                               (!rxf_eof || (rxf_eof_dw >= 2));
     
-    // Bit 3 - 
+    // Bit 3 
     assign tlps_out.tkeepdw[3]  = rxd_valid ? (!rxd_eof && rxf_valid && (!rxf_eof || (rxf_eof_dw >= 1))) :
                                               (!rxf_eof || (rxf_eof_dw >= 3));
                                               
