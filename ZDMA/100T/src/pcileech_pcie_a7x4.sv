@@ -465,7 +465,17 @@ module pcileech_tlps128_src128(
     //      if not rxd_valid -> check if there isn't a eof or if at least 3 dw's are remaining
     assign tlps_out.tkeepdw[3]  = rxd_valid ? (!rxd_eof && rxf_valid && (!rxf_eof || (rxf_eof_dw >= 1))) :
                                               (!rxf_eof || (rxf_eof_dw >= 3));
-                                              
+
+    // 8. Determines the next value of rxd_valid, thus determines if  
+    //    the latched data is valid in the next clk cycle
+    //    Conditions: 
+    //      - not in rst
+    //      - rxf_valid -> we have incoming frame from the pcie
+    //      - if we already have a latched data (rxd_valid) then we check for
+    //          - not an sof or eof
+    //          - if an sof and its aligned on the qw boundary
+    //          - if an eof and at least 2 dw's left
+    //      - else not rxd_valid -> check if next cycle is a valid sof and aligned on qw boundary
     wire rxf_rxd_valid_next = !rst && rxf_valid && (rxd_valid ? ((!rxf_sof && !rxf_eof) || (rxf_sof && rxf_sof_qw) || (rxf_eof && (rxf_eof_dw >= 2))) :
                                                                 (rxf_sof && rxf_sof_qw));
     
