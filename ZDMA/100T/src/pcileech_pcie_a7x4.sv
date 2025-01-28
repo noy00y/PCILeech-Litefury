@@ -483,8 +483,9 @@ module pcileech_tlps128_src128(
     always @ ( posedge clk_pcie ) begin
         rxd_ready   <= rxf_ready;
         rxd_bar_hit <= rxf_bar_hit;
-        rxd_data_qw <= rxf_data_qw1;
-        rxd_sof     <= rxf_sof && rxf_sof_qw; // 
+        rxd_data_qw <= rxf_data_qw1; // buffers the upper 64 bits of the incoming dw
+        rxd_sof     <= rxf_sof && rxf_sof_qw; // indicates if current dw is the start of a frame and 
+                                              // is aligned on the qw boundary
         rxd_eof     <= rxf_eof && (rxf_eof_dw >= 2);
         rxd_eof_dw  <= (rxf_eof_dw == 3);
         rxd_valid   <= rxf_rxd_valid_next;
