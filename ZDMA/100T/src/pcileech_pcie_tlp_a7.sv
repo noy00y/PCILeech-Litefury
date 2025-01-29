@@ -31,16 +31,18 @@ module pcileech_pcie_tlp_a7(
     
     // ------------------------------------------------------------------------
     // Convert received TLPs from PCIe core and transmit onwards:
-    // Processing Pipeline for the tlp for filtering and forwarding
+    // Submodule processing pipeline for the tlp for filtering and forwarding
     // ------------------------------------------------------------------------
     IfAXIS128 tlps_filtered(); // 128 bit axi stream
     
+    // Monitors the address inside the tlp header to see if they match the device's BAR 
     pcileech_tlps128_bar_controller i_pcileech_tlps128_bar_controller(
-        .rst            ( rst                           ),
+        .rst            ( rst                           ), 
         .clk            ( clk_pcie                      ),
-        .bar_en         ( dshadow2fifo.bar_en           ),
-        .pcie_id        ( pcie_id                       ),
-        .tlps_in        ( tlps_rx                       ),
+        .bar_en         ( dshadow2fifo.bar_en           ), // control signal to enable/disable BAR logic.
+                                                           // if disabled -> module will ignore or pass tlp w/o responding
+        .pcie_id        ( pcie_id                       ), // 16 bit device identifier for matching tlp req/res
+        .tlps_in        ( tlps_rx                       ), // input tlp stream from the pcie core
         .tlps_out       ( tlps_bar_rsp.source           )
     );
     
