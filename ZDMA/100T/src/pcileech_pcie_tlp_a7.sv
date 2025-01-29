@@ -14,7 +14,7 @@ module pcileech_pcie_tlp_a7(
     input                   rst,
     input                   clk_pcie,
     input                   clk_sys,
-    IfPCIeFifoTlp.mp_pcie   dfifo, // 
+    IfPCIeFifoTlp.mp_pcie   dfifo, // tlp fifo interface
     
     // PCIe core receive/transmit data
     IfAXIS128.source        tlps_tx,
@@ -24,13 +24,16 @@ module pcileech_pcie_tlp_a7(
     input [15:0]            pcie_id
     );
     
-    IfAXIS128 tlps_bar_rsp();
-    IfAXIS128 tlps_cfg_rsp();
+    // 128 bit axi stream response paths for tlp data
+    // Individual streams are eventually merged via a MUX going back into the pcie core so it can do BAR stuff or 
+    IfAXIS128 tlps_bar_rsp(); // carries tlps that originate from the BAR controller
+    IfAXIS128 tlps_cfg_rsp(); // carries tlps that originate from the config space shadow controller
     
     // ------------------------------------------------------------------------
     // Convert received TLPs from PCIe core and transmit onwards:
+    // Processing Pipeline for the tlp for filtering and forwarding
     // ------------------------------------------------------------------------
-    IfAXIS128 tlps_filtered();
+    IfAXIS128 tlps_filtered(); // 128 bit axi stream
     
     pcileech_tlps128_bar_controller i_pcileech_tlps128_bar_controller(
         .rst            ( rst                           ),
