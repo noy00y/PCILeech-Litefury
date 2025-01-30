@@ -63,6 +63,9 @@ module pcileech_pcie_tlp_a7(
         .tlps_cfg_rsp   ( tlps_cfg_rsp.source           ) // output tlp stream for config space res (eg. if the fpga needs to respond to config read reqs)
     );
     
+    // Sub Module - 3
+    // Filtering (dropping) certain tlps for downstream
+    // 
     pcileech_tlps128_filter i_pcileech_tlps128_filter(
         .rst            ( rst                           ),
         .clk_pcie       ( clk_pcie                      ),
