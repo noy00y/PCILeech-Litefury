@@ -63,16 +63,15 @@ module pcileech_pcie_tlp_a7(
         .tlps_cfg_rsp   ( tlps_cfg_rsp.source           ) // output tlp stream for config space res (eg. if the fpga needs to respond to config read reqs)
     );
     
-    // Sub Module - 3
+    // Sub Module - 3   
     // Filtering (dropping) certain tlps for downstream
-    // 
     pcileech_tlps128_filter i_pcileech_tlps128_filter(
         .rst            ( rst                           ),
         .clk_pcie       ( clk_pcie                      ),
-        .alltlp_filter  ( dshadow2fifo.alltlp_filter    ),
-        .cfgtlp_filter  ( dshadow2fifo.cfgtlp_filter    ),
+        .alltlp_filter  ( dshadow2fifo.alltlp_filter    ), // If asserted will drop all TLPs except for completion
+        .cfgtlp_filter  ( dshadow2fifo.cfgtlp_filter    ), // If asserted will drop config TLP's, incoming or outgoing???
         .tlps_in        ( tlps_rx                       ),
-        .tlps_out       ( tlps_filtered.source_lite     )
+        .tlps_out       ( tlps_filtered.source_lite     ) // outgoing filtered tlp stream
     );
     
     pcileech_tlps128_dst_fifo i_pcileech_tlps128_dst_fifo(
