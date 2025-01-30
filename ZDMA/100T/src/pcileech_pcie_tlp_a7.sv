@@ -35,6 +35,7 @@ module pcileech_pcie_tlp_a7(
     // ------------------------------------------------------------------------
     IfAXIS128 tlps_filtered(); // 128 bit axi stream
     
+    // Sub Module - 1
     // Monitors the address inside the tlp header to see if they match the device's BAR 
     // Generates AXI stream outs for different sub modules 
     // Does not block TLP's so other modules can observe the same incoming tlp for different functions
@@ -48,7 +49,10 @@ module pcileech_pcie_tlp_a7(
         .tlps_out       ( tlps_bar_rsp.source           ) // output tlp stream used for passing tlp that are targetting the BAR
     );
     
-    // 
+    // Sub Module - 2
+    // Monitors Config Space TLPs (r/w)
+    // Maintains shadow of config space
+    // Custom logic to intercept, store and modify config space -> read out via dshadow2fifo
     pcileech_tlps128_cfgspace_shadow i_pcileech_tlps128_cfgspace_shadow(
         .rst            ( rst                           ),
         .clk_pcie       ( clk_pcie                      ),
