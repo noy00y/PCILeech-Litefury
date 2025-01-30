@@ -56,11 +56,11 @@ module pcileech_pcie_tlp_a7(
     pcileech_tlps128_cfgspace_shadow i_pcileech_tlps128_cfgspace_shadow(
         .rst            ( rst                           ),
         .clk_pcie       ( clk_pcie                      ),
-        .clk_sys        ( clk_sys                       ),
-        .tlps_in        ( tlps_rx                       ),
+        .clk_sys        ( clk_sys                       ), // sys clk used here as well (eg. for updating shadow registers)
+        .tlps_in        ( tlps_rx                       ), // inbound tlp
         .pcie_id        ( pcie_id                       ),
-        .dshadow2fifo   ( dshadow2fifo                  ),
-        .tlps_cfg_rsp   ( tlps_cfg_rsp.source           )
+        .dshadow2fifo   ( dshadow2fifo                  ), 
+        .tlps_cfg_rsp   ( tlps_cfg_rsp.source           ) // output tlp stream for config space res (eg. if the fpga needs to respond to config read reqs)
     );
     
     pcileech_tlps128_filter i_pcileech_tlps128_filter(
