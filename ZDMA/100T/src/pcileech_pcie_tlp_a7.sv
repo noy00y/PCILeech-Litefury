@@ -74,12 +74,15 @@ module pcileech_pcie_tlp_a7(
         .tlps_out       ( tlps_filtered.source_lite     ) // outgoing filtered tlp stream
     );
     
+    // Sub Module - 4
+    // Recieves the filtered tlps and places them a fifo that crosses from the pcie clk to the sys_clk 
+    // Used for downstream logic
     pcileech_tlps128_dst_fifo i_pcileech_tlps128_dst_fifo(
         .rst            ( rst                           ),
         .clk_pcie       ( clk_pcie                      ),
         .clk_sys        ( clk_sys                       ),
-        .tlps_in        ( tlps_filtered.sink_lite       ),
-        .dfifo          ( dfifo                         )
+        .tlps_in        ( tlps_filtered.sink_lite       ), // consumes data from the filtering sub module
+        .dfifo          ( dfifo                         ) // standard 32/64 bit wrd frmt
     );
     
     // ------------------------------------------------------------------------
