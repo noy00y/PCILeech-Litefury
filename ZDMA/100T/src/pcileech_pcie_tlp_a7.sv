@@ -76,7 +76,8 @@ module pcileech_pcie_tlp_a7(
     
     // Sub Module - 4
     // Recieves the filtered tlps and places them a fifo that crosses from the pcie clk to the sys_clk 
-    // Used for downstream logic
+    // Splits the 128 bit tlp into 32 bit segments to match the dfifo signals
+    // dfifo.rx_rd_en - handshake signal so sys can read data at its own pace
     pcileech_tlps128_dst_fifo i_pcileech_tlps128_dst_fifo(
         .rst            ( rst                           ),
         .clk_pcie       ( clk_pcie                      ),
