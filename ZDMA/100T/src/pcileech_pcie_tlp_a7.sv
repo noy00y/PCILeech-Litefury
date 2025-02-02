@@ -33,7 +33,7 @@ module pcileech_pcie_tlp_a7(
     // Convert received TLPs from PCIe core and transmit onwards:
     // Submodule processing pipeline for the tlp for filtering and forwarding
     // ------------------------------------------------------------------------
-    IfAXIS128 tlps_filtered(); // 128 bit axi stream
+    IfAXIS128 tlps_filtered(); // 128 bit axi stream interface
     
     // Sub Module - 1
     // Monitors the address inside the tlp header to see if they match the device's BAR 
@@ -89,16 +89,20 @@ module pcileech_pcie_tlp_a7(
     // ------------------------------------------------------------------------
     // TX data received from FIFO
     // ------------------------------------------------------------------------
-    IfAXIS128 tlps_rx_fifo();
+    IfAXIS128 tlps_rx_fifo(); // interface declaration 
     
+    // Sub Module - 1
+    // Reads 32 bit words from the dma fifo interface (dfifo)
+    // assembles words into a 128 bit tlp frame
     pcileech_tlps128_src_fifo i_pcileech_tlps128_src_fifo(
-        .rst            ( rst                           ),
-        .clk_pcie       ( clk_pcie                      ),
+        .rst            ( rst                           ),  
+        .clk_pcie       ( clk_pcie                      ), 
         .clk_sys        ( clk_sys                       ),
-        .dfifo_tx_data  ( dfifo.tx_data                 ),
-        .dfifo_tx_last  ( dfifo.tx_last                 ),
-        .dfifo_tx_valid ( dfifo.tx_valid                ),
-        .tlps_out       ( tlps_rx_fifo.source           )
+        .dfifo_tx_data  ( dfifo.tx_data                 ), // data chunk
+        .dfifo_tx_last  ( dfifo.tx_last                 ), // last data word
+        .dfifo_tx_valid ( dfifo.tx_valid                ), // which parts of data word r valid
+        .tlps_out       ( tlps_rx_fifo.source           ) // 128 bit axi output port
+                                                          // acts as source of input data to rx_fifo() interface
     );
     
     pcileech_tlps128_sink_mux1 i_pcileech_tlps128_sink_mux1(
