@@ -88,6 +88,8 @@ module pcileech_pcie_tlp_a7(
     
     // ------------------------------------------------------------------------
     // TX data received from FIFO
+    // Generates 128 bit axi stream from 4 data words
+    // 128 bit axi stream is then muxed with 1 other tlps_in and then sent to downstream module
     // ------------------------------------------------------------------------
     IfAXIS128 tlps_rx_fifo(); // interface declaration 
     
@@ -113,7 +115,10 @@ module pcileech_pcie_tlp_a7(
     
     // Sub Module - 2
     // 4 to 1 axi stream multiplexer for tlp data
-    // Takes in 4 tlp seperate tlp streams and merges them into single output stream (tlps_out)
+    // Takes in 4 tlp seperate tlp streams and sends one along the output stream (tlps_out)
+    // Priority based selection for output - based on which stream has data to send (tvalid)
+    //                                     - sends stream on a highest priority basis
+    // Transmits the full tlp until tlast is asserted (indicating last dw of tlp)
     pcileech_tlps128_sink_mux1 i_pcileech_tlps128_sink_mux1(
         .rst            ( rst                           ), 
         .clk_pcie       ( clk_pcie                      ),
@@ -121,9 +126,8 @@ module pcileech_pcie_tlp_a7(
         .tlps_in1       ( tlps_cfg_rsp.sink             ), // config response
         .tlps_in2       ( tlps_bar_rsp.sink             ), // bar response
         .tlps_in3       ( tlps_rx_fifo.sink             ), // 128 bit axi data from the dfifo 
-        .tlps_in4       ( tlps_static                   ) // 
+        .tlps_in4       ( tlps_static                   ) 
     );
-
 endmodule
 
 
