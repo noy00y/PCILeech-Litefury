@@ -134,13 +134,18 @@ endmodule
 
 // ------------------------------------------------------------------------
 // TLP-AXI-STREAM destination:
-// Forward the data to output device (FT601, etc.). 
+// - Forward the data to output device (FT601, etc.)
+// - TLP split into 4 x 32 bit wrds (dfifo.rx_data[0...3])
+// - Control/status bits (rx_valid[], rx_first[] and rx_last[]) for indicating valid words, first/last packet cycles
+// - Axi stream signals (tvalid, tlast, tkeepdw & tuser) are mapped to simplier dma interface
 // ------------------------------------------------------------------------
 module pcileech_tlps128_dst_fifo(
     input                   rst,
-    input                   clk_pcie,
-    input                   clk_sys,
-    IfAXIS128.sink_lite     tlps_in,
+
+    // Clk crossing fifo
+    input                   clk_pcie, // write side (where tlp data arrives)
+    input                   clk_sys, // read side (where downstream dfifo expects data)
+    IfAXIS128.sink_lite     tlps_in, // 128 bit axi stream (tlps_tx from top module)
     IfPCIeFifoTlp.mp_pcie   dfifo
 );
     
