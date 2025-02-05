@@ -111,6 +111,9 @@ module pcileech_pcie_tlp_a7(
                                                           // clked by clk_pcie 
     );
     
+    // Sub Module - 2
+    // 4 to 1 axi stream multiplexer for tlp data
+    // Takes in 4 tlp seperate tlp streams and merges them into single output stream (tlps_out)
     pcileech_tlps128_sink_mux1 i_pcileech_tlps128_sink_mux1(
         .rst            ( rst                           ),
         .clk_pcie       ( clk_pcie                      ),
