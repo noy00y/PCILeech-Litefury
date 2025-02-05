@@ -92,17 +92,23 @@ module pcileech_pcie_tlp_a7(
     IfAXIS128 tlps_rx_fifo(); // interface declaration 
     
     // Sub Module - 1
-    // Reads 32 bit words from the dma fifo interface (dfifo)
-    // assembles words into a 128 bit tlp frame
+    // Reads 32 bit words from the dma fifo interface (dfifo) and stores in internal register
+    // Can accumulate up to 4 dws and assembles words into a 128 bit tlp frame
+    // Once enough data wrds or end of packet -> asserts tvalid signal within the tlps_out interface 
+    //                                        -> sends 128 data bit and control signals (tkeepdw, tlast)
     pcileech_tlps128_src_fifo i_pcileech_tlps128_src_fifo(
         .rst            ( rst                           ),  
         .clk_pcie       ( clk_pcie                      ), 
         .clk_sys        ( clk_sys                       ),
-        .dfifo_tx_data  ( dfifo.tx_data                 ), // data chunk
+        .dfifo_tx_data  ( dfifo.tx_data                 ), // data chunk, clked by clk_sys
+
+        // Watch tx_valid and tx_last to determine when the TLP packet ends
         .dfifo_tx_last  ( dfifo.tx_last                 ), // last data word
         .dfifo_tx_valid ( dfifo.tx_valid                ), // which parts of data word r valid
+
         .tlps_out       ( tlps_rx_fifo.source           ) // 128 bit axi output port
                                                           // acts as source of input data to rx_fifo() interface
+                                                          // clked by clk_pcie 
     );
     
     pcileech_tlps128_sink_mux1 i_pcileech_tlps128_sink_mux1(
