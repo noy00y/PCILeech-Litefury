@@ -115,13 +115,13 @@ module pcileech_pcie_tlp_a7(
     // 4 to 1 axi stream multiplexer for tlp data
     // Takes in 4 tlp seperate tlp streams and merges them into single output stream (tlps_out)
     pcileech_tlps128_sink_mux1 i_pcileech_tlps128_sink_mux1(
-        .rst            ( rst                           ),
+        .rst            ( rst                           ), 
         .clk_pcie       ( clk_pcie                      ),
-        .tlps_out       ( tlps_tx                       ),
-        .tlps_in1       ( tlps_cfg_rsp.sink             ),
-        .tlps_in2       ( tlps_bar_rsp.sink             ),
-        .tlps_in3       ( tlps_rx_fifo.sink             ),
-        .tlps_in4       ( tlps_static                   )
+        .tlps_out       ( tlps_tx                       ), // final merged axi stream driven to the pcie core
+        .tlps_in1       ( tlps_cfg_rsp.sink             ), // config response
+        .tlps_in2       ( tlps_bar_rsp.sink             ), // bar response
+        .tlps_in3       ( tlps_rx_fifo.sink             ), // 128 bit axi data from the dfifo 
+        .tlps_in4       ( tlps_static                   ) // 
     );
 
 endmodule
