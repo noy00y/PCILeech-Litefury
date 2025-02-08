@@ -159,21 +159,30 @@ module pcileech_tlps128_dst_fifo(
                                   // - rx_rd_en => read enable for downstream to output data
 );
     
-    // Local Signals
-    wire         tvalid;
+    // Local Signals:
+    //  ** These wires recieve the output of the clk crossing fifo
+    wire         tvalid; 
     wire [127:0] tdata;
     wire [3:0]   tkeepdw;
     wire         tlast;
     wire         first;
        
+    // Instantiating the clk crossing fifo
     fifo_134_134_clk2 i_fifo_134_134_clk2 (
         .rst        ( rst               ),
-        .wr_clk     ( clk_pcie          ),
-        .rd_clk     ( clk_sys           ),
+        .wr_clk     ( clk_pcie          ), // pcie core writes into the fpga space
+        .rd_clk     ( clk_sys           ), // fpga reads into dma
+
+        // fifo input (din)
         .din        ( { tlps_in.tuser[0], tlps_in.tlast, tlps_in.tkeepdw, tlps_in.tdata } ),
+
         .wr_en      ( tlps_in.tvalid    ),
         .rd_en      ( dfifo.rx_rd_en    ),
+
+        // fifo output (dout)
         .dout       ( { first, tlast, tkeepdw, tdata } ),
+
+
         .full       (                   ),
         .empty      (                   ),
         .valid      ( tvalid            )
