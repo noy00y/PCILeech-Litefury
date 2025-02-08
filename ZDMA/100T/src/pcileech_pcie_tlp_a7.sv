@@ -176,10 +176,10 @@ module pcileech_tlps128_dst_fifo(
         // fifo input (din)
         .din        ( { tlps_in.tuser[0], tlps_in.tlast, tlps_in.tkeepdw, tlps_in.tdata } ),
 
-        .wr_en      ( tlps_in.tvalid    ),
-        .rd_en      ( dfifo.rx_rd_en    ),
+        .wr_en      ( tlps_in.tvalid    ), // write to fifo when tvalid is asserted
+        .rd_en      ( dfifo.rx_rd_en    ), // downstream determines when it wants to read from fifo
 
-        // fifo output (dout)
+        // split 134 bit data back into individual dout signals 
         .dout       ( { first, tlast, tkeepdw, tdata } ),
 
 
