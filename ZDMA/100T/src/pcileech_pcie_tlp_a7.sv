@@ -145,7 +145,12 @@ module pcileech_tlps128_dst_fifo(
     // Clk crossing fifo. Data bridged b/w pcie <-> fpga sys
     input                   clk_pcie, // write side (where tlps_in arrives from)
     input                   clk_sys, // read side (where this downstream dfifo operates on)
-    IfAXIS128.sink_lite     tlps_in, // 128 bit axi stream (tlps_tx from top module)
+    IfAXIS128.sink_lite     tlps_in, // interface for 128 bit axi stream (tlps_tx from top module) w/ signals:
+                                     // tdata[0..3]
+                                     // tvalid
+                                     // tlast
+                                     // tkeep[3:0]
+                                     // tuser[0]  
     IfPCIeFifoTlp.mp_pcie   dfifo // interface for downstream fifo consumption w/ signals:
                                   // - rx_data[0..3] => each 32 bit dw of tlp data
                                   // - rx_valid[0..3] => which dw is valid
@@ -154,6 +159,7 @@ module pcileech_tlps128_dst_fifo(
                                   // - rx_rd_en => read enable for downstream to output data
 );
     
+    // Local Signals
     wire         tvalid;
     wire [127:0] tdata;
     wire [3:0]   tkeepdw;
