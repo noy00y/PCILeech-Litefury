@@ -188,17 +188,22 @@ module pcileech_tlps128_dst_fifo(
         .valid      ( tvalid            )
     );
 
-    assign dfifo.rx_data[0]  = tdata[31:0];
+    /* Mapping fifo output to dfifo signals */
+    // 128 bit tdata stream is divided in 32 bit chunks
+    assign dfifo.rx_data[0]  = tdata[31:0]; 
     assign dfifo.rx_data[1]  = tdata[63:32];
     assign dfifo.rx_data[2]  = tdata[95:64];
     assign dfifo.rx_data[3]  = tdata[127:96];
-    assign dfifo.rx_first[0] = first;
+    assign dfifo.rx_first[0] = first; // tfirst is always [0]
     assign dfifo.rx_first[1] = 0;
     assign dfifo.rx_first[2] = 0;
     assign dfifo.rx_first[3] = 0;
-    assign dfifo.rx_last[0]  = tlast && (tkeepdw == 4'b0001);
+
+    // Assigning end of packet based on tlast and tkeepdw
+    // - value of tkeepdw will tell us which is the last valid pckt
+    assign dfifo.rx_last[0]  = tlast && (tkeepdw == 4'b0001); // ie. only first pckt is valid and thus end
     assign dfifo.rx_last[1]  = tlast && (tkeepdw == 4'b0011);
-    assign dfifo.rx_last[2]  = tlast && (tkeepdw == 4'b0111);
+    assign dfifo.rx_last[2]  = tlast && (tkeepdw == 4'b0111); 
     assign dfifo.rx_last[3]  = tlast && (tkeepdw == 4'b1111);
     assign dfifo.rx_valid[0] = tvalid && tkeepdw[0];
     assign dfifo.rx_valid[1] = tvalid && tkeepdw[1];
