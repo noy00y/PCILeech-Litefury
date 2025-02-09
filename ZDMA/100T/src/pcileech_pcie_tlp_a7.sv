@@ -215,8 +215,10 @@ endmodule
 // ------------------------------------------------------------------------
 // TLP-AXI-STREAM FILTER:
 // Filter away certain packet types such as CfgRd/CfgWr or non-Cpl/CplD
-// Ie. we only want completion with data packets. Everything else is garbage
-// Note: emulation will require we respond to certain pckts => more on this later
+// Ie. we only want completion and completion w/ data packets. Everything else is garbage
+// Note: emulation will require we respond to certain pckts => more on this later 
+// Looks at the first double wrd (32 bit) of the tlp header which contains TLP format/type field
+// If pckt matches filtered type => assert signal to prevent propgating pckt forward
 // ------------------------------------------------------------------------
 module pcileech_tlps128_filter(
     input                   rst,
