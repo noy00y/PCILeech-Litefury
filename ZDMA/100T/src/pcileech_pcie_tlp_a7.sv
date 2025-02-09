@@ -181,8 +181,6 @@ module pcileech_tlps128_dst_fifo(
 
         // split 134 bit data back into individual dout signals 
         .dout       ( { first, tlast, tkeepdw, tdata } ),
-
-
         .full       (                   ),
         .empty      (                   ),
         .valid      ( tvalid            )
@@ -217,6 +215,8 @@ endmodule
 // ------------------------------------------------------------------------
 // TLP-AXI-STREAM FILTER:
 // Filter away certain packet types such as CfgRd/CfgWr or non-Cpl/CplD
+// Ie. we only want completion with data packets. Everything else is garbage
+// Note: emulation will require we respond to certain pckts => more on this later
 // ------------------------------------------------------------------------
 module pcileech_tlps128_filter(
     input                   rst,
