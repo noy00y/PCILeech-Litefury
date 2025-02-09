@@ -223,25 +223,34 @@ endmodule
 module pcileech_tlps128_filter(
     input                   rst,
     input                   clk_pcie,
-    input                   alltlp_filter,
-    input                   cfgtlp_filter,
-    IfAXIS128.sink_lite     tlps_in,
-    IfAXIS128.source_lite   tlps_out
+    input                   alltlp_filter, // flag for filtering out non completion tlps
+    input                   cfgtlp_filter, // flag for config read/write tlps
+    IfAXIS128.sink_lite     tlps_in, // input stream
+    IfAXIS128.source_lite   tlps_out // (optional) output tlp stream
 );
 
+    // Internal Signals
     bit [127:0]     tdata;
     bit [3:0]       tkeepdw;
     bit             tvalid  = 0;
     bit [8:0]       tuser;
     bit             tlast;
     
+    // Wiring signals to output interface
     assign tlps_out.tdata   = tdata;
     assign tlps_out.tkeepdw = tkeepdw;
     assign tlps_out.tvalid  = tvalid;
     assign tlps_out.tuser   = tuser;
     assign tlps_out.tlast   = tlast;
     
-    bit  filter = 0;
+    // Filtering Logic
+    // - Detect if cpl pckt or cfg pckt
+    // - This current incoming pckt will be filtered if 
+    //      - pckt is already being filtered and we not on the first cycle of the tlp
+    //      - cfg flag is set and config pckt is recognized
+    //      - all non cpl flag is set and pckt is not a cpl or is a cfg pckt
+    // - thus filter_next is set to true so the tlp is dropped/continued to be dropped
+    bit  filter = 0; // 0 - don't drop tlp, 1 - drop tlp
     wire first = tlps_in.tuser[0];
     wire is_tlphdr_cpl = first && (
                         (tlps_in.tdata[31:25] == 7'b0000101) ||      // Cpl:  Fmt[2:0]=000b (3 DW header, no data), Cpl=0101xb
@@ -259,7 +268,7 @@ module pcileech_tlps128_filter(
         tvalid  <= tlps_in.tvalid && !filter_next && !rst;
         tuser   <= tlps_in.tuser;
         tlast   <= tlps_in.tlast;
-        filter  <= filter_next && !rst;
+        filter  <= filter_next && !rst; // update filter for next clk
     end
     
 endmodule
