@@ -278,26 +278,28 @@ endmodule
 // ------------------------------------------------------------------------
 // RX FROM FIFO - TLP-AXI-STREAM:
 // Convert 32-bit incoming data to 128-bit TLP-AXI-STREAM to be sent onwards to mux/pcie core. 
+// fifo facilitates clk domain crossing from clk_sys -> clk_pcie
 // ------------------------------------------------------------------------
 module pcileech_tlps128_src_fifo (
     input                   rst,
     input                   clk_pcie,
     input                   clk_sys,
-    input [31:0]            dfifo_tx_data,
+    input [31:0]            dfifo_tx_data, 
     input                   dfifo_tx_last,
     input                   dfifo_tx_valid,
-    IfAXIS128.source        tlps_out
+    IfAXIS128.source        tlps_out // output stream
 );
 
     // 1: 32-bit -> 128-bit state machine:
     bit [127:0] tdata;
     bit [3:0]   tkeepdw = 0;
     bit         tlast;
-    bit         first   = 1;
+    bit         first   = 1; // assigned to first 32 bit wrd in the stream
     wire        tvalid  = tlast || tkeepdw[3];
     
+    // 32 bit wrds combined into 128 bit stream
     always @ ( posedge clk_sys )
-        if ( rst ) begin
+        if ( rst ) begin 
             tkeepdw <= 0;
             tlast   <= 0;
             first   <= 1;
@@ -319,7 +321,7 @@ module pcileech_tlps128_src_fifo (
         end
 		
     // 2.1 - packet count (w/ safe fifo clock-crossing).
-    bit [10:0]  pkt_count       = 0;
+    bit [10:0]  pkt_count       = 0; // tracking how many complete 128 bit pckts are waiting to be sent
     wire        pkt_count_dec   = tlps_out.tvalid && tlps_out.tlast;
     wire        pkt_count_inc;
     wire [10:0] pkt_count_next  = pkt_count + pkt_count_inc - pkt_count_dec;
