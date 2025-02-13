@@ -284,9 +284,10 @@ module pcileech_tlps128_src_fifo (
     input                   rst,
     input                   clk_pcie,
     input                   clk_sys,
+    // DFIFO coming from clk_sys
     input [31:0]            dfifo_tx_data, 
     input                   dfifo_tx_last,
-    input                   dfifo_tx_valid,
+    input                   dfifo_tx_valid, 
     IfAXIS128.source        tlps_out // output stream
 );
 
@@ -294,8 +295,8 @@ module pcileech_tlps128_src_fifo (
     bit [127:0] tdata;
     bit [3:0]   tkeepdw = 0;
     bit         tlast;
-    bit         first   = 1; // assigned to first 32 bit wrd in the stream
-    wire        tvalid  = tlast || tkeepdw[3];
+    bit         first   = 1; // flag to track if we are at the start of a new pckt
+    wire        tvalid  = tlast || tkeepdw[3]; // tvalid flag asserted once 128 bit wrd ready or the pckt has ended
     
     // 32 bit wrds combined into 128 bit stream
     always @ ( posedge clk_sys )
@@ -305,8 +306,19 @@ module pcileech_tlps128_src_fifo (
             first   <= 1;
         end
         else begin
-            tlast   <= dfifo_tx_valid && dfifo_tx_last;
-            tkeepdw <= tvalid ? (dfifo_tx_valid ? 4'b0001 : 4'b0000) : (dfifo_tx_valid ? ((tkeepdw << 1) | 1'b1) : tkeepdw);
+            tlast   <= dfifo_tx_valid && dfifo_tx_last; // if current wrd is valid and last wrd, then assert tlast
+            
+            // Shift or reinit tkeepdw depending on if we alr have a full/valid 128 bit tlp
+            tkeepdw <= tvalid ? 
+            // tvalid (pckt complete) 
+                // if incoming wrd tx_valid -> reset keepdw at 0001
+                // else -> reset keepdw at 0000
+                (dfifo_tx_valid ? 4'b0001 : 4'b0000) : 
+            // not tvalid (pckt not complete)
+                // if incoming wrd tx_valid -> shift left once and then update lsb with 1
+                // else -> keep the current tkeepdw
+                (dfifo_tx_valid ? ((tkeepdw << 1) | 1'b1) : tkeepdw);
+            
             first   <= tvalid ? tlast : first;
             if ( dfifo_tx_valid ) begin
                 if ( tvalid || !tkeepdw[0] )
