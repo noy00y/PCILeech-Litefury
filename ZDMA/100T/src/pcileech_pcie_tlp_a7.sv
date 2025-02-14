@@ -319,8 +319,12 @@ module pcileech_tlps128_src_fifo (
                 // else -> keep the current tkeepdw
                 (dfifo_tx_valid ? ((tkeepdw << 1) | 1'b1) : tkeepdw);
             
+            // tvalid (pckt complete) -> first = tlast
             first   <= tvalid ? tlast : first;
-            if ( dfifo_tx_valid ) begin
+
+            // Storing incoming wrd in tdata
+            // Finds the first empty spot to put the 32 bit wrd in
+            if ( dfifo_tx_valid ) begin 
                 if ( tvalid || !tkeepdw[0] )
                     tdata[31:0]   <= dfifo_tx_data;
                 if ( !tkeepdw[1] )
@@ -332,12 +336,12 @@ module pcileech_tlps128_src_fifo (
             end
         end
 		
-    // 2.1 - packet count (w/ safe fifo clock-crossing).
+    // 2.1 - buffered packet count (w/ safe fifo clock-crossing).
     bit [10:0]  pkt_count       = 0; // tracking how many complete 128 bit pckts are waiting to be sent
-    wire        pkt_count_dec   = tlps_out.tvalid && tlps_out.tlast;
+    wire        pkt_count_dec   = tlps_out.tvalid && tlps_out.tlast; // decrement counts when pckt has been sent out
     wire        pkt_count_inc;
     wire [10:0] pkt_count_next  = pkt_count + pkt_count_inc - pkt_count_dec;
-    assign tlps_out.has_data    = (pkt_count_next > 0);
+    assign tlps_out.has_data    = (pkt_count_next > 0); // Tells the downstream logic that at least one packet is waiting
     
     fifo_1_1_clk2 i_fifo_1_1_clk2(
         .rst            ( rst                       ),
