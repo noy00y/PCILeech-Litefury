@@ -343,17 +343,18 @@ module pcileech_tlps128_src_fifo (
     wire [10:0] pkt_count_next  = pkt_count + pkt_count_inc - pkt_count_dec;
     assign tlps_out.has_data    = (pkt_count_next > 0); // Tells the downstream logic that at least one packet is waiting
     
+    // Crossing Clk domain
     fifo_1_1_clk2 i_fifo_1_1_clk2(
         .rst            ( rst                       ),
         .wr_clk         ( clk_sys                   ),
         .rd_clk         ( clk_pcie                  ),
         .din            ( 1'b1                      ),
-        .wr_en          ( tvalid && tlast           ),
-        .rd_en          ( 1'b1                      ),
+        .wr_en          ( tvalid && tlast           ), // write enabled in clk_sys when pckt is ready
+        .rd_en          ( 1'b1                      ), // read is always enabled in the clk_pcie side
         .dout           (                           ),
         .full           (                           ),
         .empty          (                           ),
-        .valid          ( pkt_count_inc             )
+        .valid          ( pkt_count_inc             ) // new pckt available for consumption
     );
 	
     always @ ( posedge clk_pcie ) begin
@@ -362,13 +363,20 @@ module pcileech_tlps128_src_fifo (
         
     // 2.2 - submit to output fifo - will feed into mux/pcie core.
     //       together with 2.1 this will form a low-latency "packet fifo".
-    fifo_134_134_clk2_rxfifo i_fifo_134_134_clk2_rxfifo(
+    fifo_134_134_clk2_rxfifo i_fifo_134_134_clk2_rxfifo(    
         .rst            ( rst                       ),
-        .wr_clk         ( clk_sys                   ),
+        .wr_clk         ( clk_sys                   ), 
         .rd_clk         ( clk_pcie                  ),
-        .din            ( { first, tlast, tkeepdw, tdata } ),
-        .wr_en          ( tvalid                    ),
-        .rd_en          ( tlps_out.tready && (pkt_count_next > 0) ),
+        // Data In - 134 bit total
+        //     - 128 bit - tdata
+        //     - 1 bit - first, last
+        //     - 4 bits - tkeepdw
+        .din            ( { first, tlast, tkeepdw, tdata } ), 
+        .wr_en          ( tvalid                    ), // write enabled when tvalid asserted
+        .rd_en          ( tlps_out.tready && (pkt_count_next > 0) ), // read enabled when...
+                                                                    // - downstream ready to recieve
+                                                                    // - there is a pckt available for recieving
+        // Data Out - Unpacked Axi stream signals
         .dout           ( { tlps_out.tuser[0], tlps_out.tlast, tlps_out.tkeepdw, tlps_out.tdata } ),
         .full           (                           ),
         .empty          (                           ),
