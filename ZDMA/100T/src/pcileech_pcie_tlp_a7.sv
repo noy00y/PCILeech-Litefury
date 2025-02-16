@@ -431,20 +431,23 @@ module pcileech_tlps128_sink_mux1 (
                                   (id==3) ? tlps_in3.tvalid :
                                   (id==4) ? tlps_in4.tvalid : 0;
     
+    // Priority Stream Selection from 1 -> 4
     wire [2:0] id_next_newsel   = tlps_in1.has_data ? 1 :
                                   tlps_in2.has_data ? 2 :
                                   tlps_in3.has_data ? 3 :
                                   tlps_in4.has_data ? 4 : 0;
     
+    // Trigger next id update if currently 0 or if pckt done transmitting
     wire [2:0] id_next          = ((id==0) || (tlps_out.tvalid && tlps_out.tlast)) ? id_next_newsel : id;
     
+    // Chosen stream sent downstream once downstream interface is **tready**
     assign tlps_in1.tready      = tlps_out.tready && (id_next==1);
     assign tlps_in2.tready      = tlps_out.tready && (id_next==2);
     assign tlps_in3.tready      = tlps_out.tready && (id_next==3);
     assign tlps_in4.tready      = tlps_out.tready && (id_next==4);
     
-    always @ ( posedge clk_pcie ) begin
+    // Updating current id on pcie clk edge
+    always @ ( posedge clk_pcie ) begin 
         id <= rst ? 0 : id_next;
     end
-    
 endmodule
