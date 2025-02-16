@@ -385,27 +385,27 @@ module pcileech_tlps128_src_fifo (
 
 endmodule
 
-
-
 // ------------------------------------------------------------------------
 // RX MUX - TLP-AXI-STREAM:
 // Select the TLP-AXI-STREAM with the highest priority (lowest number) and
 // let it transmit its full packet.
 // Each incoming stream must have latency of 1CLK. 
+// pckt is transmitted until tlast is asserted
 // ------------------------------------------------------------------------
 module pcileech_tlps128_sink_mux1 (
     input                       clk_pcie,
     input                       rst,
-    IfAXIS128.source            tlps_out,
-    IfAXIS128.sink              tlps_in1,
+    IfAXIS128.source            tlps_out, // output signals interface
+    IfAXIS128.sink              tlps_in1, // 
     IfAXIS128.sink              tlps_in2,
     IfAXIS128.sink              tlps_in3,
     IfAXIS128.sink              tlps_in4
 );
-    bit [2:0] id = 0;
-    
+    bit [2:0] id = 0; 
     assign tlps_out.has_data    = tlps_in1.has_data || tlps_in2.has_data || tlps_in3.has_data || tlps_in4.has_data;
     
+    // Forwarding tdata and cntrl signals given current id
+    // If id = 0 (not set) frwrd -> 0
     assign tlps_out.tdata       = (id==1) ? tlps_in1.tdata :
                                   (id==2) ? tlps_in2.tdata :
                                   (id==3) ? tlps_in3.tdata :
