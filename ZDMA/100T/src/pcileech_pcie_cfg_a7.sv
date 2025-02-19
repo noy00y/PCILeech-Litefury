@@ -14,14 +14,14 @@ module pcileech_pcie_cfg_a7(
     input                   rst,
     input                   clk_sys,
     input                   clk_pcie,
-    IfPCIeFifoCfg.mp_pcie   dfifo,
-    IfPCIeSignals.mpm       ctx,
+    IfPCIeFifoCfg.mp_pcie   dfifo, // cfg data fifo
+    IfPCIeSignals.mpm       ctx, // cfg context info
     IfAXIS128.source        tlps_static,
     output [15:0]           pcie_id
     );
 
     // ----------------------------------------------------
-    // TickCount64
+    // TickCount64 - global tick counter
     // ----------------------------------------------------
     
     time tickcount64 = 0;
