@@ -62,8 +62,12 @@
 
 - Instructions operate on values that come from registers or main memory
 - Eg. Using the most common instruction *MOV*
-    - 01: BE 3F 00 0F 00	mov esi, 0F003Fh ; set ESI = 0xF00
-    - 02: 8B F1	mov esi, ecx ; set ESI = ECX
+
+```nasm
+- 01: BE 3F 00 0F 00	mov esi, 0F003Fh ; set ESI = 0xF00
+- 02: 8B F1	mov esi, ecx ; set ESI = ECX
+```
+
 - Moving data to and from memory
 - X86 utilizes [] brackets to indicate memory access
 - Eg 1. Common operation and its pseudo
@@ -250,29 +254,20 @@ memcpy((void *)(ebx + 0x170), (void *)(eax + 0x170), 15);
     - SCAS implicity compare AL/AX/EAX with data starting at the memory address EDI
 - Eg 7. Implementing C function strlen()
 
+```nasm
 01: 30 C0 xor al, al
-
 ; set AL to 0 (NUL byte). You will frequently observe the XOR reg, reg
-
 ; pattern in code.
-
 02: 89 FB mov ebx, edi
-
 ; save the original pointer to the string
-
 03: F2 AE repne scasb
-
 ; repeatedly scan forward one byte at a time as long as AL does not match the
-
 ; byte at EDI when this instruction ends, it means we reached the NUL byte in
-
 ; the string buffer
-
 04: 29 DF sub edi, ebx
-
 ; edi is now the NUL byte location. Subtract that from the original pointer
-
 ; to the length.
+```
 
 - line 1: xor al, al
     - prepares a search byte of 0x00 to look for the end of a c-string (the \0 terminator)
@@ -292,21 +287,16 @@ memcpy((void *)(ebx + 0x170), (void *)(eax + 0x170), 15);
 
 Pseudo C Code Equivalent
 
+```c
 size_t my_strlen(const char *str)
-
 {
-
 char *start = (char *)EDI;
-
 // Search for '\0'
-
 // while (*EDI != 0) EDI++;
-
 // repne scasb does this behind the scenes.
-
 return (char *)EDI - start;
-
 }
+```
 
 - STOS functions similarly to SCAS except that it writes the value AL/AX/EAX to EDI.
 - used to initialize a buffer to a constant value (eg. memset())
@@ -318,29 +308,20 @@ return (char *)EDI - start;
         - used to implement memcpy() which reads data from memory sequentially
 - Eg 8. Here's an example of such
 
+```nasm
 01: 33 C0 xor eax, eax
-
 ; set EAX to 0
-
 02: 6A 09 push 9
-
 ; push 9 on the stack
-
 03: 59 pop ecx
-
 ; pop it back in ECX. Now ECX = 9.
-
 04: 8B FE mov edi, esi
-
 ; set the destination address by pointing edi to the same location as esi
-
 05: F3 AB rep stosd
-
 ; write 36 bytes of zero to the destination buffer (STOSD repeated 9 times)
-
 ; double word (4 bytes) x 9 times = 36 bytes
-
 ; this is equivalent lent to memset(edi, 0, 36)
+```
 
 Equivalent Pseudo C: memset( (void *)EDI, 0, 36 );
 
@@ -358,11 +339,11 @@ Equivalent Pseudo C: memset( (void *)EDI, 0, 36 );
 - Arithmetic Shift (SAL or SAR) -> for a right shift we fill the new empty position with the sign bit (left most bit) to preserve the sign of the number
 - Eg.
 
+```nasm
 MOV R1, #10 ; move 00001010 into R1
-
 SHL R1, #1 ; shifts left by 1 -> equivalent to multiplying the number by 2^1 = 2. Now R1 = 00010100
-
 SHR R1 #2 ; shift right by 2 -> equiv of dividing by 2^2 = 4. Now R1 = 00000101
+```
 
 **Unsigned and Signed Multiplication**
 
@@ -370,13 +351,12 @@ SHR R1 #2 ; shift right by 2 -> equiv of dividing by 2^2 = 4. Now R1 = 00000101
 - MUL has the form: MUL reg/memory and can operate on either
 - Eg 1
 
+```nasm
 01: F7 E1 mul ecx ; EDX:EAX = EAX * ECX
-
 02: F7 66 04 mul dword ptr [esi+4] ; EDX:EAX = EAX * dword_at(ESI+4)
-
 03: F6 E1 mul cl ; AX = AL * CL
-
 04: 66 F7 E2 mul dx ; DX:AX = AX * DX
+```
 
 - Line 3 -> uses the 8 bit form of mul and multiplies AL (low byte of EAX) by CL (low byte of ECX). Resulting 16 bit product is then placed in AX
 - What does something like *EDX:EAX* or *DX:AX* mean
@@ -384,25 +364,18 @@ SHR R1 #2 ; shift right by 2 -> equiv of dividing by 2^2 = 4. Now R1 = 00000101
     - EAX holds the lower 32 bit of the product and EDX holds the upper 32 bits
 - Eg 2
 
+```nasm
 01: B8 03 00 00 00 mov eax,3 ; set EAX=3
-
 02: B9 22 22 22 22 mov ecx,22222222h ; set ECX=0x22222222
-
 03: F7 E1 mul ecx ; EDX:EAX = 3 * 0x22222222 =
-
 ; 0x66666666
-
 ; hence, EDX=0, EAX=0x66666666
-
 04: B8 03 00 00 00 mov eax,3 ; set EAX=3
-
 05: B9 00 00 00 80 mov ecx,80000000h ; set ECX=0x80000000
-
 06: F7 E1 mul ecx ; EDX:EAX = 3 * 0x80000000 =
-
 ; 0x180000000
-
 ; hence, EDX=1, EAX=0x80000000
+```
 
 - We store the result in edx:eax for 32 bit multiplication since the resulting answer may not fit in just 1 single 32 bit register -> as seen from lines 4-6 in eg 2
 - IMUL has 3 forms
@@ -412,11 +385,11 @@ SHR R1 #2 ; shift right by 2 -> equiv of dividing by 2^2 = 4. Now R1 = 00000101
         - In this last form of IMUL, you multiply reg2 or mem by some imm *intermediate constant* before storing that result in reg1
 - Eg 3. Some disassemblers may shorten the parameters as well
 
+```nasm
 01: F7 E9 imul ecx ; EDX:EAX = EAX * ECX
-
 02: 69 F6 A0 01 00+ imul esi, 1A0h ; ESI = ESI * 0x1A0
-
 03: 0F AF CE imul ecx, esi ; ECX = ECX * ESI
+```
 
 **Unsigned and Signed Division**
 
@@ -432,30 +405,24 @@ SHR R1 #2 ; shift right by 2 -> equiv of dividing by 2^2 = 4. Now R1 = 00000101
 
 | Operand Size (Divisor) | Dividend Register | Quotient Register | Remainder Register |
 | --- | --- | --- | --- |
-| 8-bit (div r/m8)AXALAH16-bit (div r/m16)DX:AXAXDX32-bit (div r/m32)EDX:EAXEAXEDX |  |  |  |
+| 8-bit (div r/m8) | AX | AL | AH |
+| 16-bit (div r/m16) | DX:AX | AX | DX |
+| 32-bit (div r/m32) | EDX:EAX | EAX | EDX |
 - Eg 1.
 
+```nasm
 01: F7 F1 div ecx ; EDX:EAX / ECX, quotient in EAX,
-
 02: F6 F1 div cl ; AX / CL, quotient in AL, remainder in AH
-
 03: F7 76 24 div dword ptr [esi+24h] ; see line 1
-
 04: B1 02 mov cl,2 ; set CL = 2
-
 05: B8 0A 00 00 00 mov eax,0Ah ; set EAX = 0xA
-
 06: F6 F1 div cl ; AX/CL = A/2 = 5 in AL (quotient),
-
 ; AH = 0 (remainder)
-
 07: B1 02 mov cl,2 ; set CL = 2
-
 08: B8 09 00 00 00 mov eax,09h ; set EAX = 0x9
-
 09: F6 F1 div cl ; AX/CL = 9/2 = 4 in AL (quotient),
-
 ; AH = 1 (remainder)
+```
 
 ## Stack Operations and Function Invocation
 
@@ -469,41 +436,27 @@ SHR R1 #2 ; shift right by 2 -> equiv of dividing by 2^2 = 4. Now R1 = 00000101
 - default increment/decrement value is 4, but this can be changed w/ a prefix override
 - Eg. 1
 
+```nasm
 ; initial ESP = 0xb20000
-
 01: B8 AA AA AA AA mov eax,0AAAAAAAAh
-
 02: BB BB BB BB BB mov ebx,0BBBBBBBBh
-
 03: B9 CC CC CC CC mov ecx,0CCCCCCCCh
-
 04: BA DD DD DD DD mov edx,0DDDDDDDDh
-
 05: 50 push eax
-
 ; address 0xb1fffc will contain the value 0xAAAAAAAA and ESP
-
 ; will be 0xb1fffc (=0xb20000-4)
-
 06: 53 push ebx
-
 ; address 0xb1fff8 will contain the value 0xBBBBBBBB and ESP
-
 ; will be 0xb1fff8 (=0xb1fffc-4)
-
 07: 5E pop esi
+; ESI will contain the value 0xBBBBBBBB and ESP will be 0xb1fffc
+; (=0xb1fff8+4)
+08: 5F pop edi
+; EDI will contain the value 0xAAAAAAAA and ESP will be 0xb20000
+; (=0xb1fffc+4)
+```
 
 [](https://lh7-rt.googleusercontent.com/docsz/AD_4nXejFDykfPy-ysL4Uv_MoIfd2NLeTGBwplrOfMJaIl69tFnJffJtMhVpyU72bYhLSG4jm-vt0n-x62VNbKD0JHbg6nD55h6RPSQJFnIYpRE9HlGxkKo4U6lTyhSlj9rNXvbJy9bf?key=L0WoYa1WarcY3pdciZzHeHql)
-
-; ESI will contain the value 0xBBBBBBBB and ESP will be 0xb1fffc
-
-; (=0xb1fff8+4)
-
-08: 5F pop edi
-
-; EDI will contain the value 0xAAAAAAAA and ESP will be 0xb20000
-
-; (=0xb1fffc+4)
 
 - Line 5 -> ESP is decremented by 4 which now becomes 0xb1fffc. The value in EAX (0xAAAAAAAA) is now stored in this location. Same thing for line 6
 - Line 7 -> Value at ESP *which is currently 0xb1fff8,* is read and then ESP is incremented. Same thing for line 8
@@ -511,59 +464,39 @@ SHR R1 #2 ; shift right by 2 -> equiv of dividing by 2^2 = 4. Now R1 = 00000101
 - Functions are implemented at the machine level using this stack data structure
 - Eg 2. Consider the following C Code
 
-C Code:
-
-- --------------------
-
-int
-
-__cdecl addme(short a, short b)
-
+```c
+int __cdecl addme(short a, short b)
 {
-
-return a+b;
-
+	return a+b;
 }
+```
 
-Assembly Code:
-
-- --------------------
-
+```nasm
 01: 004113A0 55 push ebp ; save the caller’s base pointer
-
 02: 004113A1 8B EC mov ebp, esp ; set up the stack frame
-
 03: ...
-
 04: 004113BE 0F BF 45 08 movsx eax, word ptr [ebp+8] ; Load ‘a’ into EAX, sign extended
-
 05: 004113C2 0F BF 4D 0C movsx ecx, word ptr [ebp+0Ch] ; Load ‘b’ into ECX, sign extended
-
 06: 004113C6 03 C1 add eax, ecx ; EAX = EAX + ECX
-
 07: ...
-
 08: 004113CB 8B E5 mov esp, ebp ; Restore ESP to its original position
-
 09: 004113CD 5D pop ebp ; Restore the caller’s EBP
-
 10: 004113CE C3 retn ; return to the caller
+```
 
 Function is invoked with the following code:
 
-sum = addme(x, y);
+`sum = addme(x, y);`
 
 Assembly:
 
+```nasm
 01: 004129F3 50 push eax ; push a
-
 02: ...
-
 03: 004129F8 51 push ecx ; push b
-
 04: 004129F9 E8 F1 E7 FF FF call addme ; call the func
-
 05: 004129FE 83 C4 08 add esp, 8 ; adjust esp (caller cleans the stack)
+```
 
 - __cdecl calling convention
     - pushes arguments onto the stack from right to left.
@@ -618,67 +551,43 @@ Function Invocation from Eg 2
 - If-Else -> constructs are quite simple to recognize since they involve a compare / test followed by a jcc
 - Eg 1.
 
+```nasm
 01: mov esi, [ebp+8] ; load first function argument into esi
-
 02: mov edx, [esi] ; load the value at [esi] into edx (edx = *esi)
-
 03: test edx, edx ; check if edx == 0
-
 04: jz short loc_4E31F9 ; jump to cleanup/return if edx == 0
-
 05: mov ecx, offset _FsRtlFastMutexLookasideList ; load ecx with a list of memory blocks associated exallocate
-
 06: call _ExFreeToNPagedLookasideList@8 ; frees memory allocated from the non - paged lookaside list. ie. free memory in the structure
-
 07: and dword ptr [esi], 0 ; set first field of the structure to 0 (*esi = 0)
-
 08: lea eax, [esi+4] ; load ‘esi + 4’ into eax
-
 09: push eax ; push eax as a arg into the next function
-
 10: call _FsRtlUninitializeBaseMcb@4 ; func call
-
 11: loc_4E31F9: ; function epilogue for cleanup and return
-
 12: pop esi
-
 13: pop ebp
-
 14: retn 4
-
 15: _FsRtlUninitializeLargeMcb@4 endp
+```
 
 Pseudo C
 
+```nasm
 if (*esi == 0) {
-
 return;
-
 }
-
 ExFreeToNPagedLookasideList(...);
-
 - esi = 0;
-
 ...
-
 return;
-
 OR
-
 if (*esi != 0) {
-
 ...
-
 ExFreeToNPagedLookasideList(...);
-
 *esi = 0;
-
 ...
-
 }
-
 return;
+```
 
 - Non-paged lookaside lists
     - part of the windows kernel
@@ -687,109 +596,61 @@ return;
 - Sometimes when dealing with many if/else or switch statements, the compiler may find it cheaper to build a jump table to reduce the # of comparisons. The jump table is an array of function pointers (addresses), each pointing to a handler for a specific case. An example of this below
 - Eg 2.
 
-Assembly:
-
-- --------
-
+```nasm
 01: cmp edi, 5 ;
-
 02: ja short loc_10001141 ; *jump if above*, ie. if edi > 5 → jump to loc_…141. this is the default case
-
 03: jmp ds:off_100011A4[edi*4] ; program jumps to the address stored at off_1…A4[edi*4]. ie index into the jump table using the edi value + 4 byte long address
-
 04: loc_10001125:
-
 05: mov esi, 40h ; esi = 0x40
-
 06: jmp short loc_10001145 ; exit switch statement
-
 07: loc_1000112C:
-
 08: mov esi, 20h
-
 09: jmp short loc_10001145
-
 10: loc_10001133:
-
 11: mov esi, 38h
-
 12: jmp short loc_10001145
-
 13: loc_1000113A:
-
 14: mov esi, 30h
-
 15: jmp short loc_10001145
-
 16: loc_10001141: ; this will execute if we initially jumped from EDI > 5
-
 17: mov esi, [esp+0Ch] ; esi = *(esp + 0xC)
-
 18: ...
-
 19: off_100011A4 dd offset loc_10001125
-
 20: dd offset loc_10001125
-
 21: dd offset loc_1000113A
-
 22: dd offset loc_1000112C
-
 23: dd offset loc_10001133
-
 24: dd offset loc_1000113A
+```
 
 Pseudo C:
 
-- --------
-
+```c
 switch(edi) {
-
 case 0:
-
 case 1:
-
 // goto loc_10001125;
-
 esi = 0x40;
-
 break;
-
 case 2:
-
 case 5:
-
 // goto loc_1000113A;
-
 esi = 0x30;
-
 break;
-
 case 3:
-
 // goto loc_1000112C;
-
 esi = 0x20;
-
 break;
-
 case 4:
-
 // goto loc_10001133;
-
 esi = 0x38;
-
 break;
-
 default:
-
 // goto loc_10001141;
-
 esi = *(esp+0xC)
-
 break;
-
 }
+```
 
 - Loops are implemented using a combination of JCC and JMP instructions. ie. implemented using if/else and goto constructs
 
@@ -808,31 +669,18 @@ Assembly Code:
 
 ```nasm
 01: 00401002 mov edi, ds:__imp__printf ; address of printf function imported dynamically into edi. EDI now acts as the function pointer to printf
-
 02: 00401008 xor esi, esi ; zero out esi → this will be used as the loop counter (ie. i = 0)
-
 03: 0040100A lea ebx, [ebx+0] ; placeholder for alignment (whatever that means)
-
 04: 00401010 loc_401010: ; label for loop. Entry point of the loop body
-
 05: 00401010 push esi ;
-
 06: 00401011 push offset Format ; "%d\n" ;
-
 07: 00401016 call edi ; __imp__printf ; call print function after pushing the counter and format to the stack. This is the equivalent of passing both as args to printf()
-
 08: 00401018 inc esi ; increment loop counter
-
 09: 00401019 add esp, 8 ; moves the pointer to the stack 8 bytes down to clean up the 2 args passed into printf (“%d\n”, i). We have to clean up the stack since cdecls is used
-
 10: 0040101C cmp esi, 0Ah ; compares loop counter to 10, ie . i < 10
-
 11: 0040101F jl short loc_401010; if esi < 10, jump back to the start of the loop. Since we used jl *jump if less then* we know the comparison was being done with signed integers
-
 12: 00401021 push offset aDone ; "done!\n" ; push a str onto the stack
-
 13: 00401026 call edi ; __imp__printf ; call print function
-
 14: 00401028 add esp, 4 ; incrementing stack pointer removes done from the stack
 ```
 
@@ -1011,28 +859,36 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 21: 8D BD D4 FE FF+ lea edi, [ebp-12Ch] ; load effective address into edi -> edi = &local_var[0]
                                         ; edi is set to point to the start of the buffer 300 bytes below EBP
                                         ; This is the destination buffer for store string cmd   
-22: C7 85 D0 FE FF+ mov dword ptr [ebp-130h], 0
-23: 50 push eax
-24: 6A 02 push 2
-25: F3 AB rep stosd
-26: E8 2D 2F 00 00 call CreateToolhelp32Snapshot
-27: 8B F8 mov edi, eax
-28: 83 FF FF cmp edi, 0FFFFFFFFh
+22: C7 85 D0 FE FF+ mov dword ptr [ebp-130h], 0 ; zero out the dword 304 bytes below ebp, for initialization
 
-29: 75 09 jnz short loc_10001CB9 (line 35)
-30: 33 C0 xor eax, eax
-31: 5F pop edi
-32: 8B E5 mov esp, ebp
-33: 5D pop ebp
+; Pushing 2 args onto stack for the function CreateToolhelp32Snapshot
+23: 50 push eax ; dwProcessID param -> 0 means current process
+24: 6A 02 push 2 ; TH32CS_SNAPPROCESS flag -> 0x2 gives a snapshot of all processes
+25: F3 AB rep stosd ; bulk mem write -> store dword (EAX) into edi repeating ecx times
+26: E8 2D 2F 00 00 call CreateToolhelp32Snapshot ; call the snapshot function which will return the 
+                                                 ; # of running windows processes                
+27: 8B F8 mov edi, eax ; store this result back in edi
+28: 83 FF FF cmp edi, 0FFFFFFFFh ; compare with invalid (0)
+29: 75 09 jnz short loc_10001CB9 (line 35) ; jump if not 0 (ie. valid)
+
+; not valid -> return
+30: 33 C0 xor eax, eax ; set return val to false (return 0)
+31: 5F pop edi ;
+32: 8B E5 mov esp, ebp ; reset esp back to base pointer to clear all local vars
+33: 5D pop ebp ; pop base ptr and return
 34: C2 0C 00 retn 0Ch
-35: loc_10001CB9:
-36: 8D 85 D0 FE FF+ lea eax, [ebp-130h]
+
+; Jump if valid sequence
+; Now we are enumerating through the processes using Process32First
+35: loc_10001CB9: 
+36: 8D 85 D0 FE FF+ lea eax, [ebp-130h] ; 
 37: 56 push esi
 38: 50 push eax
 39: 57 push edi
 40: C7 85 D0 FE FF+ mov dword ptr [ebp-130h], 128h
 41: E8 FF 2E 00 00 call Process32First
 42: 85 C0 test eax, eax
+
 43: 74 4F jz short loc_10001D24 (line 70)
 44: 8B 35 C0 50 00+ mov esi, ds:_stricmp
 45: 8D 8D F4 FE FF+ lea ecx, [ebp-10Ch]
