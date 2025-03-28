@@ -881,41 +881,51 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 ; Jump if valid sequence
 ; Now we are enumerating through the processes using Process32First
 35: loc_10001CB9: 
-36: 8D 85 D0 FE FF+ lea eax, [ebp-130h] ; 
-37: 56 push esi
-38: 50 push eax
-39: 57 push edi
-40: C7 85 D0 FE FF+ mov dword ptr [ebp-130h], 128h
-41: E8 FF 2E 00 00 call Process32First
-42: 85 C0 test eax, eax
+36: 8D 85 D0 FE FF+ lea eax, [ebp-130h] ; load the pointer (to the address of a struct) into eax
+																				; this struct buffer is holding PROCESSENTRY32
+37: 56 push esi 
+38: 50 push eax ; pointer to PROCESSENTRY32 struct
+39: 57 push edi ; snapshot handle
+40: C7 85 D0 FE FF+ mov dword ptr [ebp-130h], 128h ; take the dword starting at -130h from ebp
+                                                   ; set the first 4 bytes of each buffer (ie. dwSize) to 128h
+41: E8 FF 2E 00 00 call Process32First ; call the process enumerating func w/ args (eax, edi and [ebp-130h])
+42: 85 C0 test eax, eax ; test if func() succeeded.                        
+43: 74 4F jz short loc_10001D24 (line 70) ; If not valid (ie. eax == 0) -> jump if zero flag is set
 
-43: 74 4F jz short loc_10001D24 (line 70)
-44: 8B 35 C0 50 00+ mov esi, ds:_stricmp
-45: 8D 8D F4 FE FF+ lea ecx, [ebp-10Ch]
-46: 68 50 7C 00 10 push 10007C50h
-47: 51 push ecx
-48: FF D6 call esi ; _stricmp
-49: 83 C4 08 add esp, 8
-50: 85 C0 test eax, eax
-51: 74 26 jz short loc_10001D16 (line 66)
-52: loc_10001CF0:
-53: 8D 95 D0 FE FF+ lea edx, [ebp-130h]
-54: 52 push edx
+; Valid Scan -> Proceed
+44: 8B 35 C0 50 00+ mov esi, ds:_stricmp ; load the function pointer addy of str insensitive cmp func into esi
+                                         ; this func returns 0 if match is found
+45: 8D 8D F4 FE FF+ lea ecx, [ebp-10Ch] ; Load the ptr to the szExeFile from the processSentry struct into ecx
+                                        ; szExeFile contains the process name and we compare this str w/ a target
+46: 68 50 7C 00 10 push 10007C50h ; pointer to a hard coded target str is pushed onto the stack
+47: 51 push ecx ; pointer is pushed to the stack
+48: FF D6 call esi ; _stricmp -> return 0 if match, non zero if not
+49: 83 C4 08 add esp, 8 ; clean up stack due to the 2 args that were pushed
+50: 85 C0 test eax, eax ; test result of stricmp if match (0)
+51: 74 26 jz short loc_10001D16 (line 66) ; jump if 0 -> valid
+
+; Enter Loop if no match
+52: loc_10001CF0: 
+53: 8D 95 D0 FE FF+ lea edx, [ebp-130h] ; load ptr to the processentry struct again, so we can call the func again
+54: 52 push edx ; push ptr and snapshot as func args for Process32Next
 55: 57 push edi
-56: E8 CD 2E 00 00 call Process32Next
-57: 85 C0 test eax, eax
+56: E8 CD 2E 00 00 call Process32Next ; eax != 0 -> success
+                                      ; eax == 0 -> end of list
+57: 85 C0 test eax, eax ; check if done w/ the process list -> if 0 -> jump
 58: 74 23 jz short loc_10001D24 (line 70)
-59: 8D 85 F4 FE FF+ lea eax, [ebp-10Ch]
-60: 68 50 7C 00 10 push 10007C50h
-61: 50 push eax
+59: 8D 85 F4 FE FF+ lea eax, [ebp-10Ch] ; again load in ptr to process name
+60: 68 50 7C 00 10 push 10007C50h ; push ptr to target str
+61: 50 push eax 
 62: FF D6 call esi ; _stricmp
-63: 83 C4 08 add esp, 8
-64: 85 C0 test eax, eax
-65: 75 DA jnz short loc_10001CF0 (line 52)
+63: 83 C4 08 add esp, 8 ; clear stack after calling cmp func
+64: 85 C0 test eax, eax ; test if we done with the process list
+65: 75 DA jnz short loc_10001CF0 (line 52) ; jump back to the start of the loop if (jnz) not zero
+
 66: loc_10001D16:
 67: 8B 85 E8 FE FF+ mov eax, [ebp-118h]
 68: 8B 8D D8 FE FF+ mov ecx, [ebp-128h]
 69: EB 06 jmp short loc_10001D2A (line 73)
+
 70: loc_10001D24:
 71: 8B 45 0C mov eax, [ebp+0Ch]
 72: 8B 4D 0C mov ecx, [ebp+0Ch]
