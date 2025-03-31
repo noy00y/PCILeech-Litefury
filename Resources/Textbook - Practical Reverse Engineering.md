@@ -836,7 +836,7 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 02: _DllMain@12 proc near
 03: 55 push ebp ; save the old base pointer onto the stack
 04: 8B EC mov ebp, esp ; update the base pointer with the current stack frame
-05: 81 EC 30 01 00+ sub esp, 130h ; reserve 130 bits of mem on the stack for local vars
+05: 81 EC 30 01 00+ sub esp, 130h ; reserve 0x130 (304) bytes of mem on the stack for local vars
 06: 57 push edi ; saves the value of the edi register onto the stack
 07: 0F 01 4D F8 sidt fword ptr [ebp-8] ; current IDT register is written into mem/stack (2 byte limit, 4 byte base)
 08: 8B 45 FA mov eax, [ebp-6] ; move base address of IDT into EAX 
@@ -853,25 +853,26 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 16: 5D pop ebp ; restores the old base ptr
 17: C2 0C 00 retn 0Ch ; stdcall style return 
 
+; If IDT in range, continue
 18: loc_10001C88:
 19: 33 C0 xor eax, eax
 20: B9 49 00 00 00 mov ecx, 49h ; storing a loop counter in ecx -> (4*16 + 9) = 73 time loop counter
 21: 8D BD D4 FE FF+ lea edi, [ebp-12Ch] ; load effective address into edi -> edi = &local_var[0]
                                         ; edi is set to point to the start of the buffer 300 bytes below EBP
                                         ; This is the destination buffer for store string cmd   
-22: C7 85 D0 FE FF+ mov dword ptr [ebp-130h], 0 ; zero out the dword 304 bytes below ebp, for initialization
+	22: C7 85 D0 FE FF+ mov dword ptr [ebp-130h], 0 ; Zero a DWORD at [ebp-130h] for init
 
-; Pushing 2 args onto stack for the function CreateToolhelp32Snapshot
+; CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0)
 23: 50 push eax ; dwProcessID param -> 0 means current process
 24: 6A 02 push 2 ; TH32CS_SNAPPROCESS flag -> 0x2 gives a snapshot of all processes
-25: F3 AB rep stosd ; bulk mem write -> store dword (EAX) into edi repeating ecx times
+25: F3 AB rep stosd ; Fill 73 dwords at EDI with EAX=0
 26: E8 2D 2F 00 00 call CreateToolhelp32Snapshot ; call the snapshot function which will return the 
                                                  ; # of running windows processes                
 27: 8B F8 mov edi, eax ; store this result back in edi
 28: 83 FF FF cmp edi, 0FFFFFFFFh ; compare with invalid (0)
 29: 75 09 jnz short loc_10001CB9 (line 35) ; jump if not 0 (ie. valid)
 
-; not valid -> return
+; Snapshot failed => return 0
 30: 33 C0 xor eax, eax ; set return val to false (return 0)
 31: 5F pop edi ;
 32: 8B E5 mov esp, ebp ; reset esp back to base pointer to clear all local vars
@@ -879,7 +880,7 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 34: C2 0C 00 retn 0Ch
 
 ; Jump if valid sequence
-; Now we are enumerating through the processes using Process32First
+; Snapshot succeeded => enumerating processes
 35: loc_10001CB9: 
 36: 8D 85 D0 FE FF+ lea eax, [ebp-130h] ; load the pointer (to the address of a struct) into eax
 																				; this struct buffer is holding PROCESSENTRY32
@@ -892,7 +893,9 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 42: 85 C0 test eax, eax ; test if func() succeeded.                        
 43: 74 4F jz short loc_10001D24 (line 70) ; If not valid (ie. eax == 0) -> jump if zero flag is set
 
+
 ; Valid Scan -> Proceed
+; We have at least one process => _stricmp loop
 44: 8B 35 C0 50 00+ mov esi, ds:_stricmp ; load the function pointer addy of str insensitive cmp func into esi
                                          ; this func returns 0 if match is found
 45: 8D 8D F4 FE FF+ lea ecx, [ebp-10Ch] ; Load the ptr to the szExeFile from the processSentry struct into ecx
@@ -904,7 +907,7 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 50: 85 C0 test eax, eax ; test result of stricmp if match (0)
 51: 74 26 jz short loc_10001D16 (line 66) ; jump if 0 -> valid
 
-; Enter Loop if no match
+; No match => get next process in a loop
 52: loc_10001CF0: 
 53: 8D 95 D0 FE FF+ lea edx, [ebp-130h] ; load ptr to the processentry struct again, so we can call the func again
 54: 52 push edx ; push ptr and snapshot as func args for Process32Next
@@ -921,41 +924,48 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 64: 85 C0 test eax, eax ; test if we done with the process list
 65: 75 DA jnz short loc_10001CF0 (line 52) ; jump back to the start of the loop if (jnz) not zero
 
-66: loc_10001D16:
-67: 8B 85 E8 FE FF+ mov eax, [ebp-118h]
-68: 8B 8D D8 FE FF+ mov ecx, [ebp-128h]
-69: EB 06 jmp short loc_10001D2A (line 73)
+; Found match => jump
+66: loc_10001D16: ; we jump here if a match is found b/w process name and target str "ollydbg"
+67: 8B 85 E8 FE FF+ mov eax, [ebp-118h] ; Load some local value into EAX and ECX
+68: 8B 8D D8 FE FF+ mov ecx, [ebp-128h] 
+69: EB 06 jmp short loc_10001D2A (line 73) ; unconditional jump for final return/exit logic
 
-70: loc_10001D24:
-71: 8B 45 0C mov eax, [ebp+0Ch]
-72: 8B 4D 0C mov ecx, [ebp+0Ch]
-73: loc_10001D2A:
-74: 3B C1 cmp eax, ecx
-75: 5E pop esi
-76: 75 09 jnz short loc_10001D38 (line 82)
-77: 33 C0 xor eax, eax
-78: 5F pop edi
-79: 8B E5 mov esp, ebp
-80: 5D pop ebp
-81: C2 0C 00 retn 0Ch
+; If done enumerating or no match => set EAX = [ebp+0Ch], etc.
+70: loc_10001D24: ; jump here if done with process list (when process32First returns 0)
+71: 8B 45 0C mov eax, [ebp+0Ch] ; 3rd func param (lpvReserved) -> this val will be returned back to the caller
+72: 8B 4D 0C mov ecx, [ebp+0Ch] ; complier quirk
+
+; Common return logic
+73: loc_10001D2A: ; unconditional jump for return logic 
+74: 3B C1 cmp eax, ecx ; cmp eax and ecx -> jump if not 0 (no match)
+75: 5E pop esi ; restore 
+76: 75 09 jnz short loc_10001D38 (line 82) ; jump if not zero (alternate return handling)
+77: 33 C0 xor eax, eax ; eax set to 0
+78: 5F pop edi ; restore
+79: 8B E5 mov esp, ebp ; reset stack by setting esp to ebp
+80: 5D pop ebp ; pop ebp to return back to caller
+81: C2 0C 00 retn 0Ch ; return
+
 82: loc_10001D38:
-83: 8B 45 0C mov eax, [ebp+0Ch]
-84: 48 dec eax
-85: 75 15 jnz short loc_10001D53 (line 93)
-86: 6A 00 push 0
-87: 6A 00 push 0
-88: 6A 00 push 0
-89: 68 D0 32 00 10 push 100032D0h
-90: 6A 00 push 0
-91: 6A 00 push 0
-92: FF 15 20 50 00+ call ds:CreateThread
-93: loc_10001D53:
-94: B8 01 00 00 00 mov eax, 1
-95: 5F pop edi
-96: 8B E5 mov esp, ebp
-97: 5D pop ebp
-98: C2 0C 00 retn 0Ch
-99: _DllMain@12 endp
+83: 8B 45 0C mov eax, [ebp+0Ch] ; set the return val of eax to lpvReserve 
+84: 48 dec eax ; decrement eax and then check its val -> jump if not 0
+85: 75 15 jnz short loc_10001D53 (line 93) 
+; pushing args to stack for CreateThreadFunc()
+86: 6A 00 push 0 ; lpThreadAttributes
+87: 6A 00 push 0 ; dwStackSize
+88: 6A 00 push 0 ; lpParameter
+89: 68 D0 32 00 10 push 100032D0h ; lpStartAddress
+90: 6A 00 push 0 ; dwCreationFlags
+91: 6A 00 push 0 ; lpThreadId 
+92: FF 15 20 50 00+ call ds:CreateThread ; call thread creation func
+
+93: loc_10001D53: ; if lpvReserve is != 0 -> we jump jere
+94: B8 01 00 00 00 mov eax, 1 ; set eax to 1 (return true)??
+95: 5F pop edi ; restore
+96: 8B E5 mov esp, ebp ; reset esp back to base ptr and clear stack
+97: 5D pop ebp restore ebp
+98: C2 0C 00 retn 0Ch ; return
+99: _DllMain@12 endp ; end dllMain function
 ```
 
 # Chapter 2 – Arm
