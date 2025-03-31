@@ -1,5 +1,19 @@
 # Glossary + Fundamentals
 
+**CreateThread Function:**
+```c
+HANDLE CreateThread(
+  LPSECURITY_ATTRIBUTES lpThreadAttributes,   // 1st arg: Security attributes 
+  SIZE_T dwStackSize,                         // 2nd arg: Initial stack size (0 means default)
+  LPTHREAD_START_ROUTINE lpStartAddress,      // 3rd arg: Address of thread start function
+	                                            // we will be using the address specified here for various actions such as debugging, payloads, etc...
+  LPVOID lpParameter,                         // 4th arg: Parameter passed to the thread
+  DWORD dwCreationFlags,                      // 5th arg: Creation flags (0 = run immediately)
+  LPDWORD lpThreadId                          // 6th arg: Pointer to receive thread ID
+);
+
+```
+
 **Fword:**
 
 - `fword ptr` - refers to far word pointer
