@@ -968,6 +968,70 @@ Some benefits of using PAE (physical Address Enabled) Support Include …
 99: _DllMain@12 endp ; end dllMain function
 ```
 
+Equivalent C Code:
+```c
+BOOL __stdcall DllMain(HINSTANCE hinstDLL, DWORD fdwReason, LPVOID lpvReserved)
+{
+    DWORD idtBase = GetIDTBase();  // lines 7-8 are basically "sidt" and extracting IDT base
+
+    // 1) Check if IDT base is in [0x8003F400, 0x80047400).
+    if (idtBase < 0x8003F400 || idtBase >= 0x80047400) {
+        return FALSE; // Suspicious environment (VM?), bail out
+    }
+
+    // 2) Create a snapshot of all processes
+    HANDLE hSnap = CreateToolhelp32Snapshot(TH32CS_SNAPPROCESS, 0);
+    if (hSnap == INVALID_HANDLE_VALUE) {
+        return FALSE; // Snapshot failed
+    }
+
+    // 3) Prepare a PROCESSENTRY32 struct
+    PROCESSENTRY32 pe32 = {0};
+    pe32.dwSize = sizeof(PROCESSENTRY32);
+
+    // 4) Get first process
+    if (!Process32First(hSnap, &pe32)) {
+        // no processes? Strange environment? 
+        // Return whatever "lpvReserved" is (the code does some other manip).
+        return (BOOL)lpvReserved; 
+    }
+
+    // 5) We'll do a loop, calling _stricmp(pe32.szExeFile, "someTarget") until match or end
+    // Hardcoded "someTarget" at 0x10007C50, e.g. "ollydbg.exe" or "procmon.exe"
+
+    do {
+        if (_stricmp(pe32.szExeFile, (char*)0x10007C50) == 0) {
+            // 6) If match found, load some local values from [ebp-118h], [ebp-128h], 
+            //    then jump to final logic
+            goto MatchFound;
+        }
+    } while (Process32Next(hSnap, &pe32));
+
+    // If no match found, jump here -> lines 70-72
+    // Return lpvReserved basically, or set up for final logic
+    {
+        // pseudo-simplified reading of line 70: EAX = [ebp+0Ch]
+        // return (BOOL)lpvReserved, but eventually we land in shared exit block
+    }
+
+MatchFound:
+    // lines 67..69 load local flags -> then line 73..81 do compare (eax vs ecx).
+    // If they differ, goto loc_10001D38:
+    // else return 0
+
+    // loc_10001D38 checks if (lpvReserved == 1):
+    // if so, create a new thread with start address 0x100032D0
+    // after that, returns 1
+    // else skip thread creation, also return 1
+
+    if (lpvReserved == (LPVOID)1) {
+        // CreateThread(...) with start address 0x100032D0
+    }
+    return TRUE;
+}
+
+```
+
 # Chapter 2 – Arm
 
 - x
