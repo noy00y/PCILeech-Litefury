@@ -126,8 +126,14 @@ Overall, these pointer bits are **crucial** for indexing into the device’s 256
   - The second PC can rewrite these fields to present entirely different “personalities” to the host.
 
 ---
-
-## 5. Emulated Ethernet vs. DMA
+## 5. Emulation -> Sample pcileech-fpga firmware 
+**[pcileech-multimedia-hd](https://github.com/dom0ng/pcileech-multimedia-hd)** - FPGA card looks like an capture card, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.  
+**[pcileech-wifi-v2](https://github.com/dom0ng/pcileech-wifi-v2)** - FPGA card looks like a wireless adapter, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.   
+**[pcileech-audio](https://github.com/dom0ng/pcileech-audio)** - FPGA card looks like an audio card, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.   
+**[pcileech-cardreader](https://github.com/dom0ng/pcileech-cardreader)** - FPGA card looks like a sd card reader, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.   
+**[pcileech-modem](https://github.com/dom0ng/pcileech-modem)** - FPGA card looks like a pcie modem, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.   
+**[pcileech-serialport](https://github.com/dom0ng/pcileech_serialport)** - FPGA card looks like a pcie serial port, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.   
+### Example Emulated Ethernet vs. DMA
 
 Once the host detects a device’s config space, it:
 - Loads an **Ethernet driver** if the class code and IDs indicate a network controller.  
