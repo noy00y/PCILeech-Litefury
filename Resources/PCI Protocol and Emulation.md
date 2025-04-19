@@ -1,5 +1,7 @@
-# FPGA PCIe Configuration & Shadow Emulation: README
+# FPGA PCIe Configuration & Shadow Emulation
 
+- Updated: March 2025 
+- Author: Ozair Khan
 ---
 
 ## 1. Overview
@@ -112,7 +114,7 @@ Overall, these pointer bits are **crucial** for indexing into the device’s 256
 ### 4.2. Shadow Config Space
 - Maintained in RTL or a separate block inside the FPGA.  
 - **Purpose**: 
-  - Allow the system to respond differently to configuration reads/writes, effectively emulating an Ethernet controller (or other device).  
+  - Allow the system to respond differently to configuration reads/writes, effectively emulating a legit controller such as a Ethernet, SSD, etc...  
   - Let you analyze or manipulate certain transactions without affecting real DMA traffic.
 - **Mechanism**:
   1. A config read TLP arrives at the FPGA.  
@@ -127,6 +129,7 @@ Overall, these pointer bits are **crucial** for indexing into the device’s 256
 
 ---
 ## 5. Emulation -> Sample pcileech-fpga firmware 
+**[pcileech-rt5392](https://github.com/ret2c/pcileech-rt5392)** - PCILeech firmware, masquerading as legal Ralink RT5392 device.  
 **[pcileech-multimedia-hd](https://github.com/dom0ng/pcileech-multimedia-hd)** - FPGA card looks like an capture card, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.  
 **[pcileech-wifi-v2](https://github.com/dom0ng/pcileech-wifi-v2)** - FPGA card looks like a wireless adapter, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.   
 **[pcileech-audio](https://github.com/dom0ng/pcileech-audio)** - FPGA card looks like an audio card, but hides inside [pcileech-fpga](https://github.com/ufrisk/pcileech-fpga) researching tool.   
