@@ -142,6 +142,15 @@ HANDLE CreateThread(
 - DPC is a small pckt of work to be done
     - holds a pointer to the data/context needed for the routine as well as the specific routine operation to perform
     - **Windows API:**  `KeInitializeDpc`, `KeInsertQueueDpc`
+- KeInitializeDpc
+    - This function prepares a `_KDPC` structure to be used for the dpc routine that are scheduled to run later at dispatch_lvl, usually by the kernel scheduler or i/o subsystem
+- _KDPC Fields
+    - `TargetInfoAsUlong`: packed bitfield which encodes type, importance and processor target info
+    - `DpcListEntry.Prev`: used when inserted into DPC queue (double linked list) 
+    - `DeferredRoutine`: pointer to the function that will be called when the DPC is executed   
+    - `DefferedContext`: passed to DefferedRoutine when it is invoked
+    - `DpcData`:  Kernel internal metadata (tracking if the DPC is active or pending)
+
 
 **Kernel Debugger:**
 
