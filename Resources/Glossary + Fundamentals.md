@@ -228,6 +228,11 @@ Heres what the stack looks like
 - MTF - Monitor Trap Flag
     - A VMCS control bit. Tells hardware to VM-exit after one guest instruction with 0 overhead of #DB or patching TF
 
+**Unified Extensible Firmware Interface**
+- Modern replacement for bios
+- fast, secure and required for some features such as Secure Boot, GPT disks, driver signing policies, etc...
+- Typically its easier to debug windows vm's that use UEFI firmware -> cleaner memory layouts, consistent boot behaviour
+
 **VT-x Intel Terminology**
 - VMX Root refers to hypervisor code
 - VMX Non Root is the guest OS (windows OS)
