@@ -1050,7 +1050,7 @@ RAX Register (General-Purpose Register)
 |  AX   |                       | 15
 +---+---+                       |
 |AH |AL |                       |  7
-+---+---+                       |  0
++---+---+-----------------------|  0
 
 RBP Register (Base Pointer Register)
 +-------------------------------+ 63
@@ -1061,7 +1061,7 @@ RBP Register (Base Pointer Register)
 |  BP   |                       | 15
 +---+---+                       |
 |   PL  |                       |  7
-+---+---+                       |  0
++---+---+-----------------------|  0
 ```
 
 - While RBP can be used as a base pointer -> most x64 compilers just use it as a regular GPR and reference local vars relative to RSP
@@ -1071,11 +1071,11 @@ RBP Register (Base Pointer Register)
 - This allows instructions to reference data at a relative position to RIP. 
 - Eg 1.
 ```nasm
-01: 0000000000000000 48 8B 05 00 00+ mov rax, qword ptr cs:loc_A
+01: 0000000000000000 48 8B 05 00 00+ mov rax, qword ptr cs:loc_A ; move the 64-bit value stored at the address `RIP + displacement` into RAX
 02: ; originally written as "mov rax,
 [rip]"
 03: 0000000000000007 loc_A:
-04: 0000000000000007 48 31 C0 xor rax, rax
+04: 0000000000000007 48 31 C0 xor rax, rax ; zero out the RAX register
 05: 000000000000000A 90 nop
 ```
 - Line 1 reads the address of loc_A which is 0x7 and saves it in RAX
@@ -1084,13 +1084,42 @@ RBP Register (Base Pointer Register)
 - Most arithmetic instructions are automatically promoted to 64 bits even though the operands are only 32 bits
 - Eg 2.
 ```nasm
-48 B8 88 77 66+ mov rax, 1122334455667788h
+48 B8 88 77 66+ mov rax, 1122334455667788h ; move this operand into RAX
 31 C0 xor eax, eax ; will also clear the upper 32bits of RAX.
  ; i.e., RAX=0 after this
-48 C7 C0 FF FF+ mov rax,0FFFFFFFFFFFFFFFFh
+48 C7 C0 FF FF+ mov rax,0FFFFFFFFFFFFFFFFh ; set RAX to max unsigned value ie. -1
 FF C0 inc eax ; RAX=0 after this
 ```
+- This behaviour is not symmetric -> when we write to RAX, this does not effect EAX, but writing to EAX does 0 out the upper 32 bits of RAX
+
+### Canonical Address:
+- On x64 virtual addresses are 64 bits in width, buth most processeors do not support a full 64 bit virtual address space, but rather 48 bits of address space
+- A virtual address must be in canonical form and this is true if bits 63 to the most significant bit are either all 1s or 0s
+- In practical terms this means bits 48-63 need to match bit 47
+- Eg 3.
+```nasm
+0xfffff801`c9c11000 = 11111111 11111111 11111000 00000001 11001001 11000001
+ 00010000 00000000 ; canonical
+0x000007f7`bdb67000 = 00000000 00000000 00000111 11110111 10111101 10110110
+ 01110000 00000000 ; canonical
+0xffff0800`00000000 = 11111111 11111111 00001000 00000000 00000000 00000000
+ 00000000 00000000 ; non-canonical
+0xffff8000`00000000 = 11111111 11111111 10000000 00000000 00000000 00000000
+ 00000000 00000000 ; canonical
+0xfffff960`000989f0 = 11111111 11111111 11111001 01100000 00000000 00001001
+ 10001001 11110000 ; canonical
+```
+- If code tries to dereference a non-canonical address, an exception will be thrown
+- Why use this the canonical rule form
+    - efficent sign extension for pointers
+    - prevents accidental memory access into non-existent space
+    - Makes address space seperation b/w user space and kernel space simplier (based on MSBs being 0 or 1)
+
+### Function Invocation:
+- Some calling conventions require params to be passed on the stack on x86
+- On x64 there is only one calling convention and the first 4 params are passed through `RCX`, `RDX`, `R8` and `R9`. The remaining are pushed onto the stack from right to left
 
 # Chapter 2 – Arm
 
-- x
+- ARM is a RISC (reduced instruction set) architecture type, meanwhile x86 is CISC (complex instruction set)
+- 
