@@ -1030,6 +1030,65 @@ MatchFound:
     return TRUE;
 }
 
+``` 
+
+## x64:
+- this is a extension of x86 so only minor differences in regards to register sizes and the unavailablility of some instructions such as `PUSHAD`
+
+### Register Set and Data Types:
+- The register set has 18 64-bit general purpose registers
+
+```txt
+Register Set and Data Types
+
+RAX Register (General-Purpose Register)
++-------------------------------+ 63
+|            RAX                |
++---------------+               |
+|     EAX       |               | 31
++-------+-------+               |
+|  AX   |                       | 15
++---+---+                       |
+|AH |AL |                       |  7
++---+---+                       |  0
+
+RBP Register (Base Pointer Register)
++-------------------------------+ 63
+|            RBP                |
++---------------+               |
+|     EBP       |               | 31
++-------+-------+               |
+|  BP   |                       | 15
++---+---+                       |
+|   PL  |                       |  7
++---+---+                       |  0
+```
+
+- While RBP can be used as a base pointer -> most x64 compilers just use it as a regular GPR and reference local vars relative to RSP
+
+### Data Movement:
+- x64 uses a concept called RIP - *relative addressing* 
+- This allows instructions to reference data at a relative position to RIP. 
+- Eg 1.
+```nasm
+01: 0000000000000000 48 8B 05 00 00+ mov rax, qword ptr cs:loc_A
+02: ; originally written as "mov rax,
+[rip]"
+03: 0000000000000007 loc_A:
+04: 0000000000000007 48 31 C0 xor rax, rax
+05: 000000000000000A 90 nop
+```
+- Line 1 reads the address of loc_A which is 0x7 and saves it in RAX
+- RIP facilitates position independant code
+
+- Most arithmetic instructions are automatically promoted to 64 bits even though the operands are only 32 bits
+- Eg 2.
+```nasm
+48 B8 88 77 66+ mov rax, 1122334455667788h
+31 C0 xor eax, eax ; will also clear the upper 32bits of RAX.
+ ; i.e., RAX=0 after this
+48 C7 C0 FF FF+ mov rax,0FFFFFFFFFFFFFFFFh
+FF C0 inc eax ; RAX=0 after this
 ```
 
 # Chapter 2 – Arm
