@@ -1129,5 +1129,25 @@ FF C0 inc eax ; RAX=0 after this
 - data must be moved into registers before operations and only load/store can access it --> `LDR` or `STR`
 - Eg. To increment a 32 bit value at a given memory address -> first load the value at that address into a register, perform the increment operation and then store it back. 3 instructions just to perform a addition operation, which only takes 1 total instruction on x86
 - Privilege Isolation in ARM
-    - 
-    
+    - In x86 privilege was defined w/ 4 rings, with 0 being the highest priv
+    - In arm there are instead eight different modes
+        - User (Usr)
+        - Fast Interrupt Req (FIQ)
+        - Interupt Req (IRQ)
+        - Supervisor (SVC)
+        - Monitor (MON)
+        - Abort (ABT)
+        - Undefined (UND)
+        - System (SYS)
+    - Each mode offers certain privileges and register access
+    - SVC is ring 0 and USR is ring 3
+- ARM processors operate in 2 states: `ARM` or `Thumb` and this determines instruction set to use
+    - ARM -> 32 bit instructions
+    - Thumb -> 16 or 32 bit
+    - Which state the processor executes in depends on 2 conditions
+        - When branching with the `BX` or `BLX` instruction -> if the destination register's LSB is 1 then -> switch to Thumb state
+        - If the T bit in the current program status register (CPSR) is set -> then its in thumb mode
+    - Recently: booting into Thumb state is more preferable for the 16/32-bit instruction flexibility
+    - Thumb 32-bit instructions have a *.w suffix*
+
+- 
