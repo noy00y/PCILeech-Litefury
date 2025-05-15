@@ -1150,4 +1150,13 @@ FF C0 inc eax ; RAX=0 after this
     - Recently: booting into Thumb state is more preferable for the 16/32-bit instruction flexibility
     - Thumb 32-bit instructions have a *.w suffix*
 
-- 
+- Conditional execution
+    - ARM also supports conditional execution. An instruction can encode certain arithmetic conditions that must be met in order for it to be executed. Eg. an instruction can specifiy that it will only execute if the result of the previous instruction is 0. Contrasting this w/ x86 -> most instructions execute unconditionally
+    - This is useful since it cuts down on branching instructions (which are expensive)
+
+- ARM Barrel Shifter
+    - certain instructions can "contain" another arithmetic instruction that shifts or rotates a register
+    - useful for shrinkingm multiple instructions into 1
+    - eg. wanting to multiply a register by 2 and store the result in another register. Normally this would require 2 instructions (multiply and move) -> but in a barrel instruction you can perform the left shift by 1 within the mov instruction: `MOV R1, R0, LSL #1 ; R1 = R0 * 2`
+
+### Data Types and Registers
