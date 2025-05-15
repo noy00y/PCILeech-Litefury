@@ -1160,3 +1160,20 @@ FF C0 inc eax ; RAX=0 after this
     - eg. wanting to multiply a register by 2 and store the result in another register. Normally this would require 2 instructions (multiply and move) -> but in a barrel instruction you can perform the left shift by 1 within the mov instruction: `MOV R1, R0, LSL #1 ; R1 = R0 * 2`
 
 ### Data Types and Registers
+- Supported ARM data types include 8-bit, 16 bit (half wrd), 32 bit (wrd) and 64 bit (double wrd)
+- ARM defines 16 32-bit general purpose registers from `R0` to `R15`
+    - the first 12 are for gpr usage and the last 3 do special stuff
+    - `R13` is the stack pointer and equivalent of ESP/RSP in x86
+    - `R14` is the link register (LR) and it holds the return address during a function call. 
+        - Instructions may implicity use this register such as `BL` which would store the return address in LR before branching
+    - `R15` is the program counter (PC). When executing in ARM state, PC is the address of the current instruction + 8 (2 arm instructions ahead). In thumb state this would be address of the current instruction + 4 (2 16 bit thumb instructions ahead). This is similar to `EIP`/`RIP` from x86, execept we are always pointing to the address of the next instruction to execute
+        - The reason for this as follows. Arm uses a pipelining behaviour for fetching instructions. ARM uses a 3 stage pipeline (fetch, decode and execute). While executing the current instruction -> fetch the next 2 instructions. So while reading R15, we dont grab the current address but rather the address 2 instructions ahead
+        - Code can directly read from and write to the PC register. Writing an address to PC will immediately cause execution to start at that address. Consider the snippet in thumb state below
+        ```ARM
+        1: 0x00008344 push {lr}
+        2: 0x00008346 mov r0, pc
+        3: 0x00008348 mov.w r2, r1, lsl #31
+        4: 0x0000834c pop {pc}
+        ```
+        - 
+- asdf
