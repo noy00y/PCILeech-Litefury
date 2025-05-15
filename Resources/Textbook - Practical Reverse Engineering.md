@@ -1120,6 +1120,14 @@ FF C0 inc eax ; RAX=0 after this
 - On x64 there is only one calling convention and the first 4 params are passed through `RCX`, `RDX`, `R8` and `R9`. The remaining are pushed onto the stack from right to left
 
 # Chapter 2 – Arm
-
+## Basic Features
 - ARM is a RISC (reduced instruction set) architecture type, meanwhile x86 is CISC (complex instruction set)
-- 
+- some new versions of intel processor offer some RISC features as well
+- The arm instruction set is much smaller then x86 and it offers more GPRs
+- Instruction length is fixed width (16/32 bits)
+- ARM offers load store model for memory access
+- data must be moved into registers before operations and only load/store can access it --> `LDR` or `STR`
+- Eg. To increment a 32 bit value at a given memory address -> first load the value at that address into a register, perform the increment operation and then store it back. 3 instructions just to perform a addition operation, which only takes 1 total instruction on x86
+- Privilege Isolation in ARM
+    - 
+    
