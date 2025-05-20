@@ -1189,7 +1189,7 @@ FF C0 inc eax ; RAX=0 after this
         Dump of assembler code for function main:
         0x00008344 <+0>: push {lr}
         0x00008346 <+2>: mov r0, pc
-        => 0x00008348 <+4>: mov.w r2, r1, lsl #31
+        => 0x00008348 <+4>: mov.w r2, r1, lsl #31 ; breakpoint hits before execution, at this point we show the `PC` and `R0` reg
         0x0000834c <+8>: pop {pc}
         0x0000834e <+10>: lsls r0, r0, #0
         End of assembler dump.
@@ -1198,4 +1198,8 @@ FF C0 inc eax ; RAX=0 after this
         (gdb) info register r0
         r0 0x834a 33610
         ```
-- asdf
+        - When the breakpoint at 0x8348 hits...
+            - PC points to the 3rd instruction at 0x8348 (about to be executed) 
+            - R0 shows the previously read PC value
+- Similar to other architectures ARM stores info about the current execution state in the *current program status register* (CPSR). From the programmer perspective CPSR is similar to EFLAG/RFLAG reg in x86
+- 
