@@ -1168,12 +1168,34 @@ FF C0 inc eax ; RAX=0 after this
         - Instructions may implicity use this register such as `BL` which would store the return address in LR before branching
     - `R15` is the program counter (PC). When executing in ARM state, PC is the address of the current instruction + 8 (2 arm instructions ahead). In thumb state this would be address of the current instruction + 4 (2 16 bit thumb instructions ahead). This is similar to `EIP`/`RIP` from x86, execept we are always pointing to the address of the next instruction to execute
         - The reason for this as follows. Arm uses a pipelining behaviour for fetching instructions. ARM uses a 3 stage pipeline (fetch, decode and execute). While executing the current instruction -> fetch the next 2 instructions. So while reading R15, we dont grab the current address but rather the address 2 instructions ahead
-        - Code can directly read from and write to the PC register. Writing an address to PC will immediately cause execution to start at that address. Consider the snippet in thumb state below
+        - Code can directly read from and write to the PC register. 
+            - Reading PC will give you the address of the instruction at a fixed offset ahead of the one currently being executed. ARM state offset is +8 bytes and thumb state offset is +4 bytes
+            - Writing PC (eg `MOV` to PC or `POP {pc}`) immediately alters control flow and execution jumps to the new PC value
+    - Consider the snippet below in thumb state:
         ```ARM
-        1: 0x00008344 push {lr}
-        2: 0x00008346 mov r0, pc
-        3: 0x00008348 mov.w r2, r1, lsl #31
-        4: 0x0000834c pop {pc}
+        1: 0x00008344 push {lr} ; push link reg onto stack (which holds return addy)
+        2: 0x00008346 mov r0, pc ; r0 ← PC = 0x8346 + 4 = 0x834A
+        3: 0x00008348 mov.w r2, r1, lsl #31 ; 32 bit thumb instruction (.w). performs logical left shift on r1 reg by 31 bits
+                                            ; result stored in r2
+        4: 0x0000834c pop {pc} ; pop val from stack into pc reg -> since the last thing pushed was the link reg, we are branching execution immediately to whatever val is stored in `LR`. This returns control back to caller
         ```
-        - 
+        GDB Demo
+        ```ARM
+        (gdb) br main
+        Breakpoint 1 at 0x8348
+        ...
+        Breakpoint 1, 0x00008348 in main () ; GDB breaks before executing this. 
+        (gdb) disas main
+        Dump of assembler code for function main:
+        0x00008344 <+0>: push {lr}
+        0x00008346 <+2>: mov r0, pc
+        => 0x00008348 <+4>: mov.w r2, r1, lsl #31
+        0x0000834c <+8>: pop {pc}
+        0x0000834e <+10>: lsls r0, r0, #0
+        End of assembler dump.
+        (gdb) info register pc
+        pc 0x8348 0x8348 <main+4>
+        (gdb) info register r0
+        r0 0x834a 33610
+        ```
 - asdf
