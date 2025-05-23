@@ -1205,12 +1205,14 @@ FF C0 inc eax ; RAX=0 after this
 - There are many flags within the CPSR. Heres a couple detailed below
     - E (Endianness bit) - ARM can operate in either big or little endian. Set this bit to 0 for lil or 1 for big endian. Mostly lil E is used though
     - T (Thumb bit) - if this is set to 1 -> you are in thumb state. Else you are in ARM state
-    - M (Mode bits) - These bits specify the current privilege mode (USR, SVC, etc...)
+    - M (Mode bits) - These bits specify the current privilege mode (USR, SVC,)
     ```txt
-        31                 26                                   15      10 9        5 4      0    
+           31                 26                                   15      10 9        5 4      0    
             +-----------------------------------------------------------------------------------+
-    CPSR    | cond. flag       |                                |   IT   |E|        |T|  M   |
+    CPSR    | cond. flag       |                                   |   IT   |E|        |T|  M   |
             +-----------------------------------------------------------------------------------+
     ```
 
 ### System Level Controls and Settings
+- ARM offers the *concept* of coprocessors to support additional instructions and system level settings
+- 
