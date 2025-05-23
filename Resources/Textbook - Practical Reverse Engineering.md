@@ -1215,4 +1215,14 @@ FF C0 inc eax ; RAX=0 after this
 
 ### System Level Controls and Settings
 - ARM offers the *concept* of coprocessors to support additional instructions and system level settings
-- 
+- Eg. if a system supports a memory management unit then its settings must be exposed to boot or kernel code. On x86/x64, these settings are stored in `CR0` and `CR4`. On ARM it would be stored in a coprocessor (`CPO` - `CP15`)
+- The first 13 coprocessors are reserved by ARM and and other 2 can be used by manufacturers to custom instructions 
+- Each coprocessor contains additional "opcodes" and registers that can be controlled via special ARM instructions
+- CP15 is known as the system control coprocessor and stores the system settings such as caching, paging, exceptions, etc...
+- Each coprocessor has 16 registers and 8 opcodes. Semantics of these registers and opcodes is specific to the coprocessor
+- MRC (read) and MCR (write) instructions
+- it takes a coprocessor #, register # and opcodes
+- Eg. to read the translation base register (similar to CR3 in x86) and save it in R0, you would do the following:
+    ```ARM
+    MRC p15, 0, r0, c2, c0, 0 ; save TTBR in r0
+    ```
