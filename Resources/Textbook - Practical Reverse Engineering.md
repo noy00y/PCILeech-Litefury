@@ -1202,4 +1202,15 @@ FF C0 inc eax ; RAX=0 after this
             - PC points to the 3rd instruction at 0x8348 (about to be executed) 
             - R0 shows the previously read PC value
 - Similar to other architectures ARM stores info about the current execution state in the *current program status register* (CPSR). From the programmer perspective CPSR is similar to EFLAG/RFLAG reg in x86
-- 
+- There are many flags within the CPSR. Heres a couple detailed below
+    - E (Endianness bit) - ARM can operate in either big or little endian. Set this bit to 0 for lil or 1 for big endian. Mostly lil E is used though
+    - T (Thumb bit) - if this is set to 1 -> you are in thumb state. Else you are in ARM state
+    - M (Mode bits) - These bits specify the current privilege mode (USR, SVC, etc...)
+    ```txt
+        31                 26                                   15      10 9        5 4      0    
+            +-----------------------------------------------------------------------------------+
+    CPSR    | cond. flag       |                                   |   IT   |E|        |T|  M   |
+            +-----------------------------------------------------------------------------------+
+    ```
+
+### System Level Controls and Settings
