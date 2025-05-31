@@ -1225,4 +1225,10 @@ FF C0 inc eax ; RAX=0 after this
 - Eg. to read the translation base register (similar to CR3 in x86) and save it in R0, you would do the following:
     ```ARM
     MRC p15, 0, r0, c2, c0, 0 ; save TTBR in r0
+    ; Read coprocessor 15's C2/C0 reg using opcode 0/0 and store the result in gpr R0
     ```
+
+## Introduction to ARM instruction set
+- ARM has some quirks that arent in x86 such as instructions operating on a range of registers in sequence
+- Eg. to store 5 regs R6-R10 at a particular memory location referenced by R1, you would write `STM R1, {R6-R10}`. This would result in R6 being stored at memory address R1, R7 at R1 + 4, R8 at R1 + 8 and so on
+-  
