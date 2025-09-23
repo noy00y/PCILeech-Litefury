@@ -10,7 +10,8 @@ This design enables **DMA support** on a LiteFury FPGA board (Artix-7 XC7A100T) 
   - Thunderbolt solutions can push **tens of GB/s**, so this approach trades raw throughput for **cost-effectiveness** and **broader device compatibility**.
 
 ## RTL Design Roadmap
-- ZDMA Firmware Review (In Progress)
+- ZDMA Firmware HDL Review (Complete)
+- ZDMA Timing Verification (In Progress)
 - UART IP Review (Not Started)
 - Timing Verification (Not Started)
 
